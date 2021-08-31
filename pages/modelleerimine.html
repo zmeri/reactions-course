@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reaktori modelleerimine</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Reaktori modelleerimine</h1>
+      <p>
+        Reaktsioonid toimuvad mingisuguses ruumalas maailams ja kutsume seda reaktoriks. Mõistmaks, kuidas reaktsioon mõjutab asju reaalses maailmas, tuleb kirjeldada reaktorit. Reaktori modelleerimisega saame kirjeldada neid reaalseid protsesse ja vastata olulistele küsimustele nagu
+      </p>
+      <ul>
+        <li>
+          Mis on aine kogus peale reaktsiooni?
+        </li>
+        <li>
+          Mis oleks konversiooniaste?
+        </li>
+        <li>
+          Mis tingimusi on vaja (temperatuur, maht, rõhk, katalüsaatori mass, jne)?
+        </li>
+        <li>
+          Kuidas peaks reaktorit ehitama?
+        </li>
+        <li>
+          Kui kaua läheb?
+        </li>
+        <li>
+          Mis juhtub, kui muuta teatud parameetreid?
+        </li>
+      </ul>
+
+      <h2 id="m6jurid">Mõjurid</h2>
+      <p>
+        On mitu asja, mis võivad mõjutada reaktori käitumist:
+      </p>
+      <ul>
+        <li>
+          reaktsiooni enda parameetrid ja katalüsaatori olemasolu;
+        </li>
+        <li>
+          ainete kontsentratsioonid (täpsemalt, aktiivsused);
+        </li>
+        <li>
+          molekulide energia (temperatuur, rõhk, kiirgus, elekter);
+        </li>
+        <li>
+          teised molekulid keskkonnas, mis otseselt ei osale reaktsioonis (nt lahusti);
+        </li>
+        <li>
+          voolamine/liikumine reaktoris, mis omakorda mõjutab kontsentratsiooni ja energia jaotust reaktoris.
+        </li>
+      </ul>
+      <p>
+        Mõned mõjurid on iseloomulikud reaktsioonidele, näiteks reaktsiooni kiirus valem ja kas katalüsaator saab kiirendada reaktsiooni. Kuid paljud mõjurid on seotud olukorraga reaktoris. Näiteks, reaktsiooni kiirus sõltub kontsentratsioonidest, kuid kontsentratsioonid omakorda sõltuvad olukorrast reaktoris. Reaktori maht ja sisenevate ja väljuvate voogude suurused ja koostised võivad mõjutada kontsentratsioone reaktoris. Samuti, kui reaktoris ei toimu täiuslikku segunemist, siis kontsentratsioonid võivad sõltuda sellest, kuidas ained voolavad reaktoris. Energia parameetritega (nt temperatuur) on sarnane seos voolamise, reaktori ülesehituse ja energia ülekandega. Seega, reaktsiooniprotsessid on seotud mitme tehnika valdkonnaga.
+      </p>
+      <p>
+        Võime väljendame füüsika ka keemia seadusi matemaatiliste valemitega. Tihti need valemid on diferantsiaalvõrrandid. Reaktsiooni <a href="/reactions-course/pages/kiirus.html">kiiruse valemid</a> on diferentsiaalvõrrandid. Veel kaks olulist valemit reaktorite modelleerimises on materjalibilanss ja energiabilanss.
+      </p>
+
+      <h2 id="materjalibilanss">Materjalibilanss</h2>
+      <p>
+        Materjalibilanss on valem, mis näitab seost siseneva, väljuva ja süsteemis oleva massi/moolide vahel. Kui aine kogus reaktoris suureneb, see peab kuskilt tulema: kas ümbrusest siseneva vooga või muudest ainetest reaktsiooni kaudu. Seda põhimõtet näidatakse matemaatiliselt bilansiga. Bilanss võib olla massi järgi (massibilanss) või moolide järgi (moolibilanss) sõltuvalt sellest, mida me tahaksime arvutada.
+      </p>
+      <p>
+        Bilansis on osad nelja erineva protsessi jaoks: sisenemine, väljumine, tekkimine/kadumine ja kogumine.
+      </p>
+      <div>
+        \[ kogumine = sisenemine - väljumine + tekkimine \]
+      </div>
+      <p>
+        Ehk, kui võtta sisenevat kogust, lahutada väljuvat kogust ja liita tekkivat kogust, siis võib arvutada, kui palju jääb süsteemisse. Tegelikult, bilansi mõiste ei ole ainult masside ja moolide jaoks. Võib teha bilansi ka muude asjade jaoks, nt energia, raha ja autoliiklus.
+      </p>
+      <p>
+        Saame koostada bilanssi ühe aine moolide jaoks.
+      </p>
+      <div>
+        \[ \frac{dn_A}{dt} = F_{A0} - F_A + \int r_A dV \]
+      </div>
+      <p>
+        Siin <em>n<sub>A</sub></em> tähistab aine A moolide arv reaktoris, <em>F<sub>A0</sub></em> on sisenevate moolide arv, <em>F<sub>A</sub></em> on väljuvate moolide arv, <em>r<sub>A</sub></em> on <a href="/reactions-course/pages/kiirus.html">reaktsiooni kiirus</a> ja V on reaktori maht. Võime koostada sarnaseid valemeid teiste reagentide ja produktide jaoks.
+      </p>
+      <p>
+        Seda bilansi tuleb kohandada antud ülesandele. Näiteks, kui antud ülesandes reaktor töötab statsionaarses re&#382;iimis, siis moolide arv reaktoris ei muutu ajas ja bilansi vasak pool on 0. Kui reaktsioon toimub sama kiiresti igal pool reaktoris, integraali asemel võib lihtsalt panna \( r_A V \). Mõnikord bilanss peab olema hoopis keerulisem. Kui, näiteks, siseneva voo koostis muutub ajas, oleks vaja kirjeldada seda matemaatiliselt ja asendada <em>F<sub>A0</sub></em> selle keerulisema avaldisega.
+      </p>
+
+      <h2 id="energiabilanss">Energiabilanss</h2>
+      <p>
+        Energia tuleb reaktorisse koos siseneva vooga ja läheb ära koos väljuva vooga. Samuti energia läbikanne toimub reaktori ja ümbruse vahel, näiteks läbi reaktori seina või kütteelemendist. Reaktsioon iseenesest võib ka toota või nõuda soojust. Olekumuutus reaktoris, näiteks faasimuutust, võib ka nõuda või anda energiat. Võime koondada kokku need erinevad energia muutused energiabilansina. Tavaliselt kirjeldatakase reaktori energiatased entalpiaga, siis näitame siin entalpiabilansi:
+      </p>
+      <div>
+        \[ \sum_i n_i C_{p,i} \frac{dT}{dt} = \sum_i F_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + F_{faasimuutus} \Delta H_{faasimuutus} + Q \]
+      </div>
+      <p>
+        Bilansis <em>C<sub>p</sub></em> on teatud aine soojusmahtuvus (konstantsel rõhul), <em>T</em> on temperatuur reaktoris, <em>T<sub>0</sub></em> on siseneva voo temperatuur, <em>&Delta;H<sub>rxn</sub></em> on reaktsiooni entalpia, <em>&Delta;H<sub>faasimuutus</sub></em> on entalpia muutus faasimuutuse tõttu, <em>Q</em> on energia läbikanne ümbrusega ja <em>F<sub>faasimuutus</sub></em> on moolikulu, mis läbib faasimuutuse.
+      </p>
+      <p>
+        Märka, kuidas bilansis võetakse arvesse ainult siseneva voo energiat, aga väljuva voo energiat ei esine bilansis. Põhjus on selles, et tavaliselt väljuval vool on sama temperatuur, kui segu reaktoris. Sel juhul &Delta;T on 0 ja väljuv voog otseselt ei mõjuta energiataset reaktoris. Väljuva voo moolikulu mõjutab küll moolide arv reaktoris, aga seda võetakse arvesse <em>n<sub>i</sub></em> muutujas.
+      </p>
+      <p>
+        Energiabilansi oleks ka vaja kohandada konkreetsele ülesandele. Näiteks, kui ei toimu faasimuutust, siis võib seda osa valemist kõrvale jätta. Samuti, mõnikord on vaja arvesse võtta energia muutust, mis tuleb segunemisest (segunemisentalpia, <em>&Delta;H<sub>mix</sub></em>). Ja kui on mitu sisenevat voogu, siis oleks vaja need kõik juurde liita, tehes kindlaks, et kasutatakse kõikide puhul õiget <em>T<sub>0</sub></em> väärtust.
+      </p>
+
+      <h2 id="lahendamine">Lahendamine</h2>
+      <p>
+        Kõik need valemid (kiiruse valemid, bilansid, jt) moodustavad valemi süsteemi. Kui on lihtne ülesanne, siis on võimalik leida analüütilist lahendust. Ehk, me saame leida algebraalisi avaldisi, mis kirjeldavad käitumist reaktoris. Selliseid valemeid näitame mujal põhi reaktori liikide jaoks:
+      </p>
+      <ul>
+        <li>
+          <a href="/reactions-course/pages/pidev-segureaktor.html">Pidev segureaktor</a>
+        </li>
+        <li>
+          <a href="/reactions-course/pages/torureaktor.html">torureaktor</a>
+        </li>
+        <li>
+          <a href="/reactions-course/pages/perioodiline-reaktor.html">Perioodiline reaktor</a>
+        </li>
+      </ul>
+      <p>
+        Kuid keerulisemate süsteemide jaoks on raske või võimatu leida analüütilist lahendust. Sel juhul on vaja kasutada numbrilisi meetodeid osaliste diferentsiaalvõrrandite lahendamiseks. Kui reaktori parameetrid varieeruvad ruumalas, siis tihti jagatakse reaktorit väiksemateks osadeks kasutades lõplike mahtude või lõplike elementide meetodeid. Kui on vaja võtta arvesse ka voolamist reaktoris, mõnikord modelleeritakse arvutusvedeliku dünaamika tarkvaraga.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          Comsol, “The Finite Element Method (FEM).” <a href="https://www.comsol.com/multiphysics/finite-element-method">https://www.comsol.com/multiphysics/finite-element-method</a> (accessed Aug. 04, 2021).
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

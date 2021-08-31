@@ -1,0 +1,75 @@
+<script>
+  function showMenu() {
+    if (document.getElementById('sidebar').style.display == 'none' || document.getElementById('sidebar').style.display == '') {
+      document.getElementById('sidebar').style.display = 'inline';
+    } else {
+      document.getElementById('sidebar').style.display = 'none';
+    }
+  }
+
+  var globalResizeTimer = null;
+
+  $(window).resize(function() {
+    if(globalResizeTimer != null) window.clearTimeout(globalResizeTimer);
+    globalResizeTimer = window.setTimeout(function() {
+      if (window.outerWidth > 1000) {
+        document.getElementById('sidebar').style.display = 'inline';
+      } else {
+        document.getElementById('sidebar').style.display = 'none';
+      }
+    }, 200);
+  });
+</script>
+
+
+<div id='sidebar'>
+  <div id='home'>
+    <a id='home-link' href="/reactions-course/index.html">Reaktsiooniprotsessid</a>
+  </div>
+  <ul id='navi'>
+    <li>
+      <a class='nav-link' href="/reactions-course/pages/sissejuhatus.html">Sissejuhatus</a>
+    </li>
+    <li>
+      <a class='nav-link' href="/reactions-course/pages/reaktsioonid.html">Reaktsioonid</a>
+    </li>
+    <ul id='navi-level2'>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/mehhanismid.html">Mehhanismid</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/kiirus.html">Reaktsiooni kiirus</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/reaktsiooni-energia.html">Reaktsiooni energia</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/tasakaal.html">Reaktsiooni tasakaal</a>
+      </li>
+    </ul>
+    <li>
+      <a class='nav-link' href="/reactions-course/pages/reaktorid.html">Reaktorid</a>
+    </li>
+    <ul id='navi-level2'>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/modelleerimine.html">Reaktori modelleerimine</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/pidev-segureaktor.html">Pidev segureaktor</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/torureaktor.html">Torureaktor</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/perioodiline-reaktor.html">Perioodiline reaktor</a>
+      </li>
+      <li>
+        <a class='nav-link' href="/reactions-course/pages/keerulisemad-reaktorid.html">Keerulisemad reaktorid</a>
+      </li>
+    </ul>
+  </ul>
+</div>
+
+<div id='menu-button' onclick="showMenu()">
+  <img id='menu-icon' src='/reactions-course/icons/menu.svg' />
+</div>

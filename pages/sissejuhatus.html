@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sissejuhatus</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Sissejuhatus</h1>
+      <p>
+        Reaktsioonid on üks põhilisi protsesse meie maailmas. Iga kord, kui keemilised ühendid muunduvad, peab toimuma reaktsioon. Reaktsioonide kaudu tekivad erinevad kivid maa sees ja moodustatakse kaitsvat osooni kihti stratosfääris. Kasutame reaktsioone, et teha betooni, juustu, mikrokiipe ja muid toote. Isegi sina ise oled reaktor. Siin õpime, kuidas mõista ja modelleerida reaktoreid.
+      </p>
+
+      <h2 id="veri">Veri</h2>
+      <p>
+        Veresüsteem on hea näide reaktsiooniprotsessist. Veri on imeline aine. Veri veab mitmeid aineid ringi kehas ja vere sees toimuvad ka reaktsioonid selleks, et hoida keha tasakaalus. Keskendume siia just hapniku ja süsinikdioksiidi ringlusele kehas.
+      </p>
+      <p>
+        Kopsude juures hapnik õhus lahustub verre ja enamus reageerib hemoglobiiniga. Hemoglobiini tõttu veri suudab hoida palju rohkem hapnikku. Siis veresüsteem viib verd erinevatele kudedele kehas. Kudede juures hapniku kontsentratsioon on madal ja süsinikdioksiidi ja ioonide kontsentratsioonid on kõrgemad, mille tõttu reaktsioon käib tagurpidi ja hemoglobiinist eraldub hapnik. Süsinikdioksiid lahustub veres, reageerib vesinikkarbonaadiks ja mingil määral reageerib hemoglobiiniga. Reaktsioon vesinikkarbonaadi ja süsinikdioksiidi vahel aitab reguleerida keha pH. Kui veri jõuab tagasi kopsudele, süsinikdioksiid eraldub verest ja läheb õhku, mis on kopsudes.<sup><a href="#ref1">1</a>,<a href="#ref4">4</a>,<a href="#ref5">5</a></sup>
+      </p>
+      <img class="inline-img" src="/reactions-course/media/veri.png" />
+      <p>
+        Reaktorid võivad olla päris keerulised, nagu veresüsteem näitab. On mitu erinevat parameetrit, mis mõjutavad protsessi ning need parameetrid on üldiselt omavahel seotud. Vaatame iga parameetrit/dimensiooni eraldi.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/parameetrid.png" />
+
+      <h2 id="kineetika">Reaktsiooni kineetika</h2>
+      <p>
+        Reaktsioonid nõuavad aega. Kui kiiresti reaktsioon toimub sõltub tugevalt sellest, kuidas molekulid paiknevad ruumalas ja mis energiatase neil on. Kirjeldame reaktsiooni kiirust matemaatiliselt <a href="/reactions-course/pages/kiirus.html#kiiruse-valemid">kiiruse valemiga</a>.
+      </p>
+      <p>
+        Mitu reaktsiooni võivad toimuda samaaegselt reaktoris ja üks aine võib osaleda mitmes reaktsioonis. Võivad ka toimuda pöördreaktsioonid, ehk reaktsioon võib tagurpidi käia, et moodustada algseid reagente. Sellisel juhul tavaliselt saavutatakse tasakaalu, mille juures edaspidi ja tagurpidi reaktsioonid toimuvad sama kiiresti. Veres hapniku reaktsioon hemoglobiiniga on tasakaalu reaktsioon.
+      </p>
+      <div>
+        \[ Hb + 4O_2 \leftrightarrow Hb-4O_2 \]
+      </div>
+      <p>
+        Samuti toimub reaktsioon süsinikdioksiidi ja vee vahel selleks, et moodustada vesinikkarbonaati. Selle reaktsiooniga keha saab reguleerida pH.<sup><a href="#ref4">4</a></sup>
+      </p>
+      <div>
+        \[ CO_2 + H_2O \leftrightarrow H_2CO_3 \leftrightarrow H^+ + HCO_3^- \]
+      </div>
+      <p>
+        Reaktsiooni kiirus võib ka sõltuda katalüsaatoritest, ehk ainetest, mis osalevad reaktsioonis, aga ei ole reagente ega produkte. Näiteks, veres ensüüm karboanhüdraas kiirendab reaktsiooni süsinikdioksiidi ja vee vahel vesinikkarbonaadi moodustamiseks.<sup><a href="#ref1">1</a></sup>
+      </p>
+
+      <h2 id="kokkupuuted">Molekulide kokkupuuted (kontsentratsioon)</h2>
+      <p>
+        Molekulid peavad kokku puutuma selleks, et reageerida. Seega, need peavad olema teineteise lähedal. Lisaks, molekulide vahelised vastasmõjud segus võivad mõjutada ainete paiknemist/kuju. Kui täpne olla, neid kokkupuuteid molekulide vahel tuleks kirjeldada <a href"/reactions-course/pages/kiirus.html#aktiivsus">aktiivsusega</a>, kuid sageli lihtsalt kasutatakse kontsentratsiooni aktiivsuse asemel. Kui reagentide kontsentratsioonid on kõrgemad, on suurem tõenäosus, et reaktsioon toimub ja kiirus sellepärast kasvab.
+      </p>
+      <p>
+        Kuna tingimused reaktoris ei ole ühtlased, kontsentratsioon võib varieeruda ruumalas. Näiteks, kui lisatakse uusi molekule, need peavad voolama ja difundeeruma laiali reaktoris selleks, et saavutada ühtlane kontsentratsioon. Mõnikord eeldame, et segunemine reaktoris on täiuslik ja et kontsentratsioon on kõikjal sama, kuid reaalses reaktoris ei pruugi olla nii.
+      </p>
+
+      <h2 id="energia">Energia</h2>
+      <p>
+        Aatomid ja molekulid nõuavad energiat selleks, et murda ja moodustada sidemeid. Seega, kui on rohkem energiat süsteemis reaktsioonid käivad kiiremini. Enamasti temperatuur on peamine energia parameeter reaktsiooni kiiruse suhtes. Mõnikord antakse energiat hoopis kiirguse või elektriga soojuse asemel.
+      </p>
+      <p>
+        Energia on ka seotud kontsentratsioonidega. Temperatuuri muutusega segu tihedus muutub, mis omakorda tähendab, et kaugus molekulide vahel muutub. Seda saab eriti näha gaasiliste reaktsioonidega kuna temperatuuri muutus põhjustab suurt mahu või rõhu muutust.
+      </p>
+      <p>
+        Reaktori toimimise seisukohast on tähtis ka teada, kui palju energiat tuleb anda/võtta reaktorist, selleks et püsiks soovitud energiatasemel. Me saame seda arvutada energiabilansiga.
+      </p>
+      <p>
+        Nii nagu kontsentratsiooniga, energia parameetrid võivad sõltuda asukohast reaktoris.
+      </p>
+
+      <h2 id="liikumine">Molekulide liikumine</h2>
+      <p>
+        Ained liikuvad reaktoris voolamise ja difundeerumise teel. Need protsessid omakorda mõjutavad ainete ja energia jaotust reaktori ruumalas. Veres hapniku kontsentratsioon on näiteks kõrgem kopsude juures. Mõnikord, kui selline liikumine on oluline, modelleeritakse seda arvutusvedeliku dünaamika tarkvaraga.
+      </p>
+      <p>
+        Reaktoris võivad esineda mitu faasi. Näiteks, katalüsaatorid on sageli tahked ja kuna reaktsioon toimub katalüsaatori pinnal ained peavad liikuma ümbritsevast vedelikust/gaasist katalüsaatori pinnale. Mõnikord massivahetuse kiirus võib piirata reaktsiooni kiirust. Kehas toimub ka massivahetus faaside vahel. Näiteks, hapnik õhust peab liikuma ja lahustama verre. Samuti süsinikdioksiid peab minema verest õhku ja kopsudest välja.
+      </p>
+
+      <h2 id="aeg">Aeg</h2>
+      <p>
+        Reaktori tingimused võivad muutuda ajas. Näiteks, võibolla hakatakse andma rohkem soojust reaktorile ja ajas reaktori temperatuur tõuseb. Keemiatööstuses sageli proovitakse hoida reaktori parameetreid muutumatuks ajas. Kui ajas tingimused ei muutu öeldakse, et reaktor töötab statsionaarses re&#382;iimis.
+      </p>
+      <p>
+        Kehas protsessid nagu hingamine toimuvad perioodiliselt. Seega, teatud kohas kehas, nt kopsudes, ainete kontsentratsioonid veres muutuvad ajas.
+      </p>
+
+      <h2 id="mastaab">Mastaab</h2>
+      <p>
+        Lisaks kõikidele protsessidele, mis reaktoris toimuvad, reaktori suurus on ka tähtis. Reaktori suurus paneb paika, kui palju toodetakse ning kui palju tooraineid ja energiat oleks vaja. Samuti reaktori suurus on seotud selle maksumusega.
+      </p>
+      <p>
+        Reaktori mastaab võib ka mõjutada neid üleval mainitud protsesse, mis toimuvad reaktoris. Näiteks, kui reaktor on suurem võib olla raskem saavutada täiuslikku segunemist ja võivad esineda reaktoris kohad, mis on külmemad või milles reaktsioon toimub aeglasem. Need mõjurid tavaliselt osutavad oluliseks, kui viia laboris katsetatud protsessi tööstuseskaalani. Sellepärast tavaliselt tehakse pilootseadmeid, et uurida neid mastaabiefekte.
+      </p>
+      <p>
+        Inimesed on ka erineva suurusega. Lisaks, väikestel lastel on kiirem ainevahetuse, mille tõttu nad peavad hingama tihendamine.<sup><a href="#ref2">2</a></sup> Täiskasvanu hingab umbes 12-20 korda minutis, aga imik tavaliselt hingab 30-60 korda minutis.<sup><a href="#ref3">3</a></sup> See on näiteks oluline, kui vaadata õhusaaste mõju tervisele. Kuna väikesed lapsed hingavad rohkem, nad puutuvad rohkem kokku õhus olevate saasteainetega.<sup><a href="#ref2">2</a></sup>
+      </p>
+
+      <h2 id="modelleerimine">Modelleerimine</h2>
+      <p>
+        Inseneridena me tahame kirjeldada reaalseid protsesse mudelitega. Nende mudelitega saame paremini mõista ja disainida süsteeme.
+      </p>
+      <p>
+        Üldiselt modelleerimisel peame tegema lihtsustusi selleks, et oleks võimalik mudeli lahendusi leida. Võime näiteks eeldata, et temperatuur on igal pool reaktoris sama või, et tingimused reaktoris ei muutu ajas. Vere mudelis võiksime näiteks otsustada kõrvale jätta muid aineid, mis võivad reageerida hemoglobiiniga (nt süsinikmonooksiid).
+      </p>
+      <p>
+        Siin õpikus vaatame, kuidas saab matemaatiliselt kirjeldada neid erinevaid reaktori dimensioone ja kuidas need parameetrid üksteist mõjutavad. Mõnesid aspekte, näiteks vedelikute voolamine või soojuse ülekanne, käsitletakse põhjalikumalt muudes õppeainetes.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          J. M. Berg, J. L. Tymoczko, and L. Stryer, “Hemoglobin Transports Oxygen Efficiently by Binding Oxygen Cooperatively,” Biochemistry. 5th edition, 2002, Accessed: Aug. 30, 2021. [Online]. Available: <a href="https://www.ncbi.nlm.nih.gov/books/NBK22596/">https://www.ncbi.nlm.nih.gov/books/NBK22596/</a>
+        </li>
+        <li id="ref2">
+          K. Duderstadt, Pediatric Physical Examination - E-Book: An Illustrated Handbook. Elsevier Health Sciences, 2017.
+        </li>
+        <li id="ref3">
+          S. Brown, “Is My Child Breathing Too Fast?,” WebMD. <a href="https://www.webmd.com/children/child-breathing-too-fast">https://www.webmd.com/children/child-breathing-too-fast</a> (accessed Aug. 30, 2021).
+        </li>
+        <li id="ref4">
+          S. Patel, J. H. Miao, E. Yetiskul, A. Anokhin, and S. H. Majmundar, “Physiology, Carbon Dioxide Retention,” in StatPearls, Treasure Island (FL): StatPearls Publishing, 2021. Accessed: Aug. 30, 2021. [Online]. Available: <a href="http://www.ncbi.nlm.nih.gov/books/NBK482456/">http://www.ncbi.nlm.nih.gov/books/NBK482456/</a>
+        </li>
+        <li id="ref5">
+          R. N. Pittman, Oxygen Transport. Morgan & Claypool Life Sciences, 2011. Accessed: Aug. 30, 2021. [Online]. Available: <a href="https://www.ncbi.nlm.nih.gov/books/NBK54103/">https://www.ncbi.nlm.nih.gov/books/NBK54103/</a>
+        </li>
+        <li id="ref6">
+          Kopsude pilt: Popular Science Monthly. Volume 20. Kättesaadav: <a href="https://commons.wikimedia.org/wiki/File:PSM_V20_D771_Bronchi_and_lungs_of_man.jpg">https://commons.wikimedia.org/wiki/File:PSM_V20_D771_Bronchi_and_lungs_of_man.jpg</a>. CC0 litsents.
+        </li>
+        <li id="ref7">
+          Rakkude pilt: Cancer Research UK. Kättesaadav: <a href="https://commons.wikimedia.org/wiki/File:Diagram_showing_how_normal_cells_make_up_the_tissue_in_our_body_CRUK_135.svg">https://commons.wikimedia.org/wiki/File:Diagram_showing_how_normal_cells_make_up_the_tissue_in_our_body_CRUK_135.svg</a>. CC-BY-SA 4.0 litsents.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

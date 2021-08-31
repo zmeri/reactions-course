@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Torureaktor</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Torureaktor</h1>
+      <p>
+        Torureaktor, ehk väljatõrjereaktor (ingl <em>plug flow reactor (PFR)</em>), on üks peamisi reaktori liike. Siin kirjeldame reaktorit ja näitame, kuidas modelleerida seda.
+      </p>
+
+      <h2 id="iseloomustus">Iseloomustus</h2>
+      <p>
+        Torureaktoris segu voolab läbi reaktorit. Seega, erinevalt <a hef="/reactions-course/pages/pidev-segureaktor.html">pidevast segureaktorist</a> ja <a hef="/reactions-course/pages/perioodiline-reaktor.html">perioodilisest reaktorist</a>, koostis sõltub asukohast ja ei ole ühtlane reaktoris. Mida kaugemale segu jõuab reaktorist, seda kõrgem on tavaliselt konversiooniaste. Üldiselt torureaktor töötab statisonaarses re&#382;iimis, mis tähendab, et kontsentratsioon ja muid parameetreid <em>konkreetses kohas</em> reaktoris ei muutu ajas, isegi kui reaktori pikisuunas kontsentratsioon muutub.
+      </p>
+      <figure>
+        <img class="inline-img" src="/reactions-course/media/torureaktor.svg" />
+        <figcaption>
+          Joonise allikas: <a href="https://commons.wikimedia.org/wiki/File:ReactorPlugFlow.svg">Wikimedia Commons</a>. CC0 litsents.
+        </figcaption>
+      </figure>
+
+      <h2 id="p6hiv6rrand">Põhivõrrand</h2>
+      <p>
+        Reaktori põhivõrrand on lihtsalt moolibilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Torureaktori põhivõrrand on järgmine:
+      </p>
+      <div>
+        \[ \frac{d\dot n_A}{dV} = r_A \]
+      </div>
+      <p>
+        Põhivõrrandit saab ka kirjutada integraalsel kujul.
+      </p>
+      <div>
+        \[ V = \int_{\dot n_{A0}}^{\dot n_A} \frac{d\dot n_A}{r_A} \]
+      </div>
+      <p>
+        <em>V</em> on reaktori maht, <em>n&#775;<sub>A0</sub></em> on aine A moolikulu reaktori alguses, <em>n&#775;<sub>A</sub></em> on moolikulu teatud kohas reaktoris ja <em>-r<sub>A</sub></em> on reaktsiooni <a href="/reactions-course/pages/kiirus.html">kiiruse valemit</a>.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita tuletust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida tuletust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Põhivõrrand on <a>moolibilanss</a>, aga teisel kujul. Alustame siis üldise moolibilansiga.
+          </p>
+          <div>
+            \[ \frac{dn_A}{dt} = \dot n_{A0} - \dot n_{A} + \int_{0}^{V} r_A dV \]
+          </div>
+          <p>
+            Kuna torureaktoris konversiooniaste sõltub läbitud mahust, tekkimise/kadumise osa valemis on integraal. Pidev segureaktori ja perioodilise reaktoriga ei olnud vaja integraali kasutada kuna konversiooniaste oli igal pool sama.
+          </p>
+          <p>
+            Kui eeldame, et reaktor töötab statsionaarses re&#382;iimis, siis \( \frac{dn_A}{dt} = 0 \). Ehk, aine A kogus reaktoris ei muutu ajas. Tõstes <em>F<sub>A0</sub></em> ja <em>F<sub>A</sub></em> valemi teisele poole, saame järgmise valemi.
+          </p>
+          <div>
+            \[ \dot n_{A} - \dot n_{A0} = \int_{0}^{V} r_A dV \]
+          </div>
+          <p>
+            Võime ka leida valemit tuletise kujul, kui võtta tuletist mahu suhtes.
+          </p>
+          <div>
+            \[ \frac{\dot n_{A} - \dot n_{A0}}{dV} = \frac{d\dot n_A}{dV} = r_A \]
+          </div>
+          <p>
+            Mõnikord tahame ka arvutada torureaktori mahtu ja selleks saame integreerida valemit mahu suhtes, et leida põhivõrrandi integraalset kuju, mida üleval näidatakse.
+          </p>
+        </div>
+      </div>
+      <p>
+        Põhivõrrandit saab ka avaldada konversiooniastme suhtes.
+      </p>
+      <div>
+        \[ \dot n_{A0} \frac{dX_A}{dV} = -r_A \]
+      </div>
+      <div>
+        \[ V = \dot n_{A0} \int_{0}^{X_A} \frac{dX_A}{-r_A} \]
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          I. Kamenev, KAT0141 Reaktsiooniprotsessid: Loengukonspekt. Tallinna Tehnikaülikool, 2019.
+        </li>
+        <li id="ref2">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

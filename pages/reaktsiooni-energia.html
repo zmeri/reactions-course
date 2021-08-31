@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reaktsiooni energia</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Reaktsiooni energia</h1>
+      <p>
+        Reaktsioon muudab süsteemi ja sellega tavaliselt kaasnevad energia muutused.
+      </p>
+
+      <h2 id="gibbsi-energia">Gibbsi energia muutus</h2>
+      <p>
+        Keemias tavaliselt kirjeldame süsteemi energiataset Gibbsi energiaga. Gibbsi energiat arvutatakse järgmise valemiga:
+      </p>
+      <div>
+        \[ dG = -SdT + VdP + \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
+      </div>
+      <p>
+        Valemi viimane osa on see, mis praegu meid huvitab kuna see kirjeldab energia muutust koostise muutuse pärast. Esimesed osad annavad energia muutust, mis tuleb temperatuuri või rõhu muutusega. Kuigi need mõjud on ka olulised kui modelleerida tervet reaktorit, praegu me keskendume ainult osale, mis on seotud koostise muutusega. Seda kutsutakse <a href="https://zmeri.github.io/thermo-course/pages/keemiline-potentsiaal.html">keemiliseks potentsiaaliks</a>.
+      </p>
+      <div>
+        \[ dG = \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
+      </div>
+      <p>
+        Siin on oluline märgata, et segunemine (ja separatsiooniprotsessid) ka mõjutavad koostist. Kui reaktsioon läheb lõpuni ja muude ainete hulk (nt lahusti) jääb samaks, siis tõenäoliselt segunemine ei ole oluline. Kuid tavaliselt reaktsiooni ei viida lõpuni, kas tasakaalu tõttu või majanduslikel põhjustel. Sellisel juhul vastasmõju reagentide ja produktide vahel, või isegi reageerivate ainete ja muude ainete vahel, võivad ka mõjutada energiataset reaktoris.<sup><a href="#ref1">1</a>,<a href="#ref2">2</a></sup>
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Rohkem segunemisest
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Molekulide vahelised tõmbejõudude mõju Gibbsi energiale on võimalik eraldada reaktsiooni energiast. Nende vastasmõjude osa kirjeldatakse aktiivsusega (<em>a</em>).
+          </p>
+          <div>
+            \[ dG = \sum_i \alpha_i G_i + RT \ln \prod_i a_i^{\alpha_i} \]
+          </div>
+          <p>
+            Esimene osa valemis, mis jääb järgi peale aktiivsuse osa eraldamist, näitab energia muutust, mida saab arvutada vastavate puhaste ainete omadustest. Reaktsiooni puhul <em>G<sub>i</sub></em> on aine moodustamisenergia antud tingimustel. Ehk, valemi esimene osa näitab reaktsiooni Gibbsi energiat.
+          </p>
+          <p>
+            Aktiivsust saab arvutada kontsentratsioonist ja aktiivsuse koefitsiendist. Aktiivsust jagatakse ka referentsolekuga nii, et aktiivsusel ei ole ühikut. Kuid referentsolekuks tavaliselt võetakse 1 mol/l (või teine ühik, kui kontsentratsioon on teises ühikus) ja kuna on 1 seda tavaliselt ei näidata valemites.
+          </p>
+          <div>
+            \[ a_i = \gamma_i C_i \]
+          </div>
+          <p>
+            Aktiivsuse koefitsienti saab arvutada termodünaamiliste mudelitega, näiteks <a href="https://zmeri.github.io/thermo-course/pages/olekuv6rrandid.html">olekuvõrrandiga</a> või <a href="https://zmeri.github.io/thermo-course/pages/aktiivsuse-koefitsiendid.html">aktiivsuse koefitsiendi mudeliga</a>.
+          </p>
+          <p>
+            Kui segunemise liigenergia on oluline, see võib oluliselt mõjutada, kuidas reaktsioon käitub. Näiteks, segunemise tõttu võib esineda Gibbsi energia miinimumi teatud koostise juures (vt allolevat joonist). Sellel punktil reaktsioon on tasakaalus ja reaktsioon iseenesest ei lähe edasi. Kui aga arvutatakse Gibbsi energiat puhtalt reaktsiooni energiast, siis ei oleks võimalik ennustada, kas ja mis hetkel reaktsioon oleks tasakaalus.<sup><a href="#ref2">2</a></sup>
+          </p>
+          <p>
+            Kuid kui toimub <a href="https://zmeri.github.io/thermo-course/pages/aktiivsuse-koefitsiendid.html#liigomadus">ideaalne segunemine</a>, ehk molekulide vahelised vastasmõjud ei ole olulised, siis ei ole vaja arvutada aktiivsuse koefitsiente ja võib lihtsalt kasutada reaktsiooni energiat.
+          </p>
+        </div>
+      </div>
+      <p>
+        Kui saame eeldata, et liigenergia segunemisest ei ole oluline arvutuses, siis saame lihtsalt arvutada Gibbsi energia muutust reagentide ja produktide moodustamisenergiast (<em>G<sub>i</sub></em>).
+      </p>
+      <div>
+        \[ dG = \sum_i \alpha_i G_i \]
+      </div>
+      <p>
+        See erinevus produktide ja reagentide moodustamisenergiate vahel on reaktsiooni energia.
+      </p>
+      <div>
+        \[ \Delta G_{rxn} = \sum_i \alpha_i G_i \]
+      </div>
+
+      <h2 id="arvutamine">Reaktsiooni energia arvutamine</h2>
+      <p>
+        Ainete moodustamisenergia standardtingimustel on tihti võimalik leida kirjandusest. Näiteks, NISTi <a href="https://webbook.nist.gov/">Chemistry WebBook</a> annab moodustamisentalpiad ja -entroopiad üle 7000 ainele. Kirjanduses tavaliselt antakse moodustamisentalpia ja -entroopia, mitte alati Gibbsi moodustamisenergia, aga on võimalik arvutada Gibbsi energiat entalpiast ja entroopiast.
+      </p>
+      <div>
+        \[ \Delta G_{rxn} = \Delta H_{rxn} - T \Delta S_{rxn} \]
+      </div>
+      <p>
+        Ja nii nagu Gibbsi energiaga, reaktsiooni entalpiat ja entroopiat saab arvutada reagentide ja produktide moodustamisentalpiast ja -entroopiast.
+      </p>
+      <div>
+        \[ \Delta H_{rxn} = \sum_i \alpha_i H_i \]
+      </div>
+      <div>
+        \[ \Delta S_{rxn} = \sum_i \alpha_i S_i \]
+      </div>
+      <p>
+        Lisaks, kui võtta moodustamisenergia andmed tee kindlaks, et on õige faasi jaoks. Kui näiteks reagendid on gaasifaasis, tuleb võtta gaasifaasi moodustamisenergiat.
+      </p>
+
+      <h2 id="temperatuuri-muutus">Temperatuuri muutused</h2>
+      <p>
+        Kirjanduses tavaliselt antakse moodustamisentalpia ja -entroopia standardtingimustel, mis on üldiselt 25 &deg;C ja 1 bar. Kuid reaktsioone enamasti viiakse läbi muudel tingimustel. Temperatuuri mõju saab arvesse võtta soojusmahtuvuse abil.
+      </p>
+      <p>
+        Soojusmahtuvus näitab, kui palju energiat oleks vaja lisada selleks, et tõsta aine/segu temperatuuri ühe kraadi võrra. Tavaliselt väärtust antakse ühe mooli või kilogrami kohta. Üldiselt kasutatakse keemias soojusmahtuvust konstantsel rõhul kuna enamasti keemia süsteemides võib eeldata, et rõhk on konstantne. On ka soojusmahtuvus konstantsel mahul. Selleks, et arvutada moodustamisentalpiat teisel temperatuuril, tuleb võtta teadaolevat moodustamisentalpiat ja lisada energiat, mida oleks vaja aine temperatuuri tõstmiseks.
+      </p>
+      <div>
+        \[ H_{i,T} = H_{i,T_0} + \int_{T_0}^T C_p dT \]
+      </div>
+      <p>
+        Tuleb sarnaselt ümber arvutada moodustamisentroopiat soojusmahtuvuse kaudu.
+      </p>
+      <div>
+        \[ S_{i,T} = S_{i,T_0} + \int_{T_0}^T \frac{C_p}{T} dT \]
+      </div>
+      <p>
+        Soojusmahtuvus on integraalis kuna soojusmahtuvus sõltub temperatuurist. Kui võtame eeldust, et soojusmahtuvus on enam-vähem konstantne, võime valemit lihtsustada. Selline eeldus sobib, kui temperatuuri vahe on väike või kui sobib ainult ligikaudset väärtust.
+      </p>
+      <div>
+        \[ H_{i,T} = H_{i,T_0} + C_p (T - T_0) \]
+      </div>
+      <p>
+        Võib sarnaselt võtta arvesse muid olekumuutusi, mis mõjutavad energiataset süsteemis. Mõnikord toimub näiteks faasimuutust (nt sulamine või keemine) ja sel juhul võib lisada vastava faasimuutuse entalpiat. Näiteks, kui sul on moodustamisentalpia väärtus vedelfaasi jaoks, aga reaktsioonis aine esineb gaasifaasis, võib gaasifaasi moodustamisentalpiat arvutada lisades aurustamisentalpiat.
+      </p>
+      <div>
+        \[ H_{i,gaas} = H_{i,vedel} + \Delta H_{vap,i} \]
+      </div>
+
+      <h2 id="suund">Reaktsiooni suund</h2>
+      <p>
+        Reaktsiooni energia näitab ka reaktsiooni loomulikku suunda. Kui Gibbsi energia muutus reaktsiooni tõttu on vähem kui 0, siis reaktsioon toimub iseenesest. Kui aga &Delta;G on positiivne, oleks vaja lisada energiat selleks, et reaktsioon toimuks.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          P. W. Atkins, J. D. Paula, and J. Keeler, Atkins’ Physical Chemistry. Oxford University Press, 2018.
+        </li>
+        <li id="ref2">
+          T. Greinert, K. Vogel, T. Maskow, and C. Held, “New thermodynamic activity-based approach allows predicting the feasibility of glycolysis,” Sci Rep, vol. 11, no. 1, p. 6125, Mar. 2021, doi: <a href="https://doi.org/10.1038/s41598-021-85594-8">10.1038/s41598-021-85594-8</a>.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

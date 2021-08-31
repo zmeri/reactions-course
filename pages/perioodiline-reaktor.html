@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Perioodiline reaktor</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Perioodiline reaktor</h1>
+      <p>
+        Perioodiline reaktor (ingl <em>batch reactor</em>) on tavaliselt lihtsam ehitada ja opereerida, kui pidev reaktor. Tihti laboris kasutatakse perioodilist reaktorit. Siin kirjeldame reaktorit ja näitame, kuidas modelleerida seda.
+      </p>
+
+      <h2 id="iseloomustus">Iseloomustus</h2>
+      <p>
+        Perioodilises reaktoris lisatakse protsessi alguses kõik vajalikud ained reaktorisse ja siis reaktsiooni ajal enam ei lisata ega võeta aineid. Seega, perioodiline reaktor on sulatud süsteem. Kui lisatakse või võetakse aineid reaktsiooni ajal, siis kutsutakse seda poolperioodiliseks reaktoriks. Kui lisatakse ja võetakse pidevalt aineid, siis oleks tõenäoliselt <a hef="/reactions-course/pages/pidev-segureaktor.html">pidev segureaktor</a>. Aga, siin käsitleme ainult perioodilisi reaktoreid, ehk molekule ei liiku reaktori ja ümbruse vahel.
+      </p>
+      <figure>
+        <img class="inline-img" style="height:300px;" src="/reactions-course/media/perioodiline-reaktor.svg" />
+        <figcaption>
+          Joonise allikas: <a href="https://commons.wikimedia.org/wiki/File:Batch_reactor_STR.svg">YassineMrabet</a>. Wikimedia Commons. CC0 litsents.
+        </figcaption>
+      </figure>
+
+      <h2 id="p6hiv6rrand">Põhivõrrand</h2>
+      <p>
+        Reaktori põhivõrrand on lihtsalt moolibilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Perioodilise reaktori põhivõrrand on järgmine:
+      </p>
+      <div>
+        \[ \frac{dn_A}{dt} = r_A V \]
+      </div>
+      <p>
+        Põhivõrrandit saab ka kirjutada integraalsel kujul.
+      </p>
+      <div>
+        \[ t = \int_{n_{A0}}^{n_A} \frac{dn_A}{r_A V} \]
+      </div>
+      <p>
+        <em>V</em> on reaktori maht, <em>n<sub>A0</sub></em> on moolid ainest A reaktoris protsessi alguses, <em>n<sub>A</sub></em> on moolide arv ajal <em>t</em> ja <em>-r<sub>A</sub></em> on reaktsiooni <a href="/reactions-course/pages/kiirus.html">kiiruse valemit</a>.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita tuletust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida tuletust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Põhivõrrand on <a>moolibilanss</a>, aga teisel kujul. Alustame siis üldise moolibilansiga.
+          </p>
+          <div>
+            \[ \frac{dn_A}{dt} = \dot n_{A0} - \dot n_{A} + r_A V \]
+          </div>
+          <p>
+            Kuna perioodilises reaktoris ained ei sisene ega lahku, siis <em>n&#775;<sub>A0</sub></em> ja <em>n&#775;<sub>A</sub></em> on null.
+          </p>
+          <div>
+            \[ \frac{dn_A}{dt} = r_A V \]
+          </div>
+          <p>
+            Ja see ongi põhivõrrand.
+          </p>
+        </div>
+      </div>
+      <p>
+        Põhivõrrandit saab ka avaldada konversiooniastme suhtes.
+      </p>
+      <div>
+        \[ n_{A0}\frac{dX_A}{dt} = r_A V \]
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          I. Kamenev, KAT0141 Reaktsiooniprotsessid: Loengukonspekt. Tallinna Tehnikaülikool, 2019.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

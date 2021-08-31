@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reaktorid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Reaktorid</h1>
+      <p>
+        Iga süsteem, milles reaktsioon toimub on reaktor. Reaktor võib olla mingi metallist anum, aga ei pruugi olla. Näiteks, atmosfääri või merd võiks ka käsitleda kui reaktor. Anname siin ülevaade erinevatest reaktoritest.
+      </p>
+
+      <h2 id="pidev-segureaktor">Pidev segureaktor</h2>
+      <p>
+        <a href="/reactions-course/pages/pidev-segureaktor.html">Pidev segureaktoris</a> pidevalt lisatakse reagente ja võetakse reaktorist voogu produktina. Reaktoris toimub ka segamine ja üldiselt eeldatakse, et segunemine on täiuslik. Kui on täiuslik segunemine, siis kontsentratsioonid, temperatuur ja muud parameetrid on sama igal pool reaktoris.
+      </p>
+
+      <h2 id="torureaktor">Torureaktor</h2>
+      <p>
+        <a href="/reactions-course/pages/torureaktor.html">Torureaktoris</a> segu voolab läbi reaktorit. Reaktorit ehitatakse tavaliselt torudest. Koostis sõltub asukohast ja ei ole ühtlane reaktoris. Seega, mida kaugemale segu jõuab reaktorist, seda kõrgem on tavaliselt konversiooniaste. Torureaktorit kutsutakse ka väljatõrjereaktoriks.
+      </p>
+
+      <h2 id="perioodiline">Perioodiline reaktor</h2>
+      <p>
+        <a href="/reactions-course/pages/perioodiline-reaktor.html">Perioodilises reaktoris</a> lisatakse protsessi alguses kõik vajalikud ained reaktorisse ja siis reaktsiooni ajal enam ei lisata ega võeta aineid. Seega, perioodiline reaktor on sulatud süsteem. Kui lisatakse või võetakse aineid reaktsiooni ajal, siis kutsutakse seda poolperioodiliseks reaktoriks.
+      </p>
+
+      <h2 id="mikroreaktorid">Mikroreaktorid</h2>
+      <p>
+        Tänapäeval kasutatakse ka reaktoreid, mille mõõdud on mikroskaalas. Neid on hea kasutada uurimistöös ja väikese koguse tootmiseks. Mikroreaktoritel on lisaks see eelis, et tavaliselt saab paremini kontrollida neid, kui suuri reaktoreid.
+      </p>
+      <p>
+        Tihti mikroreaktorite tegemiseks söövitatakse väikeseid kanaleid mõne materjali sisse. Sageli kasutatakse silikooni kuna sellel on head omadused reaktsioonide jaoks ja saab töödelda seda tuntud tehnoloogiaga. Kui reageeritav segu voolab läbi need kanalid, siis on sisuliselt väike torureaktor.
+      </p>
+
+      <h2 id="keskkonnas">Reaktorid keskkonnas</h2>
+      <p>
+        Reaktor ei pea olema inimese loodud asi tehases või laboris. Reaktsioonid toimuvad pidevalt meie ümber looduses. Näiteks, kuidas gaasi molekulid reageerivad atmosfääris või kuidas vihmavesi söövitab paekivi. Võib modelleerida neid reaktsiooniprotsesse looduses, nii tehakse mõne tehase reaktori jaoks.
+      </p>
+
+      <h2 id="bioreaktorid">Bioreaktorid</h2>
+      <p>
+        Rakud on nagu väikesed reaktorid kuna oma elutegevuse käigus need viivad läbi reaktsioone. On looduslikud reaktsioonid, mis toimuvad organismide sees, näiteks fotosüntees. Kuid inimesed on pikalt kasutanud organisme, et läbi viia soovitud reaktsioone. Mõned iidsed näited on juustu ja veini tegemine. Reovett tavaliselt puhastatakse bioreaktorites. Tänapäeval kasutatakse ka bioreaktoreid kemikaalide tootmiseks.
+      </p>
+
+      <h2 id="muud">Muud reaktorid</h2>
+      <p>
+        On ka teisi reaktoreid. Näiteks, mõnikord kasutatakse poolperioodilist reaktorit. Poolperioodilises reaktoris toimub kas sissevool või väljavool, aga mitte mõlemad samaaegselt. Ehk reaktor on nagu perioodiline reaktor kuna koostis muutub ajas, aga erinevalt perioodilisest reaktorist lisatakse ained või võetakse välja osa segust (ehk süsteem ei ole suletud).
+      </p>
+      <p>
+        Teine näide on membraanreaktorid. Nendes paigutatakse membraane, nii et soovitud ained läbivad membraani ja väljuvad reageeritavast segust. Membraanreaktorit mõnikord kasutatakse selleks, et vähendada mõne produkti kontsentratsiooni reaktoris, kui on pöördreaktsioon, mis muidu takistaks tootmist.
+      </p>
+
+      <h2 id="arvutuslik">Arvutuslikud reaktorid</h2>
+      <p>
+        Reaktorid võivad olla päris keerulised, eriti kui segunemine ei ole täiuslik või kui on mitu faasi reaktoris. Reaktorite modelleerimiseks on mõnikord kasulik jagada suuremat reaktorit väiksemateks osadeks. Siis saab arvutuse jaoks käsitleda neid väiksemaid osi kui eraldi reaktorid, mis võib muuta arvutust lihtsamaks. Seega, reaktor ei pea olema üks terve anum kindlate füüsiliste piiridega. See võib olla mõisteline asi.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          Comsol, “The Finite Element Method (FEM).” <a href="https://www.comsol.com/multiphysics/finite-element-method">https://www.comsol.com/multiphysics/finite-element-method</a> (accessed Aug. 04, 2021).
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

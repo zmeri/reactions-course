@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reaktsiooni tasakaal</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Reaktsiooni tasakaal</h1>
+      <p>
+        Reaktisoonid võivad käia ka tagurpidi. Teiste sõnadega, on võimalik võtta produktid ja läbi viia pöördreaktsiooni nii, et moodustatakse uuesti algsed reagendid. Tihti reaktsioon toimub mõlemas suunas samaaegselt, mis omakorda tähendab, et mingil hetkel võib jõuda seisundisse, mil reaktsioon käib sama kiiresti tagurpidi kui edasi. Ehk, reaktsioon võib jõuda tasakaalupunktini.
+      </p>
+      <p>
+        On oluline teada, kas ja mis tingimustel esineb tasakaalupunkt kuna see piirab meie reaktsiooni saagist. Kui reaktsioon on jõudnud tasakaaluni, siis pikem viibimisaeg enam ei suurenda saagist.
+      </p>
+
+      <h2 id="tasakaal">Tasakaalu definitsioon</h2>
+      <p>
+        Reaktsioon on tasakaalus, kui me ei näe (neto)muutust. Reaktsioon ikka toimub ja molekulid ikkagi muutuvad, kuid vaadates reaktorit tervikuna kontsentratsioonid jäävad samaks.
+      </p>
+      <p>
+        Tasakaal esineb ka teistes valdkondades, siis võibolla oleks kasulik kasutada näidet igapäevasest elust. Kui pall istub tasasel pinnal, siis jõud, mida pind rakendab pallile on võrdne raskusjõuga ja pall ei liiku. Ehk, pall on tasakaalu olekus kuna jõud on võrdsed. Kui aga paneme palli kaldele, siis raskusjõu tõmbab seda alla ja pall hakkab veerema. Samamoodi reaktsioonis süsteem proovib saavutada kõige madalamat energiaseisundit ja see ajend võib panna reaktsiooni toimuma. Kui süsteem jõuab selle energia miinimumini, siis süsteem enam iseenesest ei muutu ja reaktsioon on tasakaalus.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/ball.png" />
+      <p>
+        Me võime kirjeldada neid energia muutusi valemiga. Tavaliselt kasutatakse keemias Gibbsi energiat ja siin on Gibbsi energia muutuse valem:
+      </p>
+      <div>
+        \[ dG = -SdT + VdP + \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
+      </div>
+      <p>
+        Tasakaalu definitsioonist teame, et süsteem on tasakaalus, kui muutust ei toimu. Ehk, tasakaaluolekus \(dG = 0\). Teiste sõnadega, tuletis on null, mis samuti tähendab, et süsteem on jõudnud energia miinimumini.
+      </p>
+      <div>
+        \[ 0 = -SdT + VdP + \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
+      </div>
+      <p>
+        Kui eeldame, et temperatuur ja rõhk reaktoris ei muutu, siis võime esimesed osad kõrvale jätta ja keskenduda ainult valemi viimasele osale. Viimane osa kirjeldab, kuidas energia muutub, kui koostis muutub. Reaktsioon muudab koostist. Seda avaldist kutsutakse ka <a href="https://zmeri.github.io/thermo-course/pages/keemiline-potentsiaal.html">keemiliseks potentsiaaliks</a>. Reaktsiooni tasakaalu saab siis defineerida järgmise valemiga.
+      </p>
+      <div>
+        \[ 0 = \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
+      </div>
+      <p>
+        Valemist võime näha, et tasakaalupunktis edasi reaktsioon annab sama palju energiat kui tagurpidi reaktsioon. Teisti öeldes, kallet pole ja energia pind on tasane.
+      </p>
+
+      <h2 id="tasakaalukonstant">Tasakaalukonstant</h2>
+      <p>
+        Tasakaalupunkti kirjeldatakse numbriliselt tasakaalukonstandiga. Tihti defineeritakse tasakaalukonstanti kui produktide ja reagentide kontsentratsioonide suhe, aga see on lihtsustus. <strong>Tasakaalukonstant</strong> on produktide ja reagentide <em>aktiivsuse</em> suhe. Aktiivsus on lihtsalt teisendatud keemiline potentsiaal (nii nagu <a href="https://zmeri.github.io/thermo-course/pages/keemiline-potentsiaal.html#fugitiivsus">fugitiivsus</a>) ja seega näitab samuti, kuidas koostise muutus mõjutab süsteemi Gibbsi energiat.<sup><a href=#ref1>1</a></sup> Tasakaalukonstanti defineeritakse siis järgmise valemiga:
+      </p>
+      <div>
+        \[ K = \frac{\prod_i a_{produkt\ i}^{\alpha_i}}{\prod_j a_{reagent\ j}^{\alpha_j}} \]
+      </div>
+      <p>
+        Antud valemis <em>a</em> on aine aktiivsus ja <em>&alpha;</em> on selle aine <a href="/reactions-course/pages/reaktsioonid.html#st8hhiomeetria">stöhhiomeetriline</a> koefitsient reaktsioonis. Meeldetuletuseks, \(\prod\) tähendab korrutist.
+      </p>
+      <p>
+        Aktiivsus on seotud kontsentratsiooniga ja sellepärast sageli lihtsustatakse definitsiooni ja kasutatakse aktiivsuse asemel kontsentratsiooni. Vaatame, mis tingimustel kehtib eeldus, et aktiivsus võrdub kontsentratsiooniga. Aktiivsus on kontsentratsioon korrutatud aktiivsuse koefitsiendiga.
+      </p>
+      <div>
+        \[ a_i = \gamma_i C_i \]
+      </div>
+      <p>
+        <a href="https://zmeri.github.io/thermo-course/pages/aktiivsuse-koefitsiendid.html#aktiivsuse-koefitsient">Aktiivsuse koefitsient</a> sisuliselt näitab, kuidas ainete vahelised vastasmõjud muudavad olukorda süsteemis. Kui ained segus/reaktsioonis on sarnased, siis vastasmõjud nende erinevate molekulide vahel on tavaliselt ka sarnased ja aktiivsuse koefitisendid on ühe lähedal. Seega, kui vastasmõjud segus ei muutu oluliselt koostise muutusega võib eeldata, et aktiivsuse koefitsiendid on 1 ja saame lihtsustada tasakaalukonstandi valemit.
+      </p>
+      <div>
+        \[ K = \frac{\prod_i C_{produkt\ i}^{\alpha_i}}{\prod_j C_{reagent\ j}^{\alpha_j}} \]
+      </div>
+      <p>
+        Kui aga vastasmõjud molekulide vahel osutavad oluliseks ja on vaja täpsemalt arvutada, siis oleks vaja ka arvesse võtta aktiivsuse koefitsiente. Isegi muud ained reaktoris, mis ei osale reaktsioonis, võivad mõjutada aktiivsuse koefitsiente ja selle kaudu reaktsiooni. Sellepärast lahusti valik võib mõnikord olla oluline ja mõjutada reaktsiooni.
+      </p>
+
+      <h2 id="seos-kiiruskonstantidega">Seos kiiruskonstantidega</h2>
+      <p>
+        Kui reaktsioon on tasakaalus, siis tasakaalukonstant on ka seotud edasi ja tagurpidi reaktsioonide kiiruskonstantidega. Kui reaktsioon toimub ühes sammus (ehk kui on <a href="/reactions-course/pages/mehhanismid.html#lihtreaktsioon">lihtreaktsioon</a>), siis tasakaalukonstant on lihtsalt edasi ja tagurpidi reaktsioonide kiiruskonstantide suhe.<sup><a href=#ref2>2</a></sup>
+      </p>
+      <div>
+        \[ K = \frac{k_{edasi}}{k_{tagurpidi}} \]
+      </div>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita tuletust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida tuletust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Seos tuleneb sellest, et tasakaalus edasi ja tagurpidi reaktsioonide kiirused on võrdsed.
+          </p>
+          <div>
+            \[ r_{edasi} = r_{tagurpidi} \]
+          </div>
+          <p>
+            Saame siis valemisse panna reaktsioonikiiruse valemid. Kui reaktsioon on lihtreaktsioon, iga aine järk on lihtsalt selle aine stöhhiomeetriline koefitsient.
+          </p>
+          <div>
+            \[ k_{edasi} \prod_j C_j^{\alpha_j} = k_{tagurpidi} \prod_i C_i^{\alpha_i} \]
+          </div>
+          <p>
+            Algebraaliselt teisendades seda valemit näeme, kuidas tasakaalukonstant on ka seotud kiiruskonstantidega.
+          </p>
+          <div>
+            \[ \frac{k_{edasi}}{k_{tagurpidi}} = \frac{\prod_i C_i^{\alpha_i}}{\prod_j C_j^{\alpha_j}} = K \]
+          </div>
+          <p>
+            Siin aga kasutasime eeldust, et aine järk kiiruse valemis on sama kui aine stöhhiomeetriline koefitsient. Kui selline eeldus ei kehti, oleks vaja ka korrutada või jagada vastavate kontsentratsioonidega vastavale astmele.
+          </p>
+        </div>
+      </div>
+
+      <h2 id="arvutamine">Tasakaalukonstandi arvutamine</h2>
+      <p>
+        Tasakaalukonstanti saab arvutada katseandmetest, kui on näiteks mõõdetud ainete kontsentratsioone (ja võibolla ka aktiivsuse koefitsiente), kui reaktsioon on tasakaalus. Kuid tasakaalukonstant on ka seotud reaktsiooni energiaga. On siis võimalik arvutada tasakaalukonstanti ka reagentide ja produktide moodustamisenergia kaudu.
+      </p>
+      <div>
+        \[ \Delta G_{rxn} = \sum_i \alpha_i G_i = -RT \ln K \]
+      </div>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita tuletust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida tuletust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            See valem, mis näitab seost tasakaalukonstandi ja moodustamisenergiate vahel, tuleb Gibbsi energia valemist. Gibbsi energia osatuletist koostise suhtes saab jagada kaheks osaks: ideaalse segu osa ja kõrvalekalle ideaalsest segunemisest.
+          </p>
+          <div>
+            \[ 0 = \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i = \sum_i \alpha_i G_i + RT \ln \prod_i a_i^{\alpha_i} \]
+          </div>
+          <p>
+            Kui toimub <a href="https://zmeri.github.io/thermo-course/pages/aktiivsuse-koefitsiendid.html#liigomadus">ideaalne segunemine</a>, siis segu omadust saab otse arvutada puhaste ainete omadustest. Kuid reaalses segus on molekulide vahelised vastasmõjud ja teine osa aktiivsusega võtab need mõjud arvesse.
+          </p>
+          <p>
+            Nüüd kuna tasakaalus Gibbsi energia muutus on 0 teame, et ideaalse segunemise osa peab olema võrdne aktiivsuse osaga (miinusmärgiga).
+          </p>
+          <div>
+            \[ \sum_i \alpha_i G_i = -RT \ln \prod_i a_i^{\alpha_i} \]
+          </div>
+          <p>
+            Ja kui asendada aktiivsusete korrutise tasakaalukonstandiga, jõuame selle valemini, mida üleval näidatakse.
+          </p>
+        </div>
+      </div>
+      <p>
+        Ehk, kui me teame reaktsiooni Gibbsi energia muutust, saame arvutada tasakaalukonstanti. Reaktsiooni Gibbsi energiat saab omakorda arvutada reagentide ja produktide moodustamisenergiast. Kui reaktsioon toimub standardtingimustel (või piisavalt lähedal nendele tingimustele), siis saame võtta kuskilt käsiraamatust või andmebaasist standard moodustamisenergiad. Kui reaktsioon toimub tingimustel, mis oluliselt erinevad standardtingimustest, on võimalik arvesse võtta näiteks temperatuuri ja rõhu mõju moodustamisenergiale, nagu näideti <a href="/reactions-course/pages/reaktsiooni-energia.html">varasemas</a> peatükis.
+      </p>
+      <p>
+        Tihti kirjanduses antakse mitte standard Gibbsi energiat vaid standardentalpiat ja standardentroopiat. Gibbsi energiat saab arvutada entalpiast ja entroopiast.
+      </p>
+      <div>
+        \[ \Delta G_{rxn} = \Delta H_{rxn} - T \Delta S_{rxn} \]
+      </div>
+
+      <h2 id="tasakaalu-konversiooniaste">Tasakaalu konversiooniaste</h2>
+      <p>
+        Kui on teada tasakaalukonstanti, saame ka arvutada tasakaalu konversiooniastet.<sup><a href="#ref3">3</a></sup> Esiteks, tuleb avaldada kõik kontsentratsioone konversiooniastme suhtes. Võtame näiteks järgnevat reaktsiooni:
+      </p>
+      <div>
+        \[ A + 2B \rightarrow C \]
+      </div>
+      <p>
+        Siis valem oleks selline:
+      </p>
+      <div>
+        \[ K = \frac{C_C}{C_A C_B^2} = \frac{C_{A0} X_A}{(C_{A0} - C_{A0}X_A) (C_{B0} - C_{A0}X_A)^2} \]
+      </div>
+      <p>
+        Seda valemit saab kirjutada polünoomi kujul.
+      </p>
+      <div>
+        \[ 0 = \frac{K (C_{B0}^2 - (2C_{B0}C_{A0} + C_{B0}^2)X_A + (C_{A0}^2 + 2C_{B0}C_{A0})X_A^2 - C_{A0}^2X_A^3)}{X_A} \]
+      </div>
+      <p>
+        Siis tuleb leida lahendus sellele valemile. Mõnikord saab lahendada analüütiliselt, aga nagu näha valem võib olla suhteliselt keeruline ja võib olla lihtsam lahendada numbriliselt või kasutada matemaatika tarkvara. Tavaliselt polünoomidega on mitu lahendit ja tuleb valida lahendit, mis võib vastata reaalsele olukorrale. Näiteks, lahendid, mis on suuremad kui 1 või väiksemad kui 0 ei ole reaalselt võimalik. Samuti võivad esineda lahendid, mis on kompleksarvud ja need saab ka antud juhul kõrvale jätta.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          P. Ellgen, “<a href="https://chem.libretexts.org/@go/page/152678">Chemical Activity</a>,” in Thermodynamics and Chemical Equilibrium, LibreTexts, 2019. Accessed: Jul. 28, 2021.
+        </li>
+        <li id="ref2">
+          “Chemical Reactions and Kinetics.” <a href="https://chemed.chem.purdue.edu/genchem/topicreview/bp/ch22/react.html">https://chemed.chem.purdue.edu/genchem/topicreview/bp/ch22/react.html</a> (accessed Jul. 28, 2021).
+        </li>
+        <li id="ref3">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref4">
+          I. Tosun, The Thermodynamics of Phase and Reaction Equilibria. Newnes, 2012.
+        </li>
+        <li id="ref5">
+          <a href="https://en.wikipedia.org/wiki/Equilibrium_constant">https://en.wikipedia.org/wiki/Equilibrium_constant</a>
+        </li>
+        <li id="ref6">
+          P. W. Atkins, J. D. Paula, and J. Keeler, Atkins’ Physical Chemistry. Oxford University Press, 2018.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

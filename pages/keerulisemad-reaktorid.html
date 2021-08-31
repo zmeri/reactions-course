@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Keerulisemad reaktorid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Keerulisemad reaktorid</h1>
+
+      <h2 id="j2rjestikud-reaktorid">Järjestikud reaktorid</h2>
+      <p>
+        Mõnikord kasutatakse mitu reaktorit järjest selleks, et läbi viia reaktsiooni. Üheks põhjuseks on, et kasutamine mitu väiksemat reaktorit võib olla odavam, kui üks suur reaktor.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näide sellest
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida näidet
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Näiteks, tihti reaktsiooni kiirus langeb, kui konversiooniaste läheneb ühele. Kuid pidev segureaktoris reaktsiooni kiirus on sama igal pool reaktoris. Kui tahetakse saavutada kõrget konversiooniastet, siis oleks vaja ehitada palju suuremat reaktorit kuna reaktsioon ainult toimub selles väiksemas kiiruses. Seda võib näidata Levenspieli joonisega.
+          </p>
+          <img class="inline-img" style="height:250px;" src="/reactions-course/media/levenspiel1.svg" />
+          <p>
+            Aga, kui kasutada kaks pidev segureaktorit järjest, siis esimene võib olla oluliselt väiksem kuna töötab kõrgema reaktsiooni kiirusega. Teine reaktor peab ikkagi töötama madalama kiiruse juures, aga nüüd produkti kontsentratsioon sisenevas voos on juba suhteliselt suur ja ei ole vaja nii suurt mahtu selleks, et viia reaktsiooni lõpuni.
+          </p>
+          <img class="inline-img" style="height:250px;" src="/reactions-course/media/levenspiel2.svg" />
+          <p>
+            Ühte segureaktorit võib ka asendada torureaktoriga. Kuna koostis torureaktoris muutub koos mahuga siis torureaktori maht on alati väiksem kui segureaktori maht, kui reaktsiooni järk on suurem kui null.
+          </p>
+          <img class="inline-img" style="height:250px;" src="/reactions-course/media/levenspiel3.svg" />
+          <p>
+            Kokkuvõttes, kasutades kaks reaktorit järjest reaktorite kogumaht võib olla väiksem, kui ühe reaktori maht. Kui reaktorite kogumaht on väiksem, siis on tavaliselt odavam ehitada.<sup><a href="#ref1">1</a></sup>
+          </p>
+        </div>
+      </div>
+      <p>
+        Isegi kui on tegelikult ainult üks reaktor, mõnikord tingimused reaktoris võivad varieeruda asukohaga. Üks lihtne viis modelleerida seda on jagada reaktorit väiksemateks osadeks ja käsitleda osi kui eraldi pidev segureaktoreid. Näiteks, torureaktorit saab ka ligikaudselt kirjeldada, kui mitu pidev segureaktorit järjestikus. Lõplike mahtude meetod kasutab sisuliselt samasugust lähenemist.
+      </p>
+      <p>
+        Kui on mitu reaktorit järjest, siis igal reaktoril on oma valemid ja üldine reaktori süsteemi mudel on keerulisem.
+      </p>
+
+      <h2 id="muutused-ajas">Muutused ajas</h2>
+      <p>
+        Kuigi tihti eeldame ja soovime, et reaktor töötaks statsionaarses re&#382;iimis, mõnikord reaktori parameetrid muutuvad ajas. Vahest reaktorit disainitakse selliselt, et parameetrid reaktoris muutuvad ajas. Mõnikord sellised muudatused tulevad häirete tõttu või kui reaktor töötab erire&#382;iimis (näiteks käivitamisel või seiskamisel). Ja isegi reaktoris, mis töötab nö statisonaarselt, esineb loomulik varieerumine.
+      </p>
+      <p>
+        Mudelis me peame lisama valemeid, mis kirjeldavad nende parameetrite muutused ajas. Kui mudelis aja dimensioon on ka tähtis, siis mõnede parameetrite arvutamiseks peame integreerima mudeli valemeid aja suhtes. Tihti parameetrite väärtused on omavahel seotud ja ei ole võimalik analüütiliselt lahendada mudelit.
+      </p>
+
+      <h2 id="muutused-ruumalas">Muutused ruumalas</h2>
+      <p>
+        Reaalsetes reaktorites toimub massi- ja soojuseülekanne nii, et sageli kontsentratsioonid ja energiatase ei ole sama kõikjal reaktoris. Kui on lihtne algebraaline valem, mis kirjeldab parameetrite muutus ruumalas, siis võib lisada seda valemit ja lahendada valemi süsteemi analüütiliselt. Me oleme teinud seda torureaktoriga. Torureaktoris kontsentratsioon muutub sõltuvalt läbitud mahust ja muutust saab arvutada reaktsiooni kiiruse valemist. Kui aga muutused on keerulisemad, siis mõnikord kasutatakse arvutusvedeliku dünaamika tarkvara parameetrite arvutamiseks sõltuvalt asukohast.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reaktsiooni kiirus</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Reaktsiooni kiirus</h1>
+      <p>
+        Kiirus on üks olulisemaid reaktsiooni parameetreid. Ilma selleta me ei saa disainida ega modelleerida reaktoreid. Siin õpime, kuidas arvutada reaktsiooni kiirust.
+      </p>
+
+      <h2 id="kiiruse-valemid">Kiiruse valemid</h2>
+      <p>
+        Reaktsiooni kiirus võib sõltuda mitmest parameetritest:
+      </p>
+      <ul>
+        <li>
+          reagentide ja produktide kontsentratsioonid,
+        </li>
+        <li>
+          temperatuur,
+        </li>
+        <li>
+          reaktsiooni mehhanism (nt aktivatsioonienergia),
+        </li>
+        <li>
+          teised ained segus (nt lahusti).
+        </li>
+      </ul>
+      <p>
+        Parameetrid nagu rõhk ja pH võivad olla olulised kuna need võivad väljendada kontsentratsioone. Samuti oleks tähtis teada, kas on katalüsaator kuna see võib mõjutada mehhanismi.
+      </p>
+      <p>
+        Me sooviksime valemit, millega oleks võimalik arvutada reaktsiooni kiirust sõltuvalt tingimustest. Saab kasutada erinevaid valemi kujusid. Sageli kasutatakse sellist kuju, milles reagentide kontsentratsioone korrutatakse kiiruskonstandiga.
+      </p>
+      <div>
+        \[ aA + bB \rightarrow cC \]
+      </div>
+      <div>
+        \[ -r_A = k_A C_A^{\alpha} C_B^{\beta} \]
+      </div>
+      <p>
+        <strong>Kiiruskonstant</strong> (<em>k<sub>A</sub></em>) on empiiriline väärtus, mis seob reagentide kontsentratsioone kiirusega. Kiiruskonstant põhineb suuresti reaktsiooni mehhanismil, aga võib sisaldada ka muude parameetrite mõju. Antud valemis reaktsiooni kiirus on negatiivne aine A suhtes kuna aine A kogus väheneb reaktsiooni tõttu ja sellepärast on miinusmärk. Astmed <em>&alpha;</em> ja <em>&beta;</em> näitavad vastavalt reaktsiooni järku aine A ja B suhtes.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Rohkem kiiruskonstandi ühikust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Kiiruskonstandi ühiku sõltub kiiruse valemi kujust. Kuna reaktsiooni kiirusel on kindel ühik &mdash; moolid mahu ja aja kohta &mdash; siis kiiruskonstandil peab olema ühik, mis annab reaktsiooni kiiruse ühikut, kui korrutada kontsentratsioonidega. Kuna kiiruse valemis kontsentratsioonide arv võib varieeruda, kiiruskonstandi ühik peab vastavalt muutuma.
+          </p>
+          <p>
+            Kuna kiiruskonstandi ühik sõltub reaktsiooni järgust, vaadates kiiruskonstandi ühikut on võimalik teada saada reaktsiooni järku.
+          </p>
+        </div>
+      </div>
+      <p>
+        Kasutatakse ka muid valemi kujusid, kui näiteks teine kuju suudab paremini kirjeldada reaktsiooni tegelikku käitumist või kui tahetakse täpsemalt arvesse võtta muid asju, mis võivad mõjutada reaktsiooni kiirust. Näiteks, oleks täpsem kasutada kontsentratsiooni asemel aktiivsust ja mõnikord tehakse seda.
+      </p>
+      <div class="collapsible" id="aktiivsus">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Rohkem aktiivsusest
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Aktiivsus näitab, kuidas energia süsteemis muutub, kui koostis muutub. Erinevalt kontsentratsioonist, aktiivsus võtab ka arvesse molekulide vahelisi vastasmõjusid ja on sellepärast täpsem. Kuna see näitab aine mõju segus, mitte ainult aine kogust, võib mõelda aktiivsusest kui &bdquo;efektiivne kontsentratsioon&ldquo;. Aktiivsust saab arvutada, kui korrutada kontsentratsiooni selle aine <a href="https://zmeri.github.io/thermo-course/pages/aktiivsuse-koefitsiendid.html">aktiivsuse koefitsiendiga</a>.
+          </p>
+          <div>
+            \[ a_i = \gamma_i C_i \]
+          </div>
+          <p>
+            Mõnikord aktiivsuse koefitsiendid ei muutu oluliselt reaktsiooni käigus. Sellepärast need sageli lisatakse kiiruskonstandile ja kiiruse valemisse jääb järgi ainult kontsentratsioonid.<sup><a href="#ref1">1</a></sup>
+          </p>
+        </div>
+      </div>
+
+      <h2 id="reaktsiooni-j2rk">Reaktsiooni järk</h2>
+      <p>
+        Tihti reaktsiooni kiiruse valemis kasutatakse astmeseadust, ehk kontsentratsioonid astmetes. Sellepärast sageli räägitakse reaktsiooni järgust. <strong>Reaktsiooni järk</strong> ühe reagendi suhtes on lihtsalt selle aine kontsentratsiooni aste kiiruse valemis. Reaktsiooni üldine järk on kõikide reagentide astmed kokku liidetud. Põhilised reaktsiooni järgud on järgmised:<sup><a href="#ref2">2</a></sup>
+      </p>
+      <ul>
+        <li>
+          nulljärku reaktsioon: \( -r_A = k_A \)
+        </li>
+        <li>
+          esimest järku reaktsioon: \( -r_A = k_A C_A \)
+        </li>
+        <li>
+          teist järku reaktsioon: \( -r_A = k_A C_A^2 \) või \( -r_A = k_A C_A C_B \)
+        </li>
+        <li>
+          kolmandat järku reaktsioon: \( -r_A = k_A C_A^3 \), \( -r_A = k_A C_A^2 C_B \), ...
+        </li>
+      </ul>
+      <p>
+        Kui on <a href="/reactions-course/pages/mehhanismid.html#lihtreaktsioon">lihtreaktsioon</a> siis iga aine aste võrdub aine <a href="/reactions-course/pages/reaktsioonid.html#st8hhiomeetria">stöhhiomeetrilise</a> koefitsiendiga. Aga kui reaktsioon toimub mitmes sammus, siis reaktsiooni järgud võivad erineda stöhhiomeetrilistest koefitsientidest. Kui reaktsiooni mehhanismi on teada, võib olla võimalik liita kokku mehhanismi lihtreaktsioone ja leida üldist reaktsiooni järku. Kuid tihti mehhanismi pole teada ja leitakse järku empiiriliselt.
+      </p>
+
+      <h2 id="kiiruse-suhe">Seos ainete kiiruste vahel</h2>
+      <p>
+        Kui on teada ühe aine reaktsiooni kiirust, siis on võimalik arvutada teiste reagentide ja produktide suhteid stöhhiomeetriast. Tuleb lihtsalt korrutada esimese aine kiirust ainete stöhhiomeetriliste koefitsientide suhtega.<sup><a href="#ref1">1</a></sup>
+      </p>
+      <div>
+        \[ aA + bB \rightarrow cC + dD \]
+      </div>
+      <div>
+        \[ r_A = \frac{a}{d} r_C \]
+      </div>
+      <p>
+        Selle järgi on võimalik ka näha, et kiiruskonstandid erinevate reageerivate ainete joaks on ka seotud stöhhiomeetriliste koefitsientide kaudu.
+      </p>
+
+      <h2 id="temperatuuri-m6ju">Temperatuuri mõju</h2>
+      <p>
+        Reaktsiooni kiirus muutub oluliselt temperatuuriga. Kõrgema temperatuuri juures molekulidel on rohkem energiat ja võivad liikuda kiiremini. Kui on rohkem energiat, siis on tõenäolisem, et molekulid saavutavad vajalikku energiataset reaktsiooni toimumiseks. Samuti kui molekulid liikuvad kiiremini, siis need põrkuvad tihedamini kokku ja on rohkem võimalusi reageerida (vt ka <a href="/reactions-course/pages/reaktsioonid.html">varasemat</a> peatükki selle kohta). Sellepärast reaktsiooni kiirus kasvab koos temperatuuriga.
+      </p>
+      <p>
+        Reaktsiooni kiiruse valemis see tähendab, et kiiruskonstant sõltub temperatuurist. Sageli kasutatakse Arrheniuse võrrandit selleks, et kirjeldada kiiruskonstandi temperatuursõltuvust.
+      </p>
+      <div>
+        \[ k = A e^{\frac{-E_a}{RT}} \]
+      </div>
+      <p>
+        Selles valemis <em>E<sub>a</sub></em> nimetatakse reaktsiooni aktivatsioonienergiaks, <em>R</em> on gaasikonstant, <em>T</em> on temperatuur (absoluutses ühikus) ja <em>A</em> kutsutakse sagedusteguriks. <em>A</em> ja <em>E<sub>a</sub></em> leitakse tavaliselt empiiriliselt katseandmetest.
+      </p>
+      <p>
+        Arrheniuse võrrand näitab, kuidas reaktsiooni kiirus kasvab eksponentsiaalselt temperatuuriga. Seega, temperatuur on oluline parameeter reaktorite jaoks.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Lisaks lineaarsest kujust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Arrheniuse võrrandit võib ka kuvada lineaarsel kujul võttes logaritmi. Kui on määratud kiiruskonstanti mitme temperatuuri juures, võib leida lineaarset seost \( \ln k \) ja \( 1/T \) vahel. Selle lineaarse joone tõusunurgast saab arvutada <em>E<sub>a</sub></em> ja algordinaat on \( \ln A \).
+          </p>
+          <div>
+            \[ \ln k = \ln A - \frac{E_a}{R} \frac{1}{T} \]
+          </div>
+        </div>
+      </div>
+
+      <h2 id="liidetud-valem">Liidetud kiiruse valemid</h2>
+      <p>
+        Mõnikord toimuvad mitu reaktisooni samaaegselt. Kui aine osaleb mitmes reaktsioonis, siis võib leida aine üldist kiiruse valemit, kui kokku liita kõikide reaktsioonide kiiruse valemid.
+      </p>
+      <div>
+        \[ r_A = r_{A,rxn1} + r_{A,rxn2} + r_{A,rxn3} + ... \]
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          I. Kamenev, KAT0141 Reaktsiooniprotsessid: Loengukonspekt. Tallinna Tehnikaülikool, 2019.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

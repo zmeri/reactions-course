@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mehhanismid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Mehhanismid</h1>
+      <p>
+        Reaktsiooni <strong>mehhanism</strong> põhjalikult kirjeldab protsessi, mis viib reagentidest produktideni.<sup><a href="#ref1">1</a></sup> Reaktsiooni valem näitab enamasti ainult reagente ja lõppprodukte, aga mehhanism näitab tavaliselt ka vaheprodukte ja kuidas aatomid ja elektronid liikuvad reaktsiooni käigus. Mehhanism peab olema vastavuses olemasolevate katseandmete ja reaktsiooni stöhhiomeetriga. Mõnikord pakutakse mitu erinevat mehhanismi, mis sobivalt kirjeldavad olemasolevaid andmeid ja saab teada, milline on õige siis, kui saadakse lisaandmeid.
+      </p>
+
+      <h2 id="lihtreaktsioon">Lihtreaktsioon</h2>
+      <p>
+        <strong>Lihtreaktsioon</strong> on reaktsioon, mis toimub ühes sammus. Seda kutsutakse mõnikord ka elementaarreaktsiooniks. Üks näide on reaktsioon hapniku radikaali ja metanooli vahel.<sup><a href="#ref2">2</a></sup>
+      </p>
+      <div>
+        \[ O \bullet + CH_3OH \rightarrow CH_3O \bullet + OH \bullet \]
+      </div>
+      <p>
+        Mehhanism koosneb lihtreaktsioonidest.
+      </p>
+
+      <h2 id="keerulised-reaktsioonid">Keerulised reaktsioonid</h2>
+      <p>
+        Tavaliselt molekulid ei saa kohe reageerida teineteisega ühes astmes ja peab toimuma mitu astet selleks, et aatomid ja elektronid võivad saavutada uue konfiguratsiooni.
+      </p>
+      <p>
+        Kui on mitu astet, siis sageli üks on reaktsiooni kiiruse limiteeriv aste.
+      </p>
+
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Osoon atmosfääris neelab ohtlikku UV-kiirgust enne, kui see jõuab maapinnale. 1970-ndatel avastati, et oli osooni auk stratosfääris Antarktikas. Leiti, et kloor aatomid klorofluorosüsivesinikutes põhjustavad seda läbi osooni lagunemist stratosfääris. Vaatame selle reaktsiooni mehhanismi.
+      </p>
+      <p>
+        Esiteks, UV-kiirgus tabab klorofluorosüsivesinikku ja tekitab kloori radikaali.
+      </p>
+      <div>
+        \[ CFC + UV \rightarrow Cl \bullet \]
+      </div>
+      <p>
+        Seejärel kloori radikaal reageerib osooniga. Reaktsioonis kloori radikaal moodustab klooroksiidi radikaal, mis võib samuti reageerida hapniku aatomitega ja vähendada osooni kontsentratsiooni.
+      </p>
+      <div>
+        \[ Cl \bullet + O_3 \rightarrow ClO \bullet + O_2 \]
+      </div>
+      <div>
+        \[ ClO \bullet + O \rightarrow Cl \bullet + O_2 \]
+      </div>
+      <p>
+        Kloormonooksiidi radikaalid võivad ka reageerida, et uuesti moodustada kloori radikaali.
+      </p>
+      <div>
+        \[ 2ClO \bullet + UV \rightarrow 2Cl \bullet + O_2 \]
+      </div>
+      <p>
+        Nende ahelareaktsioonide kaudu ühe kloori radikaal võib hävitada tuhandeid osooni molekule. Kloori radikaali kõrvaldatakse alles siis, kui toimub üks järgnevatest reaktsioonidest, mis katkestab seda ahelat.
+      </p>
+      <div>
+        \[ Cl \bullet + CH_4 \rightarrow HCl + CH_3 \bullet \]
+      </div>
+      <div>
+        \[ ClO \bullet + NO_2 \rightarrow ClNO_3 \]
+      </div>
+      <div>
+        \[ 2Cl \bullet \rightarrow Cl_2 \]
+      </div>
+      <p>
+        Klorofluorosüsivesinikud sattusid atmosfääri kuna varem kasutati neid külmaainena ja aerosoolpudelites. Kuid peale avastust, et need kahjustavad osoonikihti, tehti rahvusvahelist kokkuleppe 1989. aastal, mis sisuliselt lõpetas nende kasutust.<sup><a href="#ref3">3</a></sup>
+      </p>
+
+      <h2 id="mehhanismide-leidmine">Mehhanismide leidmine</h2>
+      <p>
+        Traditsiooniliselt kasutati sisuliselt katse-eksituse meetodid sobiva mehhanismi leidmiseks ja seda ikkagi kasutatakse. Selles meetodis uurija mõtleb välja lihtreaktsioonide jada, mis võiks kokku liidetuna anda üldist reaktsiooni. Siis uurija võrdleb mehhanismi katseandmete. Näiteks, ta võib vaadata, kas mehhanismist tulenevat reaktsiooni järk sobib katse tulemustega. Samuti võibolla on võimalik tuvastada vaheprodukti olemasolu reaktoris ja selle kaudu kinnitada või välistada mehhanismi.
+      </p>
+      <p>
+        Uurijad on ka välja töötanud erinevaid reegleid ja meetodeid, mis aitavad neil paremini leida sobivat mehhanismi.<sup><a href="#ref2">2</a>,<a href="#ref4">4</a></sup> Samuti on võimalik disainida katseid selliselt, et tulemustest saab kohe välistada teatud mehhanisme. Tänapäeval on ka võimalik kasutada molekulaarsimulatsioone selleks, et hinnata reakstiooni mehhanismi.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          IUPAC, Compendium of Chemical Terminology, 2nd ed. Oxford: Blackwell Scientific Publications, 1997. doi: <a href=https://doi.org/10.1351/goldbook.M03804>10.1351/goldbook.M03804</a>.
+        </li>
+        <li id="ref2">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref3">
+          J. Gaffney and N. Marley, General Chemistry for Engineers. Elsevier, 2017.
+        </li>
+        <li id="ref4">
+          J. Ross, “Determination of Complex Reaction Mechanisms. Analysis of Chemical, Biological and Genetic Networks,” J. Phys. Chem. A, vol. 112, no. 11, pp. 2134–2143, Mar. 2008, doi: <a href="https://doi.org/10.1021/jp711313e">10.1021/jp711313e</a>.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

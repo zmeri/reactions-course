@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Reaktsioonid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Reaktsioonid</h1>
+      <p>
+        Keemias <strong>reaktsioon</strong> on protsess, mille käigus keemilised ühendid muunduvad.<sup><a href="#ref1">1</a></sup> Ehk reaktsiooni tõttu mõned ühendid kaovad ja nendest tekivad uued ühendid.
+      </p>
+
+      <h2 id="t2histus">Tähistus</h2>
+      <p>
+        Tavaliselt tähistatakse reaktsiooni noolega, mis näitab, kuidas algsed ühendid (<strong>reagendid</strong>) muutuvad <strong>produktideks</strong>.
+      </p>
+      <div>
+        \[ A + B \rightarrow C \]
+      </div>
+      <p>
+        Kui reaktsioon võib samaaegselt ka tagurpidi käia, et uuesti moodustada reagendid, siis on <strong>pöörduv</strong> reaktsioon. Üldiselt näidatakse, et reaktsioon on pöörduv lisades teise noole, mis osutab tagasi reagentidele. Mõnikord kasutatakse ka kahepoolset noolt.
+      </p>
+      <p>
+        Mõnikord näidatakse noole juures ka reaktsiooni tingimusi. Näiteks lisatakse sümboleid või sõnu, kui on vaja katalüsaatorit, soojust või teatud lahustit.
+      </p>
+      <p>
+        Kui faas on ka oluline, siis sageli lisatakse peale ühendit tähe sulgudes, mis näitab ühendi faasi. Näiteks, kui aine on tahke, siis lisatakse <em>(s)</em> ja kui aine on lahustatud vees lisatakse <em>(aq)</em>.
+      </p>
+
+      <h2 id="st8hhiomeetria">Stöhhiomeetria</h2>
+      <p>
+        Reaktsiooni tähistuses numbrid iga ühendi eest näitavad stöhhiomeetriat. <strong>Stöhhiomeetria</strong> näitab iga ühendi koguse suhet reaktsioonis.<sup><a href="#ref2">2</a></sup> Näiteks, roostetamise reaktsioonis iga nelja raua aatomi eest moodustatakse kaks raua (III) oksiidi ühendit.
+      </p>
+      <div>
+        \[ 4Fe + 3O_2 \rightarrow 2Fe_2O_3 \]
+      </div>
+      <p>
+        Stöhhiomeetriat näitab ühendite suhet ja tavaliselt ei näita täpselt, kuidas reaktsioon toimib. Üks üldine reaktsioon, nagu roostetamine, võib koosneda mitmest sammust. Reaktsiooni tegelikku rada näidatakse täpsemalt <a href="/reactions-course/pages/mehhanismid.html">mehhanismiga</a>.
+      </p>
+      <p>
+        Stöhhiomeetrilised koefitsiendid ei pea olema täisarvud. Näiteks, kui põletatakse bensiini, siis hapniku stöhhiomeetriline kogus tavaliselt ei ole täisarv.
+      </p>
+      <p>
+        Reaktsiooni stöhhiomeetria on vajalik selleks, et koostada materjalibilansse. Ilma selleta ei saa õigesti modelleerida reaktoreid ega arvutada, kui palju produkte toodetakse.
+      </p>
+      <p>
+        Reaktoris reagendid tavaliselt ei esine täpselt stöhhiomeetrilises vahekorras. Reagent, mis saab esimesena otsa on <strong>limiteeriv reagent</strong> kuna selle aine kogus piirab produktide saagiseid.
+      </p>
+
+      <h2 id="kokkup6rke">Kokkupõrke teooria</h2>
+      <p>
+        Aga mis täpselt toimub aatomitega reaktsioonis? Üks lihtne ettekujutus on see, et kui molekulid/aatomid liikuvad nad aeg-ajalt põrkuvad kokku. Kui molekulid põrkuvad kokku õiges asendis (näiteks et õiged aatomid puutuvad kokku) ja kui on piisavalt energiat, siis murratakse olemasolevaid sidemeid ja moodustatakse uusi sidemeid.<sup><a href="#ref3">3</a>,<a href="#ref4">4</a></sup>
+      </p>
+      <p>
+        Kokkupõrke teooria aitab meil mõista, kuidas temperatuur ja ainete kontsentratsioonid mõjutavad reaktsiooni kiirust. Kui temperatuur on kõrge siis molekulid liikuvad kiiremini, mille tõttu nad põrkuvad sagedamini kokku. Samuti kui mõne reagendi kontsentratsioon on kõrge, siis on rohkem molekulid millega kokku põrgata ja kokkupõrged toimuvad tihedamini. Kui on rohkem kokkupõrged, see omakorda tähendab, et reaktsioon toimub kiiremini.
+      </p>
+
+      <h2 id="kvantmehaanika">Kvantmehaanika</h2>
+      <p>
+        Kvantmehaanika on täpsem teooria. See kirjeldab paremini, kuidas osakesed (nt elektronid, protonid ja neutronid molekulides) käituvad ja mis olekutes aatomid ja molekulid võiksid olla. Kvantmehaanika järgi tekib side kahe aatomi vahel, kui elektronide jagamise või üleviimisega saavutakse eelistatud energiataset. Seega, reaktsioon toimub, kui elektronidel on tee minna kahe asendi vahel. Ehk elektronid lähevad ühe aatomi ümbert teisele aatomile nii, et uued aatomid on omavahel seotud.
+      </p>
+      <p>
+        Näitena vaatame ühte glükosüülimise reaktsiooni. Glükosüülimise reaktsioonide kaudu seotakse suhkru molekuli mõne teise molekuliga. Selliste reaktsioonide kaudu moodustatakse suhkru polümeere (nt tselluloos ja tärklis). Samuti glükosüülimine on oluline meditsiinis. Näiteks, immuunpuudulikkuse viirus (HIV) kasutab glükosüülimist, et siduda suhkrud enda külge ja varjata ennast inimese immuunsüsteemi eest.<sup><a href="#ref5">5</a></sup>
+      </p>
+      <p>
+        Allolev joonis näitab, kuidas alkohol võib reageerida suhkru molekuliga glükosüülimise kaudu. Alguses trikloroatsetimidaat rühm on seotud suhkru süsiniku aatomiga. Siis alkoholi molekul tuleb ligi ja tõmbab elektronid osaliselt enda poole. Selline vahepealne seisund on kõrgema energiaga ja seda kutsutakse <strong>siirdeseisundiks</strong>. Kui reaktsioon läheb edasi, siis elektronid liikuvad täiesti üle alkoholi hapniku ja suhkru süsiniku vahele, moodustades uue sideme. Kvantmehaanikaga saab arvutada erinevate asendite energiataset ja aru saada, kuidas reaktsioon kulgeb.
+      </p>
+      <figure>
+        <a href="/reactions-course/media/glükosüülimise-reaktsioon.png"><img class="inline-img" src="/reactions-course/media/glükosüülimise-reaktsioon.png" /></a>
+        <figcaption>
+          Joonis tehtud Fu jt<sup><a href="#ref7">7</a></sup> joonisest
+        </figcaption>
+      </figure>
+      <p>
+        Tavaliselt reaktsiooni käigus osakesed peavad läbima ühe või mitme siirdeseisundit ja üldiselt molekulid peavad saavutama vähemalt seda energiataset enne, kui reaktsioon toimub (kui just ei toimu <a href="https://et.wikipedia.org/wiki/Tunneliefekt">tunneleerumine</a><sup><a href="#ref6">6</a></sup>). Lisa energiat, mida on vaja siirdeseisundisse minemiseks on <strong>aktivatsioonienergia</strong>. Teises peatükis võib lugeda sellest, kuidas <a>katalüsaatorid</a> tihti vähendavad aktivatsioonienergiat ja selle kaudu panevad reaktsiooni kiiremini käima.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          IUPAC, Compendium of Chemical Terminology, 2nd ed. Oxford: Blackwell Scientific Publications, 1997. doi: <a href=https://doi.org/10.1351/goldbook.C01033>10.1351/goldbook.C01033</a>.
+        </li>
+        <li id="ref2">
+          IUPAC, Compendium of Chemical Terminology, 2nd ed. Oxford: Blackwell Scientific Publications, 1997. doi: <a href=https://doi.org/10.1351/goldbook.S06026>10.1351/goldbook.S06026</a>.
+        </li>
+        <li id="ref3">
+          IUPAC, Compendium of Chemical Terminology, 2nd ed. Oxford: Blackwell Scientific Publications, 1997. doi: <a href=https://doi.org/10.1351/goldbook.C01170>10.1351/goldbook.C01170</a>.
+        </li>
+        <li id="ref4">
+          “<a href="https://en.wikipedia.org/wiki/Collision_theory">Collision theory</a>,” Wikipedia. Feb. 16, 2021. Accessed: Jul. 23, 2021.
+        </li>
+        <li id="ref5">
+          M. Crispin and K. J. Doores, “Targeting host-derived glycans on enveloped viruses for antibody-based vaccine design,” Current Opinion in Virology, vol. 11, pp. 63–69, Apr. 2015, doi: <a href="https://doi.org/10.1016/j.coviro.2015.02.002">10.1016/j.coviro.2015.02.002</a>.
+        </li>
+        <li id="ref6">
+          P. R. Schreiner, “Tunneling Control of Chemical Reactions: The Third Reactivity Paradigm,” J. Am. Chem. Soc., vol. 139, no. 43, pp. 15276–15283, Nov. 2017, doi: <a href="https://doi.org/10.1021/jacs.7b06035">10.1021/jacs.7b06035</a>.
+        </li>
+        <li id="ref7">
+          Y. Fu, L. Bernasconi, and P. Liu, “Ab Initio Molecular Dynamics Simulations of the SN1/SN2 Mechanistic Continuum in Glycosylation Reactions,” J. Am. Chem. Soc., vol. 143, no. 3, pp. 1577–1589, Jan. 2021, doi: <a href="https://doi.org/10.1021/jacs.0c12096">10.1021/jacs.0c12096</a>.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
