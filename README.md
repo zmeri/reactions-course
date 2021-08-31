@@ -1,4 +1,4 @@
-# Termodünaamika
+# Reaktsiooniprotsessid
 Käesolev õpik koostati KAT0141 &bdquo;Reaktsiooniprotsessid&ldquo; õppeaine jaoks. Õpikut kirjutas Zach Baird, kes töötab Tallinna Tehnikaülikooli [Energiatehnoloogia instituudis](https://taltech.ee/instituut-energiatehnoloogia).
 
 ## Õpik
