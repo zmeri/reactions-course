@@ -194,6 +194,15 @@ a > code {
   border-left: 5px solid #f0d9e6;
 }
 
+.collapsible-text-long {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s 0s, opacity 0.4s 0s;
+  padding-left: 1em;
+  border-left: 5px solid #f0d9e6;
+}
+
 .close-label {
   display: none;
 }
@@ -208,7 +217,14 @@ a > code {
 .collapsible.expanded > .collapsible-text {
   height: auto;
   opacity: 1;
-  max-height: 200vh;
+  max-height: 30em;
+  transition: max-height 0.9s 0s, opacity 0.7s 0.2s;
+}
+
+.collapsible.expanded > .collapsible-text-long {
+  height: auto;
+  opacity: 1;
+  max-height: 200em;
   transition: max-height 0.9s 0s, opacity 0.7s 0.2s;
 }
 

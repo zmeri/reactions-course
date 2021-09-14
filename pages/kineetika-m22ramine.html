@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kineetiliste parameetrite määramine</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Kineetiliste parameetrite määramine</h1>
+      <p>
+        Reaktsiooni kiiruse valemis kasutatakse empiirilisi konstante, näiteks <a href="reactions-course/src/pages/kiirus.html#kiiruse-valemid">kiiruskonstant</a>. Neid konstante leitakse üldjuhul katseandmetest. Üks viis seda teha on võtta kontsentratsiooni andmete tuletist ja seejärel kasutada regressiooni, et leida konstantide väärtused. Teine viis on graafiline meetod, milles pannakse andmed teatud joonistele ja vaadatakse, kas punktid jäävad lineaarsele joonele.
+      </p>
+
+      <h2 id="tuletise-arvutamine">Andmete tuletise arvutamine</h2>
+      <p>
+        Selleks, et kasutada regressiooni kineetika parameetrite määramiseks, oleks vaja reaktsiooni kiiruse andmeid. Kuid katsetes me üldiselt mõõdame kontsentratsiooni, mitte kiirust. Seega, peame arvutama kiirust kontsentratsiooni andmetest tuletisega. Kontsentratsiooni tuletis aja suhtes ongi reaktsiooni kiirus.
+      </p>
+      <p>
+        Saab mitmel viisil arvutada tuletist numbriliselt andmetest. Me siin näitame kahte viisi: lõplike vahede meetod ja polünoomi regressioon.
+      </p>
+
+      <h2 id="l6plike-vahede">Lõplike vahede meetod</h2>
+      <p>
+        Kuna tuletis on mõne parameetri muutus teise parameetri suhtes, siis saame ligikaudselt arvutada tuletist, kui lihtsalt võtta kaks punkti ja jagada y-muutuja vahet x-muutuja vahega.
+      </p>
+      <div>
+        \[ \frac{dy(x_i)}{dx} \approx \frac{y(x_{i+1}) - y(x_i)}{x_{i+1} - x_i} \]
+      </div>
+      <img class="inline-img" src="/reactions-course/media/forward-difference.svg" />
+      <p>
+        Ehk me arvutasime tuletist punktide vahedega ja sellepärast kutsutakse lõplike vahede meetodiks. Siin tuletise arvutamiseks punktis <em>x<sub>i</sub></em> võtsime erinevust selle ja järgmise punkti vahel (<em>x<sub>i+1</sub></em>). Kuid võib selle asemel kasutada ka muid punkte. Näiteks, võime kasutada ka eelnevat punkti arvutuses.
+      </p>
+      <div>
+        \[ \frac{dy(x_i)}{dx} \approx \frac{y(x_{i+1}) - 2y(x_i) + y(x_{i-1})}{(x_{i+1} - x_i)(x_{i} - x_{i-1})} \]
+      </div>
+      <img class="inline-img" src="/reactions-course/media/central-difference.svg" />
+      <p>
+        Kui kasutada kolme punkti kahe asemel, tuletis võib olla täpsem. Tuletist võib täpsemaks ka muuta, kui võtta väiksemat vahet. Kui vahe on väiksem, on tõenäolisem, et funktsioon käitub sisuliselt lineaarselt nende punktide juures.
+      </p>
+      <p>
+        Pythoni Numpy paketis on <a href="https://numpy.org/doc/stable/reference/generated/numpy.gradient.html"><code class="python">gradient</code></a> funktsioon, millega saab arvutada tuletist lõplike vahede meetodiga.
+      </p>
+
+      <h2 id="polynoomiga">Tuletis polünoomiga</h2>
+      <p>
+        Tuletist saab ka arvutada, kui leida valemit, mis ligikaudselt sobib andmetele. Tihti kasutatakse selleks polünoome. Kasutatakse regressiooni, et leida sobivat polünoomi. Polünoomide tuletist saab kergesti arvutada analüütiliselt ja polünoomide tuletise kaudu saab siis arvutada ligikaudselt ka andmete tuletist.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/polynomial.svg" />
+      <p>
+        Polünoomi kasutades on võimalik vähendada müra mõju tuletisele. Andmetes on tavaliselt müra, ehk juhuslikud kõrvalekalded tegelikust väärtusest. Kui kasutada lõplike vahede meetodit, siis tuletist arvutatakse otse andmetest, koos müraga. Sellepärast tuletise võtmine lõplike vahede meetodiga tavaliselt võimendab müra. Kui õigesti tõmmata polünoomi andmetest läbi, siis saab mingil määral eraldada üldtrendi mürast, mis omakorda võib vähendada müra edasikandmist tuletisele.
+      </p>
+      <p>
+        Pythoni Numpy paketis on <a href="https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.Polynomial.html#numpy.polynomial.polynomial.Polynomial">Polynomial</a> objekt, mille abil saab polünoome <a href="https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.Polynomial.fit.html#numpy.polynomial.polynomial.Polynomial.fit">sobitada</a> andmetele ja <a href="https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.Polynomial.deriv.html#numpy.polynomial.polynomial.Polynomial.deriv">tuletist</a> võtta.
+      </p>
+      <p>
+        Mõnikord andmete kuju on keerulisem ja ei ole võimalik ühte polünoomiga andmeid kirjeldada. See võib näiteks juhtuda, kui mõõdetakse midagi pikaajaliselt. Siis võib toimuvad mitu kõikumist/muutust, mida ei saa hästi kirjeldada ühe polünoomiga. Sellisel juhul võib sisuliselt jupitada andmeid väiksemateks tükkideks ja leida sobivat polünoomi iga tüki jaoks. Seda tavaliselt tehakse splainidega. Pythoni Scipy paketis on <a href="https://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html#spline-interpolation">funktsioonid</a> splainide tegemiseks.
+      </p>
+
+      <h2 id="regressioon">Regressioon</h2>
+      <p>
+        Kui reaktsiooni kiirust on nüüd arvutatud andmetest, nüüd saab leida kiiruse valemi parameetreid regressiooniga. Regressioonis sisuliselt otsitakse parameetrite väärtusi, mis kõige paremini kirjeldavad katseandmeid. Kui regressioon on olnud edukas, erinevus leitud kiiruse valemi ja andmete vahel on väike.
+      </p>
+      <p>
+        Kui saab panna kiiruse valemit lineaarsele kujule, siis on võimalik kasutada lineaarset regressiooni kineetiliste parameetrite määramiseks. Tihti kiiruse valemit saab kirjutada lineaarsel kujul, kui võtta logaritmi.
+      </p>
+      <div>
+        Kiiruse valem: \( r_A = k_A C_A^a \)
+      </div>
+      <div>
+        Lineaarne kuju: \( -\ln r_A = a \ln C_A + \ln k_A \)
+      </div>
+      <p>
+        Lineaarse joone tõusunurk on siis reaktsiooni järk teatud aine suhtes ja algordinaadist saame teada kiiruskonstandi väärtust. Scipy paketis on <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html"><code class="python">linregress</code></a> funktsioon lineaarse regressiooni jaoks.
+      </p>
+      <p>
+        Kui on keerulisem valemi kuju, mida on raskem panna lineaarsele kujule, saab defineerida seda valemit oma funktsioonina ja kasutada lahendajat parameetrite leidmiseks. Seda kirjeldatakse rohkem <a href="https://zmeri.github.io/thermo-course/pages/lahendajad.html">teises peatükis</a>.
+      </p>
+
+      <h2 id="graafiline-meetod">Graafiline meetod</h2>
+      <p>
+        On jooniseid, mida saame koostada selleks, et näha reaktsiooni järku. Kui teha teatud joonist ja andmed sellel joonisel näitavad lineaarset joont, siis teame, et reaktsioonil on vastav järk. Joonised tulevad kiiruse valemi integreerimisest. Kui valida järku ja integreerida, siis saab leida, kuidas kontsentratsioon peaks muutuma ajaga ja teisendada kontsentratsiooni nii, et joonisel andmed langevad sirgele joonele. Juhul kui andmed ei lange lineaarsele joonele, siis teame, et antud järk ei ole õige ja proovime mõnda teist joonist. Täpsemalt jooniste tuletamise kohta võib lugeda Fogleri õpikust (peatükk 7.3)<sup><a href="#ref1">1</a></sup>.
+      </p>
+      <p>
+        Kui reaktsioon on nulljärguline mõne aine suhtes, siis tuleb sirge joon, kui panna kontsentratsiooni ja aja andmeid joonisele.
+      </p>
+      <p>
+        Kui on esimest järku reaktsioon, siis tuleb joonisele panna kontsentratsiooni logaritmi aja suhtes. Peaks olema lineaarne seos, kui reaktsioon järk on üks.
+      </p>
+      <p>
+        Selleks, et kontrollida, kas on teist järku reaktsioon, tuleb joonisele panna kontsentratsiooni pöördväärtust. Sirge joon näitab, et ongi teist järku reaktsioon.
+      </p>
+      <p>
+        Selliseid jooniseid saab teha ainult siis, kui reaktsioonis on ainult üks reagent või muude reagentide kontsentratsioon on sisuliselt sama kõikide andmepunktide jaoks.
+      </p>
+
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Reaktsioon triphenüül metüül kloriidi (A) ja metanooli (B) vahel viiakse läbi benseeni ja
+        püridiini lahuses 25 kraadi juures. Reaktsioon on ühesuunaline kuna püridiin reageerib HCl'iga
+        ja sadeneb välja kui püridiin vesinikkloriid.
+      </p>
+      <p>
+        Perioodilises reaktoris mõõdeti A kontsentratsioon ajas. Andmed antakse failis <a href="https://github.com/zmeri/reactions-course/blob/master/examples/kineetika_m%C3%A4%C3%A4ramise_andmed.csv">kineetika_määramise_andmed.csv</a>. Metanooli algkontsentratsioon oli 0,5 mol dm<sup>-3</sup>.
+      </p>
+      <p>
+        Osa 1: Leia reaktsiooni järk triphenüül metüül kloriidi suhtes.<br />
+        Osa 2: Teistes katsetes leiti, et reaktsiooni järk metanooli suhtes oli 1. Arvuta reaktsiooni kiiruskonstanti.<sup><a href="#ref2">2</a></sup>
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Reaktsiooni kiiruse valem on selline:
+          </p>
+          <div>
+            \[ -r_A = k C_A^a C_B^b \]
+          </div>
+          <p>
+            Aga kuna C<sub>B</sub> alguses on palju kõrgem kui C<sub>A</sub> võime eeldata, et C<sub>B</sub> ei muutu. Selle eeldusega saame ajutiselt lihtsustada kiiruse valemit, nii et sõltub ainult aine A kontsentratsioonist.
+          </p>
+          <div>
+            \[ -r_A = k C_A^a C_{B0}^b \]
+            \[ -r_A = (k C_{B0}^b) C_A^a \]
+            \[ -r_A = k' C_A^a \]
+          </div>
+          <p>
+            Esiteks, importime andmed CSV-failist. Me saame seda teha <a href="https://pandas.pydata.org/pandas-docs/version/0.25.3/reference/api/pandas.read_csv.html">Pandase</a> paketiga. Pandas lubab meil hoida andmed tabelis ja mugavamalt seda kasutada.
+          </p>
+          <pre>
+<code class="python">col_names = ['aeg', 'kont']
+df = pd.read_csv('kineetika_määramise_andmed.csv', skiprows=2, delimiter='\t', names=col_names)</code></pre>
+          <p>
+            Printides andmetabelit (<code class="python">df</code>) saame näha algandmeid.
+          </p>
+          <pre>
+<code class="python-repl">   aeg  kont
+0    0  50.0
+1   50  38.0
+2  100  30.6
+3  150  25.6
+4  200  22.2
+5  250  19.5
+6  300  17.4</code></pre>
+          <p>
+            Failis on ainult aine A kontsentratsiooni kuna eeldame, et aine B on liias ja selle kontsentratsioon sisuliselt ei muutu. Nüüd saame arvutada tuletist Numpy <a href="https://numpy.org/doc/stable/reference/generated/numpy.gradient.html"><code class="python">gradient</code></a> funktsiooniga.
+          </p>
+          <pre>
+<code class="python">df['dc_dt'] = np.gradient(df['kont'], df['aeg'], edge_order=2)</code></pre>
+          <p>
+            Kuna tahame lisada kontsentratsiooni tuletist tabelile uue veeruga, panime ruutsulgudesse uue veeru nime: <code class="python">dc_dt</code>.
+          </p>
+          <p>
+            Kui kontsentratsiooni tuletist on nüüd arvutatud, saab regressiooniga leida reaktsiooni järku aine A suhtes. Näitame esiteks, kuidas lineaarse regressiooniga seda teha. Kiiruse valemit saab kirjutada lineaarsel kujul võttes logaritmi:
+          </p>
+          <div>
+            \[ \ln \left( \frac{dC_A}{dt} \right) = a \ln C_A + \ln k_A \]
+          </div>
+          <p>
+            Siis kui leiame lineaarset seost kontsentratsiooni ja kontsentratsiooni aja tuletise logaritmide vahel, selle joone tõusunurk on reaktsiooni järk. Saame lineaarset regressiooni teha kasutades Scipy <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html"><code class="python">linregress</code></a> funktsiooni.
+          </p>
+          <pre>
+<code class="python">tulemus = linregress(np.log(df['kont'].to_numpy()), np.log(-df['dc_dt'].to_numpy()))
+print('\nreaktsiooni järk=', tulemus.slope)</code></pre>
+          <pre><code class="python-repl">reaktsiooni järk= 1.9958592736583758</code></pre>
+          <img class="inline-img" src="/reactions-course/media/lineaarne-regressioon.png" />
+          <p>
+            Reaktsiooni järk aine A suhtes on 2.
+          </p>
+          <p>
+            Saame samuti regressiooni teha lahendajaga. Esiteks, defineerime kiiruse valemi funktsiooni. Funktsioon peab arvutama erinevust tegeliku ja arvutatud kiiruse vahel ja tagastama ühte väärtust, mis näitab vea suurust. Selle järgi lahendaja teab, kui lähedal proovitud väärtused on optimaalsetele parameetri väärtusetele.
+          </p>
+          <pre>
+<code class="python">def kiirusevalem_reg(par, c_a, r):
+    r_calc = par[0] * c_a**par[1]
+    return np.sum(np.log(r_calc/r)**2)</code></pre>
+          <p>
+            Seejärel saame anda seda funktsiooni lahendajale. Siin kasutame Scipy <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html"><code class="python">minimize</code></a> lahendajat. Anname ka lahendajale algväärtused (<code class="python">guess</code>), millest see hakkab otsima, ja piirid (<code class="python">bnds</code>), mille sisse lahendaja peaks jääma. Saame ka <code class="python">arg</code> parameetriga edasi anda lisa andmeid, mida meie <code class="python">kiirusevalem_reg</code> funktsioon vajab. Märka ka, et lahendaja nõuab, et andmed oleksid Numpy massiivides, mitte Pandas andmetabelis. Sellepärast kasutame Pandase <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_numpy.html"><code class="python">to_numpy</code></a> funktsiooni.
+          </p>
+          <pre>
+<code class="python">guess = np.asarray([0.13, 2])
+bnds = ((1e-5, 0.5), (0,3))
+tulemus = minimize(kiirusevalem_reg, guess, bounds=bnds, args=(df['kont'].to_numpy(), -df['dc_dt'].to_numpy()))
+print('\nreaktsiooni järk=', tulemus.x[1])</code></pre>
+          <p>
+            Selle lahendajaga saame sama tulemust: järk on 2.
+          </p>
+          <p>
+            Võime reaktsiooni järku kontrollida ka graafiliselt.
+          </p>
+          <pre>
+<code class="python">plt.figure()
+plt.scatter(df['aeg'], 1/df['kont'])
+plt.xlabel('Aeg (min)')
+plt.ylabel('1/C$_A$')
+plt.title('2. järk')
+plt.show()</code></pre>
+          <img class="inline-img" src="/reactions-course/media/2j2rk.png" />
+          <p>
+            Andmed langevad lineaarsele joonele, mis kinnitab, et reaktsiooni järk on 2.
+          </p>
+          <p>
+            Regressioonist oleme nüüd leidnud ka \( k' \). Sellest saame arvutada reaktsiooni kiiruskonstanti kuna teame, et katse alguses aine B kontsentratsioon oli 0,5 mol dm<sup>-3</sup> ja et on esimest järku reaktsioon metanooli suhtes.
+          </p>
+          <pre>
+<code class="python">c_b0 = 0.5 # B kontsentratsioon alguses (mol dm^-3)
+k = tulemus.x[0] / c_b0
+print('\nk=', k, '(dm^3 mol^-1)^2 min^-1')</code></pre>
+          <pre><code class="python-repl">k= 0.00025312603443787877 (dm^3 mol^-1)^2 min^-1</code></pre>
+          <p>
+            Lahenduse faili saab võtta <a href="https://github.com/zmeri/reactions-course/blob/master/examples/kineetika_m%C3%A4%C3%A4ramine.py">Github</a>-ist.
+          </p>
+        </div>
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          Näide 5-1 raamatus Fogler, H.S. Elements of Chemical Reaction Engineering, 4th Ed. Pearson Education, Inc, 2006.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

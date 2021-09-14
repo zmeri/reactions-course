@@ -194,6 +194,127 @@
         \[ \Delta G_{rxn} = \Delta H_{rxn} - T \Delta S_{rxn} \]
       </div>
 
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Praegu kemikaalide tootmine põhineb suuresti fossiilkütustel. Kemikaalide tootmist võiks muuta jätkusuutlikumaks, kui toota kemikaale hoopis süsinikdioksiidist. Dimetüülkarbonaat on kasulik kemikaal, millel on juba suur turg olemas ja seda saab toota CO<sub>2</sub>-st ja metanoolist järgmise reaktsiooniga:
+      </p>
+      <div>
+        \[ 2 CH_3OH + CO_2 \rightleftarrows CH_3COCH_3 + H_2O \]
+      </div>
+      <p>
+        Kuid üks takistus antud reaktsiooniga on tasakaal, mis piirab dimetüülkarbonaadi saagist.<sup><a href="#ref7">7</a></sup> Arvuta reaktsiooni tasakaalukonstanti 25 ja 50 kraadi juures. Reaktsioon toimub vedelfaasis. Kuidas saaks dimetüülkarbonaadi saagist suurendada reaktoris?
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text">
+          <p>
+            Esiteks, võtame kirjandusest reagentide ja produktide moodustamisentalpia ja moodustamisentroopia. Andmed võtsime <a href="https://webbook.nist.gov/">NISTi</a> veebilehelt või Steele jt<sup><a href="#ref8">8</a></sup> artiklist. Dimetüülkarbonaadi jaoks leidsime ainult aurufaasi moodustamisentroopiat<sup><a href="#ref9">9</a></sup>, siis lahutasime sellest aurustamisentroopiat (<a href="http://coolprop.org/index.html">CoolPropsist</a>) selleks, et leida vedelfaasi moodustamisentroopiat.
+          </p>
+          <div class="table-div">
+            <table>
+              <tr>
+                <th>
+                  Aine
+                </th>
+                <th>
+                  Faas
+                </th>
+                <th>
+                  Moodustamis<wbr />entalpia (kJ mol<sup>-1</sup>)
+                </th>
+                <th>
+                  Moodustamis<wbr />entroopia (J mol<sup>-1</sup> K<sup>-1</sup>)
+                </th>
+                <th>
+                  Soojusmahtuvus 25 kraadi juures (J mol<sup>-1</sup> K<sup>-1</sup>)
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  Metanool
+                </td>
+                <td>
+                  vedelik
+                </td>
+                <td>
+                  -238,4
+                </td>
+                <td>
+                  127,19
+                </td>
+                <td>
+                  81,3
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Süsinikdioksiid
+                </td>
+                <td>
+                  gaas
+                </td>
+                <td>
+                  -393,51
+                </td>
+                <td>
+                  213,785
+                </td>
+                <td>
+                  37,4
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Dimetüülkarbonaat
+                </td>
+                <td>
+                  vedelik
+                </td>
+                <td>
+                  -608,74
+                </td>
+                <td>
+                  5,97
+                </td>
+                <td>
+                  19,7
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Vesi
+                </td>
+                <td>
+                  vedelik
+                </td>
+                <td>
+                  -285,830
+                </td>
+                <td>
+                  69,95
+                </td>
+                <td>
+                  75,281
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p>
+        Kuna süsinikdioksiidi andmed on antud gaasifaasi jaoks aga reaktsioon toimub vedelfaasis...
+      </p>
+
+
       <h2 id="tasakaalu-konversiooniaste">Tasakaalu konversiooniaste</h2>
       <p>
         Kui on teada tasakaalukonstanti, saame ka arvutada tasakaalu konversiooniastet.<sup><a href="#ref3">3</a></sup> Esiteks, tuleb avaldada kõik kontsentratsioone konversiooniastme suhtes. Võtame näiteks järgnevat reaktsiooni:
@@ -214,7 +335,7 @@
         \[ 0 = \frac{K (C_{B0}^2 - (2C_{B0}C_{A0} + C_{B0}^2)X_A + (C_{A0}^2 + 2C_{B0}C_{A0})X_A^2 - C_{A0}^2X_A^3)}{X_A} \]
       </div>
       <p>
-        Siis tuleb leida lahendus sellele valemile. Mõnikord saab lahendada analüütiliselt, aga nagu näha valem võib olla suhteliselt keeruline ja võib olla lihtsam lahendada numbriliselt või kasutada matemaatika tarkvara. Tavaliselt polünoomidega on mitu lahendit ja tuleb valida lahendit, mis võib vastata reaalsele olukorrale. Näiteks, lahendid, mis on suuremad kui 1 või väiksemad kui 0 ei ole reaalselt võimalik. Samuti võivad esineda lahendid, mis on kompleksarvud ja need saab ka antud juhul kõrvale jätta.
+        Siis tuleb leida lahendus sellele valemile. Mõnikord saab lahendada analüütiliselt, aga nagu näha valem võib olla suhteliselt keeruline ja võib olla lihtsam lahendada numbriliselt või kasutada matemaatika tarkvara. Tavaliselt polünoomidega on mitu lahendit ja tuleb valida lahendit, mis võib vastata reaalsele olukorrale. Näiteks, lahendid, mis on suuremad kui 1 või väiksemad kui 0 ei ole reaalselt võimalikud. Samuti võivad esineda lahendid, mis on kompleksarvud ja need saab ka antud juhul kõrvale jätta.
       </p>
 
       <h2>Viited</h2>
@@ -236,6 +357,15 @@
         </li>
         <li id="ref6">
           P. W. Atkins, J. D. Paula, and J. Keeler, Atkins’ Physical Chemistry. Oxford University Press, 2018.
+        </li>
+        <li id="ref7">
+          B. A. V. Santos, V. M. T. M. Silva, J. M. Loureiro, and A. E. Rodrigues, “Review for the Direct Synthesis of Dimethyl Carbonate,” ChemBioEng Reviews, vol. 1, no. 5, pp. 214–229, 2014, doi: 10.1002/cben.201400020.
+        </li>
+        <li id="ref8">
+          W. V. Steele, R. D. Chirico, A. B. Cowell, S. E. Knipmeyer, and A. Nguyen, “Thermodynamic Properties and Ideal-Gas Enthalpies of Formation for 2-Aminoisobutyric Acid (2-Methylalanine), Acetic Acid, (Z)-5-Ethylidene-2-norbornene, Mesityl Oxide (4-Methyl-3-penten-2-one), 4-Methylpent-1-ene, 2,2‘-Bis(phenylthio)propane, and Glycidyl Phenyl Ether (1,2-Epoxy-3-phenoxypropane),” J. Chem. Eng. Data, vol. 42, no. 6, pp. 1053–1066, Nov. 1997, doi: 10.1021/je970099y.
+        </li>
+        <li id="ref9">
+          Y. Zhou, J. Wu, and E. W. Lemmon, “Thermodynamic properties of dimethyl carbonate,” Journal of Physical and Chemical Reference Data, vol. 40, no. 4, p. 043106, 2011.
         </li>
       </ol>
     </div>
