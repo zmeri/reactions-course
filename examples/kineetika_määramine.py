@@ -4,15 +4,15 @@ KAT0141 - Reaktsiooniprotsessid
 Näide: Reaktsiooni kineetika parameetrite määramine
 ---------------------------------------------------
 Reaktsioon triphenüül metüül kloriidi (A) ja metanooli (B) vahel viiakse läbi benseeni ja
-püridiini lahuses 25 kraadi juures. Püridiin reageerib HCl'iga ja sadeneb välja
-kui püridiin vesinikkloriid, ja selle tõttu reaktsioon on ühesuunaline.
+püridiini lahuses 25 kraadi juures. Reaktsioon on ühesuunaline kuna püridiin reageerib HCl'iga
+ja sadeneb välja kui püridiin vesinikkloriid.
 
 Perioodilises reaktoris mõõdeti A kontsentratsioon ajas. Andmed antakse failis
-harjutustund2_1_andmed.csv. Metanooli algkontsentratsioon oli 0.5 mol dm^-3.
+kineetika_määramise_andmed.csv. Metanooli algkontsentratsioon oli 0,5 mol dm^-3.
 
 Osa 1: Leia reaktsiooni järk triphenüül metüül kloriidi suhtes.
 Osa 2: Teistes katsetes leiti, et reaktsiooni järk metanooli suhtes oli 1. Arvuta
-    reaktsiooni kiirusekonstanti.
+    reaktsiooni kiiruskonstanti.
 
 Viide: Näide 5-1 raamatus Fogler, H.S. Elements of Chemical Reaction Engineering, 4th Ed. Pearson Education, Inc, 2006.
 '''
@@ -23,7 +23,7 @@ from scipy.stats import linregress
 from scipy.optimize import minimize
 
 # Andmete import ---------------------------------------------------------------
-filename = 'kineetika_määramise_andmed.csv'
+filename = 'kineetika_andmed_kaempferol.csv'
 col_names = ['aeg', 'kont']
 df = pd.read_csv(filename, skiprows=2, delimiter=';', names=col_names)
 
@@ -37,7 +37,7 @@ plt.ylabel('Kontsentratsioon (mol dm$^{-3}$) x 1000')
 plt.show()
 
 """
-Reaktsiooni kiiruseseadus:
+Reaktsiooni kiirusevalem:
 -r_A = k * C_A**a * C_B**b
 aga kuna C_B alguses on palju kõrgem kui C_A võime eeldata, et C_B ei muutu
 -r_A = k * C_A**a * C_B0**b
@@ -46,7 +46,7 @@ aga kuna C_B alguses on palju kõrgem kui C_A võime eeldata, et C_B ei muutu
 """
 
 # Tuletise võtmine ------------------------------------------------------------
-df = df.assign(dc_dt = np.gradient(df['kont'], df['aeg'], edge_order=2))
+df['dc_dt'] = np.gradient(df['kont'], df['aeg'], edge_order=2)
 print(df)
 
 plt.figure()
@@ -76,21 +76,20 @@ plt.ylabel('log(-dc/dt)')
 plt.show()
 
 # Regressioon --------------------------------------------------------------------
-def kiiruseseadus_reg(par, c_a, r):
+def kiirusevalem_reg(par, c_a, r):
     r_calc = par[0] * c_a**par[1]
     return np.sum(np.log(r_calc/r)**2)
-    # return np.sum((r_calc - r)**2)
 
-def kiiruseseadus(par, c_a):
+def kiirusevalem(par, c_a):
     return par[0] * c_a**par[1]
 
 guess = np.asarray([0.13, 2])
 bnds = ((1e-5, 0.5), (0,3))
-tulemus = minimize(kiiruseseadus_reg, guess, bounds=bnds, args=(df['kont'].to_numpy(), -df['dc_dt'].to_numpy()))
+tulemus = minimize(kiirusevalem_reg, guess, bounds=bnds, args=(df['kont'].to_numpy(), -df['dc_dt'].to_numpy()))
 print('regressiooni tulemus:\n', tulemus)
 
 kont_grid = np.linspace(df['kont'].min(), df['kont'].max(), 50)
-dc_dt_calc = kiiruseseadus(tulemus.x, kont_grid)
+dc_dt_calc = kiirusevalem(tulemus.x, kont_grid)
 
 print('\nreaktsiooni järk=', tulemus.x[1])
 
@@ -102,8 +101,8 @@ plt.xlabel('Kontsentratsioon (mol dm$^{-3}$) x 1000')
 plt.ylabel('-dc/dt')
 plt.show()
 
-# Arvuta kiirusekonstanti ----------------------------------------------------
-c_b0 = 0.5 # kontsentratsioon B alguses (mol dm^-3)
+# Arvuta kiiruskonstanti ----------------------------------------------------
+c_b0 = 0.5 # B kontsentratsioon alguses (mol dm^-3)
 k = tulemus.x[0] / c_b0
 print('\nk=', k, '(dm^3 mol^-1)^2 min^-1')
 
