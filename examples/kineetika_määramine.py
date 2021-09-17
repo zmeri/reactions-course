@@ -23,14 +23,14 @@ from scipy.stats import linregress
 from scipy.optimize import minimize
 
 # Andmete import ---------------------------------------------------------------
-filename = 'kineetika_andmed_kaempferol.csv'
-col_names = ['aeg', 'kont']
-df = pd.read_csv(filename, skiprows=2, delimiter=';', names=col_names)
+filename = 'kineetika_määramise_andmed.csv'
+col_names = ['aeg', 'kontA']
+df = pd.read_csv(filename, skiprows=2, delimiter='\t', names=col_names)
 
 print(df)
 
 plt.figure()
-plt.scatter(df['aeg'], df['kont'])
+plt.scatter(df['aeg'], df['kontA'])
 plt.title('Toorandmed')
 plt.xlabel('Aeg (min)')
 plt.ylabel('Kontsentratsioon (mol dm$^{-3}$) x 1000')
@@ -46,27 +46,27 @@ aga kuna C_B alguses on palju kõrgem kui C_A võime eeldata, et C_B ei muutu
 """
 
 # Tuletise võtmine ------------------------------------------------------------
-df['dc_dt'] = np.gradient(df['kont'], df['aeg'], edge_order=2)
+df['dc_dt'] = np.gradient(df['kontA'], df['aeg'], edge_order=2)
 print(df)
 
 plt.figure()
-plt.scatter(df['kont'], df['dc_dt'])
+plt.scatter(df['kontA'], df['dc_dt'])
 plt.title('Tuletis (dC_dt)')
 plt.xlabel('Kontsentratsioon (mol dm$^{-3}$) x 1000')
 plt.ylabel('Kiirus (mol dm$^{-3}$ min$^{-1}$)')
 plt.show()
 
 # Lineaar regressioon -----------------------------------------------------------------
-tulemus = linregress(np.log(df['kont'].to_numpy()), np.log(-df['dc_dt'].to_numpy()))
+tulemus = linregress(np.log(df['kontA'].to_numpy()), np.log(-df['dc_dt'].to_numpy()))
 print('regressiooni tulemus:\n', tulemus)
 
-kont_grid = np.linspace(df['kont'].min(), df['kont'].max(), 50)
+kont_grid = np.linspace(df['kontA'].min(), df['kontA'].max(), 50)
 dc_dt_calc = np.exp(tulemus.slope * np.log(kont_grid) + tulemus.intercept)
 
 print('\nreaktsiooni järk=', tulemus.slope)
 
 plt.figure()
-plt.scatter(df['kont'], -df['dc_dt'])
+plt.scatter(df['kontA'], -df['dc_dt'])
 plt.plot(kont_grid, dc_dt_calc)
 plt.title('Lineaar regressioon')
 plt.xscale('log')
@@ -85,16 +85,16 @@ def kiirusevalem(par, c_a):
 
 guess = np.asarray([0.13, 2])
 bnds = ((1e-5, 0.5), (0,3))
-tulemus = minimize(kiirusevalem_reg, guess, bounds=bnds, args=(df['kont'].to_numpy(), -df['dc_dt'].to_numpy()))
+tulemus = minimize(kiirusevalem_reg, guess, bounds=bnds, args=(df['kontA'].to_numpy(), -df['dc_dt'].to_numpy()))
 print('regressiooni tulemus:\n', tulemus)
 
-kont_grid = np.linspace(df['kont'].min(), df['kont'].max(), 50)
+kont_grid = np.linspace(df['kontA'].min(), df['kontA'].max(), 50)
 dc_dt_calc = kiirusevalem(tulemus.x, kont_grid)
 
 print('\nreaktsiooni järk=', tulemus.x[1])
 
 plt.figure()
-plt.scatter(df['kont'], -df['dc_dt'])
+plt.scatter(df['kontA'], -df['dc_dt'])
 plt.plot(kont_grid, dc_dt_calc)
 plt.title('Regressioon lahendajaga')
 plt.xlabel('Kontsentratsioon (mol dm$^{-3}$) x 1000')
@@ -109,7 +109,7 @@ print('\nk=', k, '(dm^3 mol^-1)^2 min^-1')
 # graafiline meetod ------------------------------------------------------------
 # null järk
 plt.figure()
-plt.scatter(df['aeg'], df['kont'])
+plt.scatter(df['aeg'], df['kontA'])
 plt.xlabel('Aeg (min)')
 plt.ylabel('Kontsentratsioon (mol dm$^{-3}$) x 1000')
 plt.title('0. järk')
@@ -117,7 +117,7 @@ plt.show()
 
 # esimene järk
 plt.figure()
-plt.scatter(df['aeg'], np.log(df['kont']))
+plt.scatter(df['aeg'], np.log(df['kontA']))
 plt.xlabel('Aeg (min)')
 plt.ylabel('log(C$_A$)')
 plt.title('1. järk')
@@ -126,7 +126,7 @@ plt.show()
 
 # teine järk
 plt.figure()
-plt.scatter(df['aeg'], 1/df['kont'])
+plt.scatter(df['aeg'], 1/df['kontA'])
 plt.xlabel('Aeg (min)')
 plt.ylabel('1/C$_A$')
 plt.title('2. järk')
