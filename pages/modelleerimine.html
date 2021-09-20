@@ -108,13 +108,13 @@
         Saame koostada bilanssi ühe aine moolide jaoks.
       </p>
       <div>
-        \[ \frac{dn_A}{dt} = F_{A0} - F_A + \int r_A dV \]
+        \[ \frac{dn_A}{dt} = \dot n_{A0} - \dot n_A + \int r_A dV \]
       </div>
       <p>
-        Siin <em>n<sub>A</sub></em> tähistab aine A moolide arv reaktoris, <em>F<sub>A0</sub></em> on sisenevate moolide arv, <em>F<sub>A</sub></em> on väljuvate moolide arv, <em>r<sub>A</sub></em> on <a href="/reactions-course/pages/kiirus.html">reaktsiooni kiirus</a> ja V on reaktori maht. Võime koostada sarnaseid valemeid teiste reagentide ja produktide jaoks.
+        Siin <em>n<sub>A</sub></em> tähistab aine A moolide arv reaktoris, <em>n&#775;<sub>A0</sub></em> on sisenevate moolide arv, <em>n&#775;<sub>A</sub></em> on väljuvate moolide arv, <em>r<sub>A</sub></em> on <a href="/reactions-course/pages/kiirus.html">reaktsiooni kiirus</a> ja V on reaktori maht. Võime koostada sarnaseid valemeid teiste reagentide ja produktide jaoks.
       </p>
       <p>
-        Seda bilansi tuleb kohandada antud ülesandele. Näiteks, kui antud ülesandes reaktor töötab statsionaarses re&#382;iimis, siis moolide arv reaktoris ei muutu ajas ja bilansi vasak pool on 0. Kui reaktsioon toimub sama kiiresti igal pool reaktoris, integraali asemel võib lihtsalt panna \( r_A V \). Mõnikord bilanss peab olema hoopis keerulisem. Kui, näiteks, siseneva voo koostis muutub ajas, oleks vaja kirjeldada seda matemaatiliselt ja asendada <em>F<sub>A0</sub></em> selle keerulisema avaldisega.
+        Seda bilansi tuleb kohandada antud ülesandele. Näiteks, kui antud ülesandes reaktor töötab statsionaarses re&#382;iimis, siis moolide arv reaktoris ei muutu ajas ja bilansi vasak pool on 0. Kui reaktsioon toimub sama kiiresti igal pool reaktoris, integraali asemel võib lihtsalt panna \( r_A V \). Mõnikord bilanss peab olema hoopis keerulisem. Kui, näiteks, siseneva voo koostis muutub ajas, oleks vaja kirjeldada seda matemaatiliselt ja asendada <em>n&#775;<sub>A0</sub></em> selle keerulisema avaldisega.
       </p>
 
       <h2 id="energiabilanss">Energiabilanss</h2>
@@ -122,10 +122,10 @@
         Energia tuleb reaktorisse koos siseneva vooga ja läheb ära koos väljuva vooga. Samuti energia läbikanne toimub reaktori ja ümbruse vahel, näiteks läbi reaktori seina või kütteelemendist. Reaktsioon iseenesest võib ka toota või nõuda soojust. Olekumuutus reaktoris, näiteks faasimuutust, võib ka nõuda või anda energiat. Võime koondada kokku need erinevad energia muutused energiabilansina. Tavaliselt kirjeldatakase reaktori energiatased entalpiaga, siis näitame siin entalpiabilansi:
       </p>
       <div>
-        \[ \sum_i n_i C_{p,i} \frac{dT}{dt} = \sum_i F_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + F_{faasimuutus} \Delta H_{faasimuutus} + Q \]
+        \[ \sum_i n_i C_{p,i} \frac{dT}{dt} = \sum_i \dot n_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + \dot n_{faasimuutus} \Delta H_{faasimuutus} + Q \]
       </div>
       <p>
-        Bilansis <em>C<sub>p</sub></em> on teatud aine soojusmahtuvus (konstantsel rõhul), <em>T</em> on temperatuur reaktoris, <em>T<sub>0</sub></em> on siseneva voo temperatuur, <em>&Delta;H<sub>rxn</sub></em> on reaktsiooni entalpia, <em>&Delta;H<sub>faasimuutus</sub></em> on entalpia muutus faasimuutuse tõttu, <em>Q</em> on energia läbikanne ümbrusega ja <em>F<sub>faasimuutus</sub></em> on moolikulu, mis läbib faasimuutuse.
+        Bilansis <em>C<sub>p</sub></em> on teatud aine soojusmahtuvus (konstantsel rõhul), <em>T</em> on temperatuur reaktoris, <em>T<sub>0</sub></em> on siseneva voo temperatuur, <em>&Delta;H<sub>rxn</sub></em> on reaktsiooni entalpia, <em>&Delta;H<sub>faasimuutus</sub></em> on entalpia muutus faasimuutuse tõttu, <em>Q</em> on energia läbikanne ümbrusega ja <em>n&#775;<sub>faasimuutus</sub></em> on moolikulu, mis läbib faasimuutuse.
       </p>
       <p>
         Märka, kuidas bilansis võetakse arvesse ainult siseneva voo energiat, aga väljuva voo energiat ei esine bilansis. Põhjus on selles, et tavaliselt väljuval vool on sama temperatuur, kui segu reaktoris. Sel juhul &Delta;T on 0 ja väljuv voog otseselt ei mõjuta energiataset reaktoris. Väljuva voo moolikulu mõjutab küll moolide arv reaktoris, aga seda võetakse arvesse <em>n<sub>i</sub></em> muutujas.
@@ -143,7 +143,7 @@
           <a href="/reactions-course/pages/pidev-segureaktor.html">Pidev segureaktor</a>
         </li>
         <li>
-          <a href="/reactions-course/pages/torureaktor.html">torureaktor</a>
+          <a href="/reactions-course/pages/torureaktor.html">Torureaktor</a>
         </li>
         <li>
           <a href="/reactions-course/pages/perioodiline-reaktor.html">Perioodiline reaktor</a>
