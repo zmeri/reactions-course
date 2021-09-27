@@ -11,6 +11,9 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
 
   <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
 
@@ -56,7 +59,7 @@
 
       <h2 id="p6hiv6rrand">Põhivõrrand</h2>
       <p>
-        Reaktori põhivõrrand on lihtsalt moolibilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Pidev segureaktori põhivõrrand on järgmine:
+        Reaktori põhivõrrand on lihtsalt moolbilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Pidev segureaktori põhivõrrand on järgmine:
       </p>
       <div>
         \[ V = \frac{\dot n_{A0} - \dot n_A}{-r_A} \]
@@ -77,7 +80,7 @@
         </button>
         <div class="collapsible-text">
           <p>
-            Põhivõrrand on <a>moolibilanss</a>, aga teisel kujul. Alustame siis üldise moolibilansiga.
+            Põhivõrrand on <a>moolbilanss</a>, aga teisel kujul. Alustame siis üldise moolbilansiga.
           </p>
           <div>
             \[ \frac{dn_A}{dt} = \dot n_{A0} - \dot n_{A} + r_A V \]
@@ -100,10 +103,101 @@
         \[ V = \frac{\dot n_{A0}X_A}{-r_A} \]
       </div>
 
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Praegu puhastatakse reovett enamasti tehnoloogiatega, mis nõuavad energiat ja kemikaale.
+        Kuid on pakutud, et oleks võimalik toota väärtuslikud kemikaale reoveest. Näiteks, on
+        leitud baktereid, mis toodavad looduslikku polümeeri polühüdroksübutüraati. Kuumutades
+        polümeeri on võimalik toota muid kemikaale lagunemise teel. Lagunemises peamine produkt
+        on 3-hüdroksübutaanhape ja see omakorda võib edasi reageerida moodustamiseks propüleeni,
+        mis on väärtuslik vaheprodukt keemiatööstuses.<sup><a href="#ref2">2</a></sup>
+      </p>
+      <div>
+        \[ C_4H_8O_3 \rightarrow C_3H_6 + H_2O + CO_2 \]
+      </div>
+      <p>
+        Kui palju propüleeni oleks võimalik toota, kui töödelda 1000 kuupmeetrit lahust päevas
+        100 liitrises pidev segureaktoris? 3-hüdroksübutaanhappe kontsentratsioon alglahuses on 2,2 mol/l
+        ja reaktsioon toimub 250 kraadi juures.
+      </p>
+      <p>
+        Kineetilised parameetrid:<br />
+        &nbsp;&nbsp;&nbsp;ln(A) = 29,2<br />
+        &nbsp;&nbsp;&nbsp;Ea = 126,8 kJ/mol
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Kasutades segureaktori põhivõrrandit (mis tuleb moolbilansist) koostame järgmist valemit:
+          </p>
+          <div>
+            \[ V = \frac{\dot n_{hbh,alg} X_{hbh}}{k C_{hbh,alg} (1 - X_{hbh})} \]
+          </div>
+          <p>
+            Kuna 3-hüdroksübutaanhappe moolkulu alguses on lihtsalt mahtkulu korrutatud kontsentratsiooniga,
+            saame kirjutada valemit järgmiselt:
+          </p>
+          <div>
+            \[ V = \frac{\dot v C_{hbh,alg} X_{hbh}}{k C_{hbh,alg} (1 - X_{hbh})} \]
+          </div>
+          <p>
+            Seejärel saame lahendada X<sub>hbh</sub> jaoks.
+          </p>
+          <div>
+            \[ X_{hbh} = \frac{V k C_{hbh,alg}}{\dot v C_{hbh,alg} + V k C_{hbh,alg}} \]
+          </div>
+          <p>
+            Nüüd peame arvutama kiiruskonstanti Arrheniuse võrrandiga. Saame koostada Pythoni funktsiooni selle valemi jaoks:
+          </p>
+          <pre>
+<code class="python">def kiiruskonstant(T):
+    RGAS = 8.314462618 # J mol^-1 K^-1
+    A = np.exp(29.2)
+    Ea = 126.8 * 1000 # J mol^-1
+    k = A * np.exp(-Ea / RGAS / (T + 273.15)) # s^-1
+    return k</code></pre>
+          <p>
+            Saame nüüd Pythonis lahendada põhivõrrandit ja arvutada konversiooniastet. Kui konversiooniaste on teada, on lihtne arvutada kui palju propüleeni toodetakse.
+          </p>
+          <pre>
+<code class="python">Chbh_alg = 2.2 # mol l^-1
+V = 100 # l
+T = 250 # Celcius
+vdot = 1000 # m^-3 päev^-1
+vdot = vdot * 1000 / 24 / 3600 # l s^-1
+
+k = kiiruskonstant(T)
+Xhbh = V * k * Chbh_alg / (vdot * Chbh_alg + V * k * Chbh_alg)
+
+mm_prop = 42.08 # propüleeni molaar mass, g mol^-1
+mdot_prop = vdot * Chbh_alg * Xhbh * mm_prop / 1000 # kg s^-1
+print('Toodetud propüleen= {} kg/päev'.format(mdot_prop * 3600 * 24))</code></pre>
+          <p>
+            Vastuseks saame 83383 kg päevas.
+          </p>
+          <p>
+            Pythoni faili, mida kasutasime siin lahendamiseks, on kättesaadav <a href="">Githubist</a>.
+          </p>
+        </div>
+      </div>
+
       <h2>Viited</h2>
       <ol>
         <li id="ref1">
           I. Kamenev, KAT0141 Reaktsiooniprotsessid: Loengukonspekt. Tallinna Tehnikaülikool, 2019.
+        </li>
+        <li id="ref2">
+          Y. Li and T. J. Strathmann, “Kinetics and mechanism for hydrothermal conversion of polyhydroxybutyrate (PHB) for wastewater valorization,” Green Chemistry, vol. 21, no. 20, pp. 5586–5597, 2019, doi: 10.1039/C9GC02507C.
         </li>
       </ol>
     </div>
