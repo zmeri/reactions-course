@@ -106,7 +106,7 @@
       <h2 id="n2ide">Näide</h2>
       <p>
         Praegu puhastatakse reovett enamasti tehnoloogiatega, mis nõuavad energiat ja kemikaale.
-        Kuid on pakutud, et oleks võimalik toota väärtuslikud kemikaale reoveest. Näiteks, on
+        Kuid on pakutud, et oleks võimalik toota väärtuslikke kemikaale reoveest. Näiteks, on
         leitud baktereid, mis toodavad looduslikku polümeeri polühüdroksübutüraati. Kuumutades
         polümeeri on võimalik toota muid kemikaale lagunemise teel. Lagunemises peamine produkt
         on 3-hüdroksübutaanhape ja see omakorda võib edasi reageerida moodustamiseks propüleeni,
@@ -117,13 +117,14 @@
       </div>
       <p>
         Kui palju propüleeni oleks võimalik toota, kui töödelda 1000 kuupmeetrit lahust päevas
-        100 liitrises pidev segureaktoris? 3-hüdroksübutaanhappe kontsentratsioon alglahuses on 2,2 mol/l
-        ja reaktsioon toimub 250 kraadi juures.
+        50-kuupmeetrilises pidev segureaktoris? 3-hüdroksübutaanhappe kontsentratsioon alglahuses on 2,2 mol/l
+        ja reaktsioon toimub 250 kraadi juures. On esimest järku reaktsioon.
       </p>
       <p>
         Kineetilised parameetrid:<br />
         &nbsp;&nbsp;&nbsp;ln(A) = 29,2<br />
-        &nbsp;&nbsp;&nbsp;Ea = 126,8 kJ/mol
+        &nbsp;&nbsp;&nbsp;Ea = 126,8 kJ/mol<br />
+        <em>k ühik on h<sup>-1</sup></em>
       </p>
       <div class="collapsible">
         <button class="collapsible-button">
@@ -151,7 +152,7 @@
             \[ V = \frac{\dot v C_{hbh,alg} X_{hbh}}{k C_{hbh,alg} (1 - X_{hbh})} \]
           </div>
           <p>
-            Seejärel saame lahendada X<sub>hbh</sub> jaoks.
+            Seejärel saame lahendada <em>X<sub>hbh</sub></em> jaoks.
           </p>
           <div>
             \[ X_{hbh} = \frac{V k C_{hbh,alg}}{\dot v C_{hbh,alg} + V k C_{hbh,alg}} \]
@@ -164,14 +165,14 @@
     RGAS = 8.314462618 # J mol^-1 K^-1
     A = np.exp(29.2)
     Ea = 126.8 * 1000 # J mol^-1
-    k = A * np.exp(-Ea / RGAS / (T + 273.15)) # s^-1
-    return k</code></pre>
+    k = A * np.exp(-Ea / RGAS / (T + 273.15)) # h^-1
+    return k / 3600 # s^-1</code></pre>
           <p>
             Saame nüüd Pythonis lahendada põhivõrrandit ja arvutada konversiooniastet. Kui konversiooniaste on teada, on lihtne arvutada kui palju propüleeni toodetakse.
           </p>
           <pre>
 <code class="python">Chbh_alg = 2.2 # mol l^-1
-V = 100 # l
+V = 50000 # l
 T = 250 # Celcius
 vdot = 1000 # m^-3 päev^-1
 vdot = vdot * 1000 / 24 / 3600 # l s^-1
@@ -183,7 +184,7 @@ mm_prop = 42.08 # propüleeni molaar mass, g mol^-1
 mdot_prop = vdot * Chbh_alg * Xhbh * mm_prop / 1000 # kg s^-1
 print('Toodetud propüleen= {} kg/päev'.format(mdot_prop * 3600 * 24))</code></pre>
           <p>
-            Vastuseks saame 83383 kg päevas.
+            Vastuseks saame 51610 kg päevas.
           </p>
           <p>
             Pythoni fail, mida kasutasime siin lahendamiseks, on kättesaadav <a href="https://github.com/zmeri/reactions-course/blob/master/examples/prop%C3%BCleeni_tootmine.py">Githubist</a>.

@@ -9,7 +9,7 @@ mis on väärtuslik vaheprodukt keemiatööstuses.
 C4H8O3 -> C3H6 + H2O + CO2
 
 Kui palju propüleeni oleks võimalik toota, kui töödelda 1000 kuupmeetrit lahust päevas
-100 liitrises pidev segureaktoris? 3-hüdroksübutaanhappe kontsentratsioon alglahuses on 2,2 mol/l
+50-kuupmeetrilises pidev segureaktoris? 3-hüdroksübutaanhappe kontsentratsioon alglahuses on 2,2 mol/l
 ja reaktsioon toimub 250 kraadi juures.
 
 Kineetilised parameetrid:
@@ -27,11 +27,11 @@ RGAS = 8.314462618 # J mol^-1 K^-1
 def kiiruskonstant(T):
     A = np.exp(29.2)
     Ea = 126.8 * 1000 # J mol^-1
-    k = A * np.exp(-Ea / RGAS / (T + 273.15)) # s^-1
-    return k
+    k = A * np.exp(-Ea / RGAS / (T + 273.15)) # h^-1
+    return k / 3600 # s^-1
 
 Chbh_alg = 2.2 # mol l^-1
-V = 100 # l
+V = 50000 # l
 T = 250 # Celcius
 vdot = 1000 # m^-3 päev^-1
 vdot = vdot * 1000 / 24 / 3600 # l s^-1
