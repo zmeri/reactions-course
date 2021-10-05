@@ -11,12 +11,15 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
 
-  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.2">
 
   <script>
     $(function(){
-      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.2`);
     });
   </script>
   <script>
@@ -118,6 +121,179 @@
         \[ V = \dot n_{A0} \int_{0}^{X_A} \frac{dX_A}{-r_A} \]
       </div>
 
+      <h2 id="n2ide-lihtsam">Näide - lihtsam</h2>
+      <p>
+        Jäätmed lihatööstuses tihti sisaldavad palju valku. Sellest valgust oleks võimalik toota aminohapped ja orgaanilised happed, kui hüdrolüüsida jäätmed vees kõrge temperatuuri ja rõhu juures. Kuid katsed on näidanud, et aminohappe saagis on tavaliselt palju väiksem, kui teoreetiliselt peaks olema. Näiteks, 1 g kalajäätmetes (kuiv) oli 600 mg valku, aga toodeti ainult 140 mg aminohappeid. Saagis on madal suuresti sellepärast, et aminohapped ise lagunevad reaktori tingimustel. Suurema saagise saavutamiseks oleks vaja vähendada aminohapete lagunemist.<sup><a href="#ref3">3</a></sup>
+      </p>
+      <p>
+        Jäätmeid töödeldatakse torureaktoris ja toodetud aminohapped hakkavad lagunema. Selleks, et lihtsustada ülesannet keskendume ainult aminohapete lagunemisele. Eeldame, et torureaktor on 120-liitrine ja et aminohappeid juurde ei teki. Alguses ühe aminohappe (glütsiini) kontsentratsioon on 10 mmol/l. Mis osa glütsiinist on lagunenud selleks ajaks, kui lahus on väljunud reaktorist? Reaktor töötab 20 MPa ja 250 kraadi juures ja mahtkulu on 2 l/s.
+      </p>
+      <p>
+        Kineetilised parameetrid glütsiini lagunemiseks:<br />
+        &nbsp;&nbsp;&nbsp;A = 3,51&#183;10<sup>13</sup> 1/s<br />
+        &nbsp;&nbsp;&nbsp;Ea = 166 kJ/mol
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Alustame segureaktori põhivõrrandiga ja asendame <em>r<sub>A</sub></em> reaktsiooni kiirusevalemiga:
+          </p>
+          <div>
+            \[ V = \dot n_{A0} \int_0^{X_A} \frac{d\dot X_A}{k C_{A0} (1 - X_A)} \]
+          </div>
+          <p>
+            Siis integreerime.
+          </p>
+          <div>
+            \[ V = \frac{\dot n_{A0}}{k C_{A0}} \ln (1 - X_A)|_0^{X_A} \]
+          </div>
+          <div>
+            \[ V = \frac{\dot n_{A0}}{k C_{A0}} (\ln (1 - X_A) - \ln (1 - 0)) \]
+          </div>
+          <div>
+            \[ V = \frac{\dot n_{A0}}{k C_{A0}} \ln (1 - X_A) \]
+          </div>
+          <p>
+            Seejärel saame lahendada <em>X<sub>A</sub></em> jaoks.
+          </p>
+          <div>
+            \[ X_A = 1 - \exp (-V * C_{A0} * k / \dot n_{A0}) \]
+          </div>
+          <p>
+            Nüüd peame arvutama kiiruskonstanti Arrheniuse võrrandiga. Saame koostada Pythoni funktsiooni selle valemi jaoks:
+          </p>
+          <pre>
+<code class="python">def kiiruskonstant(T):
+    RGAS = 8.314462618 # J mol^-1 K^-1
+    A = 3.51e13
+    Ea = 166 * 1000 # J mol^-1
+    k = A * np.exp(-Ea / RGAS / (T + 273.15)) # s^-1
+    return k</code></pre>
+          <p>
+            Saame nüüd Pythonis lahendada põhivõrrandit ja arvutada konversiooniastet, mis näitab kui palju glütsiin on lagunenud.
+          </p>
+          <pre>
+<code class="python">Ca_alg = 0.01 # mol l^-1
+V = 120 # l
+T = 250 # Celcius
+vdot = 2 # l s^-1
+ndot_a_alg = vdot * Ca_alg
+k = kiiruskonstant(T)
+
+Xa = 1 - np.exp(-V * Ca_alg * k / ndot_a_alg)</code></pre>
+          <p>
+            Vastuseks saame 5,46%.
+          </p>
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on <a href="https://github.com/zmeri/reactions-course/blob/master/examples/aminohappe_lagunemine_lihtsam.py">Githubis</a>.
+          </p>
+        </div>
+      </div>
+
+      <h2 id="n2ide-keerulisem">Näide - keerulisem</h2>
+      <p>
+        Eelmises näites lihtsustasime ülesannet ja panime mudelisse ainult ühte reaktsiooni. Kuid tegelikult valk kala jäätmetes peab esiteks lagunema selleks, et üksikud aminohapped oleksid lahuses.<sup><a href="#ref4">4</a></sup> Nüüd teeme arvutust uuesti, aga võtame arvesse ka lagunemise reaktsiooni.
+      </p>
+      <p>
+        Jäätmeid töödeldatakse torureaktoris ja toodetud aminohapped hakkavad lagunema. Torureaktor on 2000-liitrine ja jäätmete kogus algses lahuses on 50 g/l. Kuna valk moodustab umbes 60% nendest jäätmetest<sup><a href="#ref3">3</a></sup> ja umbes 14% kala valgust on glütsiin<sup><a href="#ref5">5</a></sup>, siis algne glütsiini sisaldus on 56 mmol/l, kuid see on veel valgus. Mis on glütsiini kontsentratsioon väljuvas voos? Reaktor töötab 20 MPa ja 250 kraadi juures. Mahtkulu on 2 l/s.
+      </p>
+      <p>
+        Hinnangulised kineetilised parameetrid kala jäätmete lagunemise reaktsiooniks:<br />
+        &nbsp;&nbsp;&nbsp;A = 1&#183;10<sup>12</sup> 1/s<br />
+        &nbsp;&nbsp;&nbsp;Ea = 150 kJ/mol
+      </p>
+      <p>
+        Kineetilised parameetrid glütsiini lagunemiseks:<br />
+        &nbsp;&nbsp;&nbsp;A = 3,51&#183;10<sup>13</sup> 1/s<br />
+        &nbsp;&nbsp;&nbsp;Ea = 166 kJ/mol
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Kuna nüüd mudelis on kaks reaktsiooni kiirusevalemid on keerulisemad. Kuigi peaks ikkagi olema võimalik analüütiliselt lahendama, kasutame siin numbrilist meetodit kuna on kergem ja saame sama metoodikat kasutada keerulisemate süsteemidega tulevikus.
+          </p>
+          <p>
+            Esiteks, paneme kirja mudeli diferentsiaalvõrrandid. Antud ülesandes meid huvitavad kaks ainet, glütsiin ja kala jäätmed (täpsemalt glütsiini osa jäätmetest), siis nende moolbilansid moodustavad meie mudel.
+          </p>
+          <p>
+            Alustame põhivõrrandiga diferentsiaalsel kujul ja saame asendada moolkulu mahtkuluga korda kontsentratsiooni.
+          </p>
+          <div>
+            \[ \frac{d \dot n_A}{dV} = \dot v \frac{d \dot C_A}{dV} = r_A \]
+          </div>
+          <p>
+            Siis lisame kiirusevalemit selleks, et saada mõlema aine moolbilanssi. Kuna glütsiin osaleb mõlemas reaktsioonis, glütsiini kiirusevalemis liidatakse mõlema reaktsiooni osa kokku. Võime ka jagada mahtkuluga, et liigutada seda valemi teisele poole.
+          </p>
+          <div>
+            \[ \frac{d \dot C_A}{dV} = \frac{k_1}{\dot v} C_{jäägid} - \frac{k_2}{\dot v} C_A \]
+          </div>
+          <div>
+            \[ \frac{d \dot C_A}{dV} = -\frac{k_1}{\dot v} C_{jäägid} \]
+          </div>
+          <p>
+            Saame nüüd Pythonis lahendada mudelit. Diferentsiaalvõrrandite süsteemi lahendamiseks kasutame <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a> paketti. Esiteks, defineerime mudeli muutujaid ka konstante:
+          </p>
+          <pre>
+<code class="python">from gekko import GEKKO
+m = GEKKO()
+
+T = m.Param(value=250) # Celcius
+k1 = m.Param(value=kiiruskonstant1(T.value))
+k2 = m.Param(value=kiiruskonstant2(T.value))
+vdot = m.Param(value=2) # l s^-1
+
+npts = int(V)
+m.time = np.linspace(0, V, npts) # tegelikult siin on maht, mitte aeg. Gekkos saab kasutada ".time" ka mahu tuletise jaoks
+
+Cjäägid = m.Var()
+Ca = m.Var()
+Cjäägid.value = Cjäägid_alg * np.ones(npts) # alustame algkontsentratsiooniga
+Ca.value = np.zeros(npts)</code></pre>
+          <p>
+            <code class="python">m.time</code> muutujaga saame <a href="https://et.wikipedia.org/wiki/Diskreetimine">diskreetida</a> meie reaktorit mahu järgi. Ehk, me saame jagada reaktorit väikesteks mahtudeks. Siin kasutame selleks Numpy <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html"><code class="python">linspace</code></a> funktsiooni. Alguses maht on 0 ja lõpus kõik tükid peavad kokku liidetuna olema võrdne reaktori kogumahuga (ehk <em>V</em>).
+          </p>
+          <p>
+            Nüüd saame kirja panna meie valemid. Gekkole näitame, mis muutuja on meie tuletis kasutades <code class="python">.dt()</code> meetodit. Gekko siis automaatselt saab arvutada meie jaoks kontsentratsioonide muutus mahuga.
+          </p>
+          <pre>
+<code class="python">m.Equation(Cjäägid.dt() == -k1 / vdot * Cjäägid)
+m.Equation(Ca.dt() == k1 / vdot * Cjäägid - k2 / vdot * Ca)</code></pre>
+          <p>
+            Mudel on nüüd Gekkos kirja pandud ja saame lahendada. Gekkol on erinevad <a href="https://gekko.readthedocs.io/en/latest/imode.html#id1">lahendamisviisid</a> ja siin kasutame lahendamisviis 4.
+          </p>
+          <pre>
+<code class="python">m.options.IMODE = 4 # Gekkos on 6 arvutamise viisi, IMODE=4 tähendab, et lahendame dünaamilist mudelit
+m.solve(disp=False)</code></pre>
+          <p>
+            Teeme joonist selleks, et kuvada, kuidas kontsentratsioon muutub reaktoris sõltuvalt läbitud mahust. Joonisest saame näha, et glütsiini kontsentratsioon väljuvas voos on umbes 0,021 mol/l.
+          </p>
+          <img class="inline-img" src="/reactions-course/media/aminohappe-lagunemine.png" />
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on <a href="https://github.com/zmeri/reactions-course/blob/master/examples/aminohappe_lagunemine_keerulisem.py">Githubis</a>.
+          </p>
+        </div>
+      </div>
+
       <h2>Viited</h2>
       <ol>
         <li id="ref1">
@@ -125,6 +301,15 @@
         </li>
         <li id="ref2">
           H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref3">
+          N. Sato, A. T. Quitain, K. Kang, H. Daimon, and K. Fujie, “Reaction Kinetics of Amino Acid Decomposition in High-Temperature and High-Pressure Water,” Ind. Eng. Chem. Res., vol. 43, no. 13, pp. 3217–3222, Jun. 2004, doi: 10.1021/ie020733n.
+        </li>
+        <li id="ref4">
+          K. Kang et al., “Optimization of amino acids production from waste fish entrails by hydrolysis in sub and supercritical water,” The Canadian Journal of Chemical Engineering, vol. 79, no. 1, pp. 65–70, 2001, doi: 10.1002/cjce.5450790110.
+        </li>
+        <li id="ref5">
+          B. Mohanty et al., “Amino Acid Compositions of 27 Food Fishes and Their Importance in Clinical Nutrition,” J Amino Acids, vol. 2014, p. 269797, 2014, doi: 10.1155/2014/269797.
         </li>
       </ol>
     </div>

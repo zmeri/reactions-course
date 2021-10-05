@@ -116,20 +116,26 @@ a > code {
   z-index: 1;
 }
 
+#sidebar ul {
+  list-style-type: none;
+}
+
+#sidebar li {
+  margin: 1px 0;
+}
+
 #main-text {
   padding: 1.5em;
 }
 
-#navi {
-  padding: 5px 15px;
-  list-style-type: none;
+.navi {
+  padding: 0 1em;
 }
 
-#navi-level2 {
-  padding: 0px 15px 5px 40px;
+.navi-level2 {
   text-indent: -10px;
-  list-style-type: none;
 }
+
 
 #home {
   display: flex;
@@ -147,7 +153,6 @@ a > code {
 }
 
 .nav-link {
-  padding: 5px 0px;
   color: #f0f0f0;
 }
 
@@ -266,9 +271,5 @@ a > code {
     left: 0;
     width: calc(25% - 2 * 1em);
     max-width: 18em;
-  }
-
-  .nav-link {
-    color: #f0f0f0;
   }
 }
