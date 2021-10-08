@@ -262,6 +262,11 @@ m.time = np.linspace(0, t_lõpp, npts)</code></pre>
 <code class="python">X_dkp = m.Var() # konversiooniaste
 X_dkp.value = np.zeros(npts)</code></pre>
           <p>
+            Paneme ka kirja diferentsiaalvõrrandit, mida me varem koostasime. <code class="python">.dt()</code> näitab Gekkole, et võtame antud muutuja tuletist aja suhtes.
+          </p>
+          <pre>
+<code class="python">m.Equation(X_dkp.dt() == k * C_dkp_alg * (1 - X_dkp)**2 * (C_oh_alg - C_dkp_alg * X_dkp))</code></pre>
+          <p>
             Nüüd mudel on koostatud ja võime lahendada seda ja printida lõppvastust. <code class="python">IMODE</code> ütleb Gekkole, et teeme dünaamilist simulatsiooni (ehk parameetrid muutuvad ajas või ruumalas).
           </p>
           <pre>
