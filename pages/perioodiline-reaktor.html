@@ -11,6 +11,9 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
 
   <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.2">
 
@@ -56,7 +59,7 @@
 
       <h2 id="p6hiv6rrand">Põhivõrrand</h2>
       <p>
-        Reaktori põhivõrrand on lihtsalt moolibilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Perioodilise reaktori põhivõrrand on järgmine:
+        Reaktori põhivõrrand on lihtsalt moolbilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Perioodilise reaktori põhivõrrand on järgmine:
       </p>
       <div>
         \[ \frac{dn_A}{dt} = r_A V \]
@@ -83,7 +86,7 @@
         </button>
         <div class="collapsible-text">
           <p>
-            Põhivõrrand on <a>moolibilanss</a>, aga teisel kujul. Alustame siis üldise moolibilansiga.
+            Põhivõrrand on <a href="/reactions-course/pages/modelleerimine.html#materjalbilanss">moolbilanss</a>, aga teisel kujul. Alustame siis üldise moolbilansiga.
           </p>
           <div>
             \[ \frac{dn_A}{dt} = \dot n_{A0} - \dot n_{A} + r_A V \]
@@ -103,13 +106,187 @@
         Põhivõrrandit saab ka avaldada konversiooniastme suhtes.
       </p>
       <div>
-        \[ n_{A0}\frac{dX_A}{dt} = r_A V \]
+        \[ n_{A0}\frac{dX_A}{dt} = -r_A V \]
+      </div>
+      <div>
+        \[ t = -n_{A0} \int_0^{X_A} \frac{dX_A}{r_A V} \]
+      </div>
+
+      <h2 id="n2ide-lihtsam">Näide - lihtsam</h2>
+      <p>
+        Epikloorhüdriin on oluline lähteaine epoksiidvaikude, elastomeeride ja sünteetilise glütseriini tootmiseks. Seda praegu toodetakse enamasti propüleenist ja kloorgaasist, aga on võimalik ka toota glütseroolist. Tootmine glütseroolist on võibolla eelistatud kuna ei ole vaja kasutada kloorgaasi. Esimeses sammus toimub reaktsioon kloorhappe ja glütserooli vahel katalüsaatori juuresolekul selleks, et toota 2,3-dikloro-1-propanooli (DKP). Seejärel viiakse läbi reaktsiooni DKP ja naatrium hüdroksiidi vahel epikloorhüdriini sünteesimiseks.<sup><a href="#ref2">2</a></sup>
+      </p>
+      <div>
+        \[ C_3H_6OCl_2 + NaOH \rightarrow C_3H_5OCl + H_2O + NaCl \]
+      </div>
+      <p>
+        Tahetakse läbi viia selle reaktsiooni 1-liitrilises perioodilises reaktoris. Kui kaua aega segu peaks olema reaktoris selleks, et saavutada 90% konversiooniastet?
+      </p>
+      <p>
+        DKP algkontsentratsioon on 0,08 mol/l ja naatrium hüdroksiidi algkontsentratsioon on 0,08 mol/l. Reaktorit hoitakse 60 kraadi juures. DKP suhtes on teist järku reaktsioon ja NaOH suhtes esimest järku. Reaktsiooni kineetilised parameetrid:<br />
+        &nbsp;&nbsp;&nbsp;A = 1,61&middot;10<sup>25</sup> l<sup>3</sup> mol<sup>-2</sup> s<sup>-1</sup><br />
+        &nbsp;&nbsp;&nbsp;Ea = 150 kJ mol<sup>-1</sup>
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Alustame perioodilise reaktori põhivõrrandiga ja lisame reaktsiooni kiirusevalemi:
+          </p>
+          <div>
+            \[ t = -n_{dkp,alg} \int_0^{X_{dkp}} \frac{dX_{dkp}}{-V k C_{dkp,alg}^2 (1 - X_{dkp})^2 (C_{oh,alg} - C_{dkp,alg} * X_{dkp})} \]
+          </div>
+          <p>
+            Kuna aine A moolide arv alguses on lihtsalt maht korrutatud kontsentratsiooniga, saame kirjutada valemit järgmiselt:
+          </p>
+          <div>
+            \[ t = -V C_{dkp,alg} \int_0^{X_{dkp}} \frac{dX_{dkp}}{-V k C_{dkp,alg}^2 (1 - X_{dkp})^2 (C_{oh,alg} - C_{dkp,alg} * X_{dkp})} \]
+          </div>
+          <p>
+            Võime kõik konstandid integraalist välja tuua ja osa neist taanduvad välja.
+          </p>
+          <div>
+            \[ t = \frac{1}{k C_{dkp,alg}} \int_0^{X_{dkp}} \frac{dX_{dkp}}{(1 - X_{dkp})^2 (C_{oh,alg} - C_{dkp,alg} * X_{dkp})} \]
+          </div>
+          <p>
+            See on päris keeruline integraal ja muidu oleks vist lihtsam lahendada numbrilise meetodiga, aga kuna DKP ja NaOH algkontsentratsioonid on samad võime valemit lihtsustada.
+          </p>
+          <div>
+            \[ t = \frac{1}{k C_{dkp,alg}^2} \int_0^{X_{dkp}} \frac{dX_{dkp}}{(1 - X_{dkp})^3} \]
+          </div>
+          <p>
+            Seda integraali suudame analüütiliselt lahendada.
+          </p>
+          <div>
+            \[ t = \frac{1}{k C_{dkp,alg}^2} \left( \frac{dX_{dkp}}{2 (1 - X_{dkp})^2} \right) \Bigg|_0^{X_{dkp}} \]
+          </div>
+          <div>
+            \[ t = \frac{1}{k C_{dkp,alg}^2} \left( \frac{dX_{dkp}}{2 (1 - X_{dkp})^2} - \frac{1}{2 (1 - 0)^2} \right) \]
+          </div>
+          <div>
+            \[ t = \frac{1}{k C_{dkp,alg}^2} \left( \frac{dX_{dkp}}{2 (1 - X_{dkp})^2} - \frac{1}{2} \right) \]
+          </div>
+          <p>
+            Nüüd saame valemiga arvutada vajalikku aega 90% konversiooniastme saavutamiseks. Esiteks, tuleb arvutada kiiruskonstanti <a href="/reactions-course/pages/kiirus.html#temperatuuri-m6ju">Arrheniuse võrrandiga</a>. Seda saab teha käsitsi või Pythonis. Pythonis saame defineerida funktsiooni kiiruskonstandi arvutamiseks.
+          </p>
+          <pre>
+<code class="python">def kiiruskonstant(T):
+    RGAS = 8.314462618 # J mol^-1 K^-1
+    A = 1.61e25 # l^3 mol^-2 s^-1
+    Ea = 150 * 1000 # J mol^-1
+    k = A * np.exp(-Ea / RGAS / (T + 273.15))
+    return k # l^3 mol^-2 s^-1</code></pre>
+          <p>
+            Saame nüüd Pythonisse kirjutada valemit, mida me koostasime ja arvutada aega.
+          </p>
+          <pre>
+<code class="python">C_dkp_alg = 0.08 # mol l^-1
+C_oh_alg = 0.08 # mol l^-1
+V = 1 # l
+T = 60 # Celcius
+X_dkp = 0.9 # konversiooniaste
+k = kiiruskonstant(T)
+
+t = 1 / k / C_dkp_alg**2 * (1 / 2 / (1 - X_dkp)**2 - 1 / 2)</code></pre>
+          <p>
+            Vastuseks saame <strong>158 sekundit</strong>.
+          </p>
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on kättesaadav <a href="https://github.com/zmeri/reactions-course/blob/master/examples/epikloorhydriin_lihtsam.py">Githubist</a>.
+          </p>
+        </div>
+      </div>
+
+      <h2 id="n2ide-keerulisem">Näide - keerulisem</h2>
+      <p>
+        Eelmises näites saime integraali lihtsustada kuna DKP ja NaOH algkontsentratsioonid olid samad. Lahendame sama ülesannet uuesti, aga ühe muudatusega: NaOH algkontsentratsioon on nüüd 0,12 mol/l.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Kuna eelmises lahenduses nägime, et integraal on päris keeruline juhul, kui algkontsentratsioonid on samad, kasutame nüüd numbrilist meetodit. Siis me ei pea analüütiliselt integraali lahendama. Esiteks, alustame põhivõrrandi diferentsiaalkujuga, asendades <em>r<sub>dpk</sub></em> kiirusevalemiga, nii nagu eelmises lahenduses.
+          </p>
+          <div>
+            \[ \dot n_{dkp,alg} \frac{X_{dkp}}{dt} = V k C_{dkp,alg}^2 (1 - X_{dkp})^2 (C_{oh,alg} - C_{dkp,alg} X_{dkp}) \]
+          </div>
+          <p>
+            Kuna aine A moolide arv alguses on lihtsalt maht korrutatud kontsentratsiooniga, saame kirjutada valemit järgmiselt:
+          </p>
+          <div>
+            \[ V C_{dkp,alg} \frac{X_{dkp}}{dt} = V k C_{dkp,alg}^2 (1 - X_{dkp})^2 (C_{oh,alg} - C_{dkp,alg} X_{dkp}) \]
+          </div>
+          <div>
+            \[ \frac{X_{dkp}}{dt} = k C_{dkp,alg} (1 - X_{dkp})^2 (C_{oh,alg} - C_{dkp,alg} X_{dkp}) \]
+          </div>
+          <p>
+            Nüüd võime kasutada <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a> paketti selleks, et lahendada diferentsiaalvõrrandit. Esiteks, loome Gekko mudelit ja defineerime meie parameetreid.
+          </p>
+          <pre>
+<code class="python">m = GEKKO()
+
+C_dkp_alg = m.Param(value=0.08) # mol l^-1
+C_oh_alg = m.Param(value=0.12) # mol l^-1
+V = m.Param(value=1) # l
+T = m.Param(value=60) # Celcius
+k = m.Param(value=kiiruskonstant(T.value))</code></pre>
+          <p>
+            Seejärel võime anda Gekkole need ajahetked, mille juures sooviksime, et lahendust oleks arvutatud.
+          </p>
+          <pre>
+<code class="python">t_lõpp = 200 # s
+npts = 1000
+m.time = np.linspace(0, t_lõpp, npts)</code></pre>
+          <p>
+            Siis on vaja ka defineerida muutujat, mida me tahame leida, ehk konversiooniaste. Ja paneme esialgseks väärtuseks 0 kuna konversiooniaste on alguses 0.
+          </p>
+          <pre>
+<code class="python">X_dkp = m.Var() # konversiooniaste
+X_dkp.value = np.zeros(npts)</code></pre>
+          <p>
+            Nüüd mudel on koostatud ja võime lahendada seda ja printida lõppvastust. <code class="python">IMODE</code> ütleb Gekkole, et teeme dünaamilist simulatsiooni (ehk parameetrid muutuvad ajas või ruumalas).
+          </p>
+          <pre>
+<code class="python">m.options.IMODE = 4
+m.solve(disp=False)
+
+idx = np.amin(np.where(np.asarray(X_dkp.value) > 0.9)[0])
+print('Vajalik aeg= {:.2f} s'.format(m.time[idx]))</code></pre>
+          <p>
+            Vastuseks saame <strong>40 sekundit</strong>. Võime ka joonist teha selleks, et näha, kuidas konversiooniaste muutub ajaga. Jooniselt võime näha, et kui tahame järjest suuremat konversiooniastet saavutada, siis vajalik viibimisaeg kasvab eksponentsiaalselt.
+          </p>
+          <img class="inline-img" src="/reactions-course/media/epikloorhydriin.png" />
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on kättesaadav <a href="https://github.com/zmeri/reactions-course/blob/master/examples/epikloorhydriin_keerulisem.py">Githubist</a>.
+          </p>
+        </div>
       </div>
 
       <h2>Viited</h2>
       <ol>
         <li id="ref1">
           I. Kamenev, KAT0141 Reaktsiooniprotsessid: Loengukonspekt. Tallinna Tehnikaülikool, 2019.
+        </li>
+        <li id="ref2">
+          J. S. Zhang, Y. C. Lu, Q. R. Jin, K. Wang, and G. S. Luo, “Determination of kinetic parameters of dehydrochlorination of dichloropropanol in a microreactor,” Chemical engineering journal, vol. 203, pp. 142–147, 2012.
         </li>
       </ol>
     </div>

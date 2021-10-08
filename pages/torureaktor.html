@@ -59,7 +59,7 @@
 
       <h2 id="p6hiv6rrand">Põhivõrrand</h2>
       <p>
-        Reaktori põhivõrrand on lihtsalt moolbilanss. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Torureaktori põhivõrrand on järgmine:
+        Reaktori põhivõrrand on lihtsalt <a href="/reactions-course/pages/modelleerimine.html#materjalbilanss">moolbilanss</a>. Põhivõrrand on oluline kuna selle kaudu on võimalik vastata olulistele disaini ja opereerimise küsimustele. Torureaktori põhivõrrand on järgmine:
       </p>
       <div>
         \[ \frac{d\dot n_A}{dV} = r_A \]
@@ -84,7 +84,7 @@
             <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
           </span>
         </button>
-        <div class="collapsible-text">
+        <div class="collapsible-text-long">
           <p>
             Põhivõrrand on <a>moolibilanss</a>, aga teisel kujul. Alustame siis üldise moolibilansiga.
           </p>
@@ -95,7 +95,7 @@
             Kuna torureaktoris konversiooniaste sõltub läbitud mahust, tekkimise/kadumise osa valemis on integraal. Pidev segureaktori ja perioodilise reaktoriga ei olnud vaja integraali kasutada kuna konversiooniaste oli igal pool sama.
           </p>
           <p>
-            Kui eeldame, et reaktor töötab statsionaarses re&#382;iimis, siis \( \frac{dn_A}{dt} = 0 \). Ehk, aine A kogus reaktoris ei muutu ajas. Tõstes <em>F<sub>A0</sub></em> ja <em>F<sub>A</sub></em> valemi teisele poole, saame järgmise valemi.
+            Kui eeldame, et reaktor töötab statsionaarses re&#382;iimis, siis \( \frac{dn_A}{dt} = 0 \). Ehk, aine A kogus reaktoris ei muutu ajas. Tõstes <em>n&#775;<sub>A0</sub></em> ja <em>n&#775;<sub>A</sub></em> valemi teisele poole, saame järgmise valemi.
           </p>
           <div>
             \[ \dot n_{A} - \dot n_{A0} = \int_{0}^{V} r_A dV \]
@@ -107,8 +107,17 @@
             \[ \frac{\dot n_{A} - \dot n_{A0}}{dV} = \frac{d\dot n_A}{dV} = r_A \]
           </div>
           <p>
-            Mõnikord tahame ka arvutada torureaktori mahtu ja selleks saame integreerida valemit mahu suhtes, et leida põhivõrrandi integraalset kuju, mida üleval näidatakse.
+            Mõnikord tahame ka arvutada torureaktori mahtu ja selleks saame integreerida valemit, et leida põhivõrrandi integraalset kuju, mida üleval näidatakse. Selleks, et seda teha esiteks eraldame tuletise muutujaid ja viime <em>dV</em> valemi teisele poolele.
           </p>
+          <div>
+            \[ dV = \frac{d\dot n_A}{r_A} \]
+          </div>
+          <p>
+            Siis saab mõlemat poolt integreerida ja põhivõrrandi integraalne kuju ongi käes.
+          </p>
+          <div>
+            \[ \int dV = V = \int \frac{d\dot n_A}{r_A} \]
+          </div>
         </div>
       </div>
       <p>
@@ -192,7 +201,7 @@ k = kiiruskonstant(T)
 
 Xa = 1 - np.exp(-V * Ca_alg * k / ndot_a_alg)</code></pre>
           <p>
-            Vastuseks saame 5,46%.
+            Vastuseks saame <strong>5,46%</strong>.
           </p>
           <p>
             Pythoni fail, mida kasutasime siin lahendamiseks, on <a href="https://github.com/zmeri/reactions-course/blob/master/examples/aminohappe_lagunemine_lihtsam.py">Githubis</a>.
