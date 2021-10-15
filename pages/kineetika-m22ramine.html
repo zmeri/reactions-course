@@ -66,11 +66,11 @@
         Ehk me arvutasime tuletist punktide vahedega ja sellepärast kutsutakse lõplike vahede meetodiks. Siin tuletise arvutamiseks punktis <em>x<sub>i</sub></em> võtsime erinevust selle ja järgmise punkti vahel (<em>x<sub>i+1</sub></em>). Kuid võib selle asemel kasutada ka muid punkte. Näiteks, võime kasutada ka eelnevat punkti arvutuses.
       </p>
       <div>
-        \[ \frac{dy(x_i)}{dx} \approx \frac{y(x_{i+1}) - 2y(x_i) + y(x_{i-1})}{(x_{i+1} - x_i)(x_{i} - x_{i-1})} \]
+        \[ \frac{dy(x_i)}{dx} \approx \frac{y(x_{i+1}) - y(x_{i-1})}{x_{i+1} - x_{i-1}} \]
       </div>
       <img class="inline-img" src="/reactions-course/media/central-difference.svg" />
       <p>
-        Kui kasutada kolme punkti kahe asemel, tuletis võib olla täpsem. Tuletist võib täpsemaks ka muuta, kui võtta väiksemat vahet. Kui vahe on väiksem, on tõenäolisem, et funktsioon käitub sisuliselt lineaarselt nende punktide juures.
+        Kui kasutada seda valemit, tuletis on täpsem, sisuliselt sellepärast, et kasutame kahte vahet tuletise arvutamiseks ühe asemel (ehk <em>x<sub>i-1</sub></em> kuni <em>x<sub>i</sub></em> ja <em>x<sub>i</sub></em> kuni <em>x<sub>i+1</sub></em>). Tuletist võib täpsemaks ka muuta, kui võtta väiksemat vahet. Kui vahe on väiksem, on tõenäolisem, et funktsioon käitub sisuliselt lineaarselt nende punktide juures.
       </p>
       <p>
         Pythoni Numpy paketis on <a href="https://numpy.org/doc/stable/reference/generated/numpy.gradient.html"><code class="python">gradient</code></a> funktsioon, millega saab arvutada tuletist lõplike vahede meetodiga.
