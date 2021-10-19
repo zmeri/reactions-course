@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.2">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.3`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lahendamine numbriliselt</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Lahendamine numbriliselt</h1>
+      <p>
+        Reaktsiooniprotsesside mudelid tavaliselt koosnevad diferentsiaalvõrranditest. Üldiselt, võrrandisüsteem on piisavalt keeruline, et on raske või võimatu lahendada seda analüütiliselt. Sellepärast, sageli lahendatakse numbriliste meetoditega. Siin anname lühikest ülevaadet numbrilistest meetoditest. Kuigi enamasti kasutame olemasolevat tarkvara lahendamiseks, on oluline teada üldiselt, kuidas sellised meetodid töötavad selleks, et osata neid õigesti kasutada.
+      </p>
+
+      <h2 id="l6plike-vahede">Lõplike vahede meetod</h2>
+      <p>
+        Tihti keemiliste protsesside mudelites on tuletised, aga mõnikord me ei saa või ei taha tuletist analüütiliselt arvutada. See võib juhtuda näiteks, kui võrrand on keerulisem ja tuletise arvutamine oleks raske. Samuti tekivad olukorrad, mil meil ei ole isegi võrrandit, mille tuletist võtta (nt kui meil on hoopis katseliselt mõõdetud väärtusi). Sellisel juhul saame kasutada lõplike vahede meetodit.
+      </p>
+      <p>
+        Lõplike vahede meetod põhineb ideel, et võib sujuvat funktsiooni ligikaudselt kirjeldada polünoomiga (Taylori teoreem). Sageli kasutatakse lihtsalt lineaarset joont. Sel juhul võib ligikaudselt arvutada funktsiooni väärtust punktil <em>x+h</em>, kui on teada funktsiooni väärtust mõnel teisel punktil, <em>x</em>, ja funktsiooni tuletist <em>f &#8242;</em>.
+      </p>
+      <div>
+        \[ f(x+h) = f(x) + f'(x) h + \epsilon \]
+      </div>
+      <p>
+        <em>h</em> on <em>x</em> ja uue punkti vahe ja seda sageli kutsutakse sammuks. <em>&epsilon;</em> näitab viga, mis tuleb sellest, et funktsioon ei ole täpselt lineaarne ja meie ligikaudne väärtus erineb mingil määral tegelikust väärtusest.
+      </p>
+      <p>
+        Selle lihtsa valemiga on võimalik näha, et saame ligikaudselt arvutada tuletist, kui teame lihtsalt funktsiooni väärtust kahel punktil. Teisendades seda valemit:
+      </p>
+      <div>
+        \[ f'(x) = \frac{f(x+h) - f(x)}{h} \]
+      </div>
+      <img class="inline-img" src="/reactions-course/media/forward-difference.svg" />
+      <p>
+        Ja see ongi kõige lihtsam lõplike vahede meetod. Võetakse kahte punkti, arvutatakse funktsiooni erinevust nende punktide vahel ja jagatakse punktide kaugusega x-suunas.
+      </p>
+      <p>
+        Kuid selle ja enamus numbrilisi meetodeid on ligikaudseid meetodeid. Ehk, esineb viga arvutatud ja tegeliku väärtuse vahel. Kui kasutada numbrilisi meetodeid, tuleb kindlaks teha, et viga on rahuldavalt väike. Üleval antud valem ei ole kõige täpsem ja viga võib olla suhteliselt suur. Täpsem variant on sümmeetriline valem, mis võtab arvesse ka <em>x</em>-ile eelnevat punkti: <em>x-h</em>.
+      </p>
+      <div>
+        \[ f'(x) = \frac{f(x+h) - f(x-h)}{2h} \]
+      </div>
+      <img class="inline-img" src="/reactions-course/media/central-difference.svg" />
+      <p>
+        Viga sõltub ka valitud sammust (<em>h</em>). Kui <em>h</em> on suurem, siis on suurem tõenäosus, et selles vahemikus funktsioon erineb oluliselt lineaarsest joonest. Võivad ka olla probleemid, kui <em>h</em> on liiga väike. Vaatame täpsemalt järgmises alampeatükis, kust vead tekivad.
+      </p>
+
+      <h2 id="vea-p6hjused">Vea põhjused</h2>
+      <p>
+        Viga numbrilise meetodi tulemuses võib tulla erinevusest numbrilise lähenemisviisi ja tegeliku funktsiooni vahel. Samuti viga võib tekkida ümardamisest. Viga võib ka tulla andmete mõõtemääramatusest, kui proovitakse leida katseandmete tuletist.
+      </p>
+      <p>
+        Näiteks, lõplike vahede meetodi valemites, mida on üleval näidatud, eeldasime, et funktsioon käitub lineaarselt. Kuid tegelikult funktsioon ei pruugi olla päris lineaarne. Antud juhul viga, mis tuleb sellest, et funktsioon ei ole päris lineaarne, kutsutakse <em>kärpimisveaks</em>. Me oleksime võinud kirjeldada funktsiooni kõrgema astme polünoomiga, aga kärpisime polünoomi kõrgemaid astmeid ja kasutasime ainult lineaarset valemit. Mida lineaarsemalt funktsioon käitub, seda väiksem on kärpimisviga. Samuti on võimalik kärpimisviga vähendada, kui kasutada väiksemat sammu (<em>h</em>) kuna väiksemas vahemikus on suurem tõenäosus, et käitumine on enam-vähem lineaarne.
+      </p>
+      <p>
+        Kuid sammu vähendades tavaliselt suureneb ümardamise viga. Ümardamisviga tuleb sellepärast, et arvutis on lõplik hulk bitte, millega salvestada ühte arvu. Üks näide, millega oleme kõik kokku puutunud on pii. Kuna pii on irratsionaalarv, me ei saa kümnendsüsteemis seda täpselt kirja panna. Arvutustes otsustame mingil hetkel, et on piisavalt täpne väärtus ja ümardame.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/pi-rounding.svg" />
+      <p>
+        Ümardamisviga saab näha lihtsa näitega. Kui alustame väärtusega 1,3, lahutame 1,2 ja seejärel lahtame 0,1 lõppväärtus peaks olema 0. Kuid tehes seda arvutust arvutiga näeme, et tekib väike viga.
+      </p>
+      <pre>
+<code class="python">x1 = 1.3
+x2 = 1.2
+viga = x1 - x2 - 0.1
+print('Ümardamisviga:', viga)</code></pre>
+      <p>
+        Kui jooksutada seda koodi näeme, et viga ei ole 0, vaid <code class="python-repl">8.326672684688674e-17</code>. Kui kasutada 64-bitist &bdquo;double&ldquo; arvu (Pythonis <code class="python">float</code>), siis täpsus on umbes 2,22&#183;10<sup>-16</sup>. Seda täpsust defineeritakse, kui kõige väiksem arv, mida saab ühele juurde liita selleks, et arvuti käsitleks seda, kui erinev number. Seega, kui teha numbrilisi arvutusi &bdquo;double&ldquo; arvudega, siis täpsus ei saa olla parem, kui umbes 16 tüvenumbrit (ingl <em>significant digit</em>).
+      </p>
+      <p>
+        Ümardamisviga suurus sõltub algoritmist ja arvude suhtelisest suurusest. Mida rohkem tehteid algoritmis on, seda suurem on tavaliselt ümardamisviga. Lisaks, mõned tehted mõjutavad rohkem, kui teised. Eriti problemaatiline on kahte arvu lahutamine, kui neil on peaaegu sama väärtus. Sellisel juhul jäävad ainult paar tüvenumbrit ja ümardamisviga oluliselt suureneb. See võib juhtuda, kui arvutada tuletist lõplike vahede meetodiga kuna lugejas toimub lahutamine. Seda võib näha järgmise lihtsa näitega, milles proovime arvutada tuletist kahe punkti vahel.
+      </p>
+      <pre>
+<code class="python">dx_dt = -2
+delta = 1e-8
+x1 = 1.3
+x2 = x1 + dx_dt * delta
+viga = (x2 - x1) / delta - dx_dt
+print('Ümardamisviga:', viga)</code></pre>
+      <p>
+        Siin kasutame lihtsalt lineaarset valemit, siis arvutatud tuletis peaks võrduma tegeliku tuletisega (<code class="python">dx_dt</code>). Kuid jooksutades koodi näeme, et ümardamisviga on <code class="python-repl">-1.0049518550658831e-08</code>. Kui vähendada <code class="python">delta</code>, siis ümardamisviga suureneb. Näiteks, kui <code class="python">delta = 1e-16</code>, siis ümardamisviga on palju suurem: <code class="python-repl">-0.22044604925031308</code>. Sellepärast väiksema sammu kasutamine ei vii alati parema täpsuseni.
+      </p>
+      <p>
+        Ja loomulikult viga võib tulla katseandmete mõõtemääramatusest, kui kasutatakse numbrilist meetodit katseandmetega. Kuigi mõõtemääramatuse viga ei tule otseselt arvutist või algoritmist, mõned algoritmid võivad võimendada müra, mis on algandmetes.
+      </p>
+
+      <h2 id="runge-kutta">Runge-Kutta meetod</h2>
+      <p>
+        Mõnikord mudelis on tuletised aja suhtes. Ehk, mingid parameetrid muutuvad ajas. Tihti teame algväärtuseid (näiteks katse alguses), aga me peame arvutama, kuidas parameetrid muutuvad, kui liikume ajas edasi. Runge-Kutta meetodiga saame lahendada selliseid diferentsiaalvõrrandeid. Kõige lihtsamal kujul ülesanne on see, et me teame parameetri väärtust ajahetkel <em>t<sub>i</sub></em>, aga tahame arvutada väärtust järgmisel ajahetkel (<em>t<sub>i+1</sub></em>).
+      </p>
+      <p>
+        Esiteks, alustame sarnase meetodiga, mis on lihtsam: Euleri meetod. Euleri meetodi järgi saame arvutada <em>x<sub>i+1</sub></em>, kui korrutada aja sammu tuletisega ja liidame algsele väärtusele (<em>x<sub>i</sub></em>). Ehk, me kasutame tuletist ja eeldame, et funktsioon läheb edasi ajas lineaarse joonena. Siin <em>x&prime;</em> tähistab <em>x</em>-muutuja tuletist aja suhtes.
+      </p>
+      <div>
+        \[ x_{i+1} = x'_i \Delta t + x_i \]
+      </div>
+      <p>
+        Euleri meetod näitab, kuidas on võimalik lahendada diferentsiaalvõrrandit, kasutades tuletist selleks, et edasi liikuda ajas. Kuid Euleri meetod ei ole eriti täpne. Kui tegelik funktsioon ei ole päris lineaarne antud vahemikus, siis Euleri meetodi väärtus hakkab oluliselt erinema tegelikust lahendusest.
+      </p>
+      <p>
+        Runge-Kutta meetod kasutab Euleri meetodit mitu korda mitme punkti juures. Seda tehes, muutub algoritm täpsemaks. On erinevad Runge-Kutta variandid sõltuvalt sellest, mitu punkti kasutatakse ja kus need punktid asuvad. Enimlevinud on neljandat järku Runge-Kutta meetod, mis kasutab neli punkti. Esimene punkt on algajahetkel (<em>i</em>), neljas on järgmisel ajahetkel (<em>i+1</em>) ja teine ja kolmas on nende ajahetkete vahel (<em>i+0,5</em>). Järgnevates valemites <em>f</em> on funktsioon, millega saame tuletist arvutada. Reaktsiooniprotsessides üks näide sellisest funktsioonist on kiirusevalem, mis lubab meil arvutada kontsentratsiooni muutust ajas ja omakorda sõltub kontsentratsioonist.
+      </p>
+      <div>
+        \[ x'_1 = f(t_i, x_i) \]
+        \[ x'_2 = f \left( t_i + \frac{\Delta t}{2}, x_i + \frac{\Delta t}{2} x'_1 \right) \]
+        \[ x'_3 = f \left( t_i + \frac{\Delta t}{2}, x_i + \frac{\Delta t}{2} x'_2 \right) \]
+        \[ x'_4 = f(t_{i+1} + \Delta t, x_{i+1} + \Delta t x'_3) \]
+        \[ x_{i+1} = frac{\Delta t}{6} (x'_1 + 2x'_2 + 2x'_3 + x'_4) + x_i \]
+      </div>
+      <p>
+        Ehk, Runge-Kutta meetodis kasutatakse tuletist esimese punkti juures selleks, et arvutada muutuja väärtust järgmise punkti juures. Siis seda uut x-väärtust kasutatakse arvutamaks tuletist sama punkti juures. Siis tehakse seda jälle järgmise punkti jaoks. Kui on neljandat järku Runge-Kutta, seda protsessi korratakse neli korda. Seejärel, arvutatakse tuletiste keskmist ja seda keskmist väärtust kasutatakse lõpuks <em>x<sub>i+1</sub></em> arvutamiseks.
+      </p>
+
+      <h2 id="tuletise">Tuletise meetodid</h2>
+      <p>
+        Tuletise meetodid liikuvad lahenduse suunas järgides valemite tuletist. Nii nagu pall veereb mäest alla kõige madalamasse punktisse, need meetodid kasutavad tuletist selleks, et hinnanguliselt leida suunda, mis viib madalama vea juurde.
+      </p>
+      <p>
+        Üldiselt selline algoritm käib järgnevalt. Alustatakse algpunktist. Siis arvutatakse tuletist. Seejärel, kasutatakse tuletist, et võtta sammu suunas, mis peaks viima madalama vea väärtuseni. Sammu pikkust valitakse erinevalt, sõltuvalt algoritmist. Iga punkti juures hinnatakse, kas viga on piisavalt väike. Kui antud punkti juures viga on piisavalt väike, siis algoritm lõpeb ja väljastab lahendust. Kui lahendust pole veel leitud, siis algoritm teeb järgmist iteratsiooni.
+      </p>
+      <p>
+        Scipy paketi <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html"><code class="python">minimize</code></a> funktsiooni kaudu on võimalik kasutada mitu tuletise meetodit (kui ka mõned teised algoritmid). Üks tuntumaid algoritme on Broyden-Fletcher-Goldfarb-Shanno (BFGS) algoritm, mis on tavaliselt <code class="python">minimize</code> funktsiooni väikimisvalik.
+      </p>
+
+      <h2 id="">Sisemise punkti meetod</h2>
+      <p>
+        Tihti optimeerimise ülesandes muutujatel on piirangud. Näiteks, ühe aine konversiooniaste ei saa ole kõrgem kui 1 ega väiksem kui 0. Sisemise punkti meetod (ingl <em>interior point method</em>) sisuliselt teisendab võrrandisüsteemi nii, et võrrandid otseselt sisaldavad need piirangud. Seda teisendamist tehakse nii, et oleks lihtsam lahendada võrrandisüsteemi. Piirangute asemel kasutatakse funktsiooni, mis takistab lahendaja minemast piirkonda, milles lahendus ei saa olla. Lisaks, selleks, et leida lahendust võimalikult kiiresti, algoritm proovib järgida keskset teed, mis viib lahenduse punktini.
+      </p>
+      <p>
+        Kui ülesanne on niiviisi ümber vormistatud, siis saab selles teisendatud ruumalas võtta sammud lahenduse poole. Selleks kasutatakse näiteks tuletise meetodit (nt Newtoni algoritm).
+      </p>
+      <p>
+        Siin üks oluline järeldus on see, et mõnikord võib lahendust kergemini leida, kui esiteks teisendada algseid valemeid. Sisemise punkti meetod, kui ka mõned teised meetodid, kasutavad sellist lähenemist.
+      </p>
+
+      <h2 id="">Globaalsed meetodid</h2>
+      <p>
+        Paljud optimeerimise algoritmid peatuvad kohe, kui need leiavad miinimumit. Kuid sageli ülesandes esineb mitu miinimumi ja leitud miinimum ei pruugi olla kõige parem lahendus. Kõige parem lahendus kutsutakse <em>globaalseks miinimumiks</em>. Globaalsed optimeerimise meetodid katsetavad mitu erinevat kohta probleemi ruumalas selleks, et proovida tuvastada teisi miinimume, mis on väiksema veaga. Kaks näidet sellistest meetoditest on simuleeritud lõõmutamine (ingl <em>simulated annealing</em>) ja <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html#scipy.optimize.differential_evolution">diferentsiaalne evolutsioon</a> (ingl <em>differential evolution</em>).
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery, Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, 2007.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
