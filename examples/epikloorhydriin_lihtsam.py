@@ -28,6 +28,7 @@ T = 60 # Celcius
 X_dkp = 0.9 # konversiooniaste
 
 k = kiiruskonstant(T)
+print('kiiruskonstant=', k)
 
 '''
 Alustame perioodilise reaktori põhivõrrandiga ja lisame reaktsiooni kiirusevalemi:
