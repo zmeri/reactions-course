@@ -35,14 +35,6 @@ FB0 = m.Param(value=CB0.value * v_in * np.asarray(m.time))
 
 XA = m.Var(0)
 
-'''
-Diferentsiaalvõrrandi tuletamine:
-1) Alustada moolbilansiga: V * dCA_dt = r_A * V
-    - siin eeldame, et reaktsiooni kiirus on igal pool sama (ehk ei ole vaja integraali mahu suhtes)
-2) dCA_dt = -CA0 * dXA_dt
-3) Lisada reaktsioonikiiruse võrrandit
-4) Lahendada dXA_dt jaoks
-'''
 m.Equation(XA.dt() == k * (1 - XA) * (FB0 - nA0 * XA) / V)
 
 m.options.IMODE = 4
