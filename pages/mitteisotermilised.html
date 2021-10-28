@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.2">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.5`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mitteisotermilised reaktorid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Mitteisotermilised reaktorid</h1>
+      <p>
+        Reaktsiooni kiirus on seotud energiatasemega reaktoris. Kui on rohkem energiat reaktoris, siis üldjuhul reaktsioon käib kiiremini. Reaktsioonid tekitavad või nõuavad samuti energiat ja võivad mõjutada, kui palju energiat oleks vaja anda või võtta reaktorist. Sellepärast, on mõnikord vaja mudelisse lisada energiabilansi.
+      </p>
+
+      <h2 id="n2ide">Energia lisamine mudelisse</h2>
+      <p>
+        Energiabilansi on vaja arvesse võtta siis, kui temperatuur muutub või kui on vaja teada, kui palju energiat reaktor nõuab/toodab. Moolbilansist (ehk põhivõrrandist) me ei saa seda informatsiooni. Täpne <a href="/reactions-course/pages/modelleerimine.html#energiabilanss">energiabilanss</a> sõltub ülesandest, aga üldiselt kuju on selline:
+      </p>
+      <div>
+        \[ \sum_i n_i C_{p,i} \frac{dT}{dt} = \sum_i \dot n_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + \dot n_{faasimuutus} \Delta H_{faasimuutus} + Q \]
+      </div>
+      <p>
+        Kui koostada energiabilansi konkreetse ülesande jaoks, siis tuleb vaadata täpsemalt, mis energiaallikad ja energialäbikande liigid on olulised. Näiteks, kui on perioodiline reaktor ja on ainult üks faas, siis oluline on ainult reaktsiooni energia ja energialäbikanne reaktori ja ümbruse vahel.
+      </p>
+      <p>
+        Siin me tähistame energialäbikannet reaktori ja ümbruse vahel lihtsalt tähega <em>Q</em>, aga tegelikult võime kasutada soojuslevi valemeid selleks, et arvutada <em>Q</em>. Antud õppeaines me ei keskendu <em>Q</em> arvutamisele. Kuid see näitab, kuidas reaktsiooniprotsessid on seotud energia leviprotsessidega.
+      </p>
+
+      <h2 id="n2ide">Näide - patarei kuumenemine</h2>
+      <p>
+        Kui patareid on ebastabiilses seisundis, ühendid patareis võivad hakata reageerima, põhjustades tulekahju. Selline olukord võib näiteks tekkida, kui patarei temperatuur on liiga kõrge või kui laaditakse patarei liiga palju. On võimalik teha turvalisemaid patareisid, kui on mudelid, mis kirjeldavad neid protsesse patareis, mis võivad viia tulekahjuni.
+      </p>
+      <p>
+        Oletame, et liitium-ioon patarei on alguses toatemperatuuril ja siis pannakse keskkonda, mis on 240 kraadi juures. Kui kaua läheks enne, kui reaktsioonid patarei sees põhjustavad järsku temperatuuri tõusu (ja tõenäoliselt tulekahju)?
+      </p>
+      <p>
+        Sellises olukorras on mitu reaktsiooni, mis annavad soojust<sup><a href="#ref1">1</a></sup>:
+      </p>
+      <ol>
+        <li>
+          Metastabiilse tahke-elektrolüüdi liidese (ingl <em>solid-electrolyte interface</em>, SEI) lagunemine
+        </li>
+        <li>
+          Anoodi-elektrolüüdi reaktsioon
+        </li>
+        <li>
+          Elektrolüüdi lagunemine
+        </li>
+        <li>
+          Katoodi-elektrolüüdi reaktsioon
+        </li>
+      </ol>
+      <p>
+        Eeldame, et patarei läbimõõt on 1,8 cm ja pikkus on 6,5 cm. Vajalikud kineetilised ja soojusläbikande parameetrid antakse Hewsoni<sup><a href="#ref1">1</a></sup> artiklis.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Alustame energiabilansiga. Meil on neli reaktsiooni, siis peame arvutama energiat, mida iga reaktsioon annab. Samuti toimub soojusläbikanne ümbrusega konvektsiooni ja kiirguse teel.
+          </p>
+          <div>
+            \[ \rho C_p \frac{dT}{dt} == Q_{rxn0} + Q_{rxn1} + Q_{rxn2} + Q_{rxn3} + Q_{konv} + Q_{kiirg} \]
+          </div>
+          <p>
+            Kõikide reaktsioonide jaoks kasutatakse sama vormi: reaktsiooni kiirust korda reaktsioonientalpiat korda aine mass mahu ühiku kohta (<em>&rho;</em>). Kasutatakse aine massi kuna reaktsioonientalpiaid antakse massi ühiku kohta. Massid on antud mahu kohta kuna bilanss tervikuna antakse mahu ühiku kohta. Kuna kasutatakse erinevaid reaktsiooni kiirusevalemeid, näitame eraldi kõik neli valemit.
+          </p>
+          <div>
+            \[ Q_{rxn0} = k_0 Y_0 \rho_0 H_{rxn0} \]
+            \[ Q_{rxn1} = k_1 Y_1 e^{-z/0.033} \rho_1 H_{rxn1} \]
+            \[ Q_{rxn2} = k_2 Y_2 \rho_2 H_{rxn2} \]
+            \[ Q_{rxn3} = k_3 Y_3 (1 - Y_3) \rho_3 H_{rxn3} \]
+          </div>
+          <p>
+            Soojusläbikanne konvektsiooni ja kiirguse teel võib arvutada järgmiste valemitega:
+          </p>
+          <div>
+            \[ Q_{konv} = h_{eff} \left( \frac{S}{V} \right) (T_{\infty} - T) \]
+            \[ Q_{kiirg} = \epsilon \sigma \left( \frac{S}{V} \right) (T_{\infty} - T) \]
+          </div>
+          <p>
+            Siin <em>h<sub>eff</sub></em> on soojusläbikande tegur, \( \left( \frac{S}{V} \right) \) on pindala-mahu suhe ja <em>T<sub>&infin;</sub></em> on ümbritseva keskkonna temperatuur.
+          </p>
+          <p>
+            Lisaks, peame koostama materjalbilanse iga aine jaoks. Kuna aineid ei lisata ega võeta patareist reaktsiooni ajal, patarei on sisuliselt perioodiline reaktor ja kontsentratsiooni muutus sõltub ainult reaktsiooni kiirusest. Siin kasutame normaliseeritud kontsentratsioon (<em>Y</em>), mis sisuliselt näitab, mis massosa antud ainest võib veel reageerida. Ehk, <em>Y</em> on umbes nagu konversiooniaste, aga on defineeritud massi järgi ja näitab, kui palju on järgi jäänud, mitte kui palju on reageerinud. Siin on massbilansid:
+          </p>
+          <div>
+            \[ \frac{dY_0}{dt} = -k_0 Y_0 \]
+            \[ \frac{dY_1}{dt} = -k_1 Y_1 e^{-z/0.033} \]
+            \[ \frac{dY_2}{dt} = -k_2 Y_2 \]
+            \[ \frac{dY_3}{dt} = -k_3 Y_3 (1 - Y_3) \]
+          </div>
+          <p>
+            Nüüd võime kasutada <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a> paketti selleks, et lahendada diferentsiaalvõrrandit. Esiteks, paneme kirja reaktsiooni parameetrid, mida saime Hewsoni<sup><a href="#ref1">1</a></sup> artiklist. Metastabiilse tahke-elektrolüüdi liidese <em>&rho;</em> väärtust ei olnud artiklis antud, siis lihtsalt eeldame, et on 100 kg m<sup>-3</sup>.
+          </p>
+          <pre>
+<code class="python">Yalg_väärtused = np.asarray([0.15, 0.45, 1.0, 0.96]) # Y on sisuliselt normaliseeritud kontsentratsioon, ehk näitab, kui palju antud ainest on järgi jäänud
+A_väärtused = np.asarray([1.67e15, 1.67e6, 5.1e25, 6.67e11]) # s^-1, sagedustegur
+Ea_väärtused = np.asarray([135, 77.2, 274, 122]) * 1000 # J mol^-1, aktivatsioonienergia
+Hrxn_väärtused = np.asarray([257.0, 1714, 155, 314]) * 1000 # J kg^-1, reaktsioonientalpia
+rho_väärtused = np.asarray([100, 610.0, 1221, 407]) # kg m^-3, aine mass mahu ühiku kohta</code></pre>
+          <p>
+            Siis muudame neid Numpy massiive Gekko massiivideks. Saame seda teha for-tsükliga.
+          </p>
+          <pre>
+<code class="python">m = GEKKO()
+
+ncomp = 4 # reaktsioonide arv
+Yalg = m.Array(m.Param, (ncomp))
+A = m.Array(m.Param, (ncomp))
+Ea = m.Array(m.Param, (ncomp))
+Hrxn = m.Array(m.Param, (ncomp))
+rho = m.Array(m.Param, (ncomp))
+for i in range(ncomp):
+    Yalg[i].value = Yalg_väärtused[i]
+    A[i].value = A_väärtused[i]
+    Ea[i].value = Ea_väärtused[i]
+    Hrxn[i].value = Hrxn_väärtused[i]
+    rho[i].value = rho_väärtused[i]</code></pre>
+          <p>
+            Ja seejärel, defineerime ülejäänud parameetreid.
+          </p>
+          <pre>
+<code class="python">RGAS = m.Const(value=8.314462618) # J mol^-1 K^-1
+rhoCp = m.Param(value=2.79e6) # J m^-3
+pind_maht_suhe = m.Param(48.4) # m^-1
+epsilon = m.Param(0.8)
+sigma = m.Param(5.67e-8) # W m^-2 K^-4
+heff = m.Param(value = 4.00377) # soojusläbikandetegur
+Tvälis = m.Param(value=240) # K, ümbritseva keskkonna temperatuur</code></pre>
+          <p>
+            Siis peame Gekkole andma need ajahetked, mille juures sooviksime, et lahendust oleks arvutatud.
+          </p>
+          <pre>
+<code class="python">npts = 1000
+t_lõpp = 3400
+m.time = np.linspace(0, t_lõpp, npts) # s</code></pre>
+          <p>
+            Siis defineerime muutujaid, mida me tahame leida. Paneme ka vastavaid esialgseid väärtusi.
+          </p>
+          <pre>
+<code class="python">T = m.Var(25)
+Y0 = m.Var(Yalg[0].value)
+Y1 = m.Var(Yalg[1])
+Y2 = m.Var(Yalg[2])
+Y3 = m.Var(Yalg[3])</code></pre>
+          <p>
+            Nüüd saame kirja panna diferentsiaalvõrrandeid, mida me varem koostasime. Kuna terve energiabilanss on päris pikk, tükeldasime seda kasutades Gekko <code class="python">Intermediate</code> objekte. <code class="python">Intermediate</code>-iga on võimalik defineerida vahepealseid väärtusi või valemeid, mida hiljem kasutatakse lõplikus valemis (ehk <code class="python">Equation</code> objektis).
+          </p>
+          <pre>
+<code class="python">z = m.Intermediate(0.033 + (Yalg[1] - Y1) + (Yalg[0] - Y0))
+k = [None] * ncomp
+for i in range(ncomp):
+    k[i] = m.Intermediate(A[i] * m.exp(-Ea[i] / RGAS / (T + 273.15)))
+
+Qrxn0 = m.Intermediate(k[0] * Y0 * rho[0] * Hrxn[0])
+Qrxn1 = m.Intermediate(k[1] * Y1 * m.exp(-z/0.033) * rho[1] * Hrxn[1])
+Qrxn2 = m.Intermediate(k[2] * Y2 * rho[2] * Hrxn[2])
+Qrxn3 = m.Intermediate(k[3] * Y3 * (1 - Y3) * rho[3] * Hrxn[3])
+Qkonv = m.Intermediate(heff * pind_maht_suhe * (Tvälis - T))
+Qkiirg = m.Intermediate(epsilon * sigma * pind_maht_suhe * ((Tvälis + 273.15)**4 - (T + 273.15)**4))
+m.Equation(T.dt() == (Qrxn0 + Qrxn1 + Qrxn2 + Qrxn3 + Qkonv + Qkiirg) / rhoCp)
+m.Equation(Y0.dt() == -k[0] * Y0)
+m.Equation(Y1.dt() == -k[1] * Y1 * m.exp(-z/0.033))
+m.Equation(Y2.dt() == -k[2] * Y2)
+m.Equation(Y3.dt() == -k[3] * Y3 * (1 - Y3))</code></pre>
+          <p>
+            Mudel on nüüd koostatud ja võime lahendada seda. Loome ka joonist selleks, et näha, kuidas temperatuur muutub ajas.
+          </p>
+          <pre>
+<code class="python">m.options.IMODE = 4
+m.solve(disp=False)
+
+plt.figure()
+plt.plot(m.time, T.value)
+plt.xlabel('Aeg (s)')
+plt.ylabel("Temperatuur (°C)")
+plt.savefig('aku-kuumenemine.png')
+plt.show()</code></pre>
+          <img class="inline-img" src="/reactions-course/media/patarei-kuumenemine.png" />
+          <p>
+            Joonisest võime näha, et 3200 sekundi juures (ehk umbes 53 minuti juures) patarei temperatuur hakkab järsult kasvama.
+          </p>
+          <p>
+            Teadlased ja insenerid kasutavad selliseid mudeleid selleks, et kiiresti hinnata, kas mõni uus aku keemia võiks olla piisavalt termiliselt stabiilne.
+          </p>
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on kättesaadav <a href="https://github.com/zmeri/reactions-course/blob/master/examples/patarei_kuumenemine.py">Githubist</a>.
+          </p>
+        </div>
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          J. C. Hewson, “Understanding the limits of thermal runaway in lithium-ion battery systems,” Sandia National Lab. (SNL-NM), Albuquerque, NM (United States), SAND2016-6054C, Jun. 2016. Accessed: Oct. 21, 2021. [Online]. Available: <a href="https://www.osti.gov/biblio/1420927">https://www.osti.gov/biblio/1420927</a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
