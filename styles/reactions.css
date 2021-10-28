@@ -229,7 +229,7 @@ a > code {
 .collapsible.expanded > .collapsible-text-long {
   height: auto;
   opacity: 1;
-  max-height: 200em;
+  max-height: 300em;
   transition: max-height 0.9s 0s, opacity 0.7s 0.2s;
 }
 
