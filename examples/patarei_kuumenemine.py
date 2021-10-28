@@ -1,5 +1,5 @@
 '''
-Kui akud on ebastabiilses seisundis, ühendid akus võivad hakata reageerima, põhjustades tulekahju. Selline olukord võib näiteks tekkida, kui aku temperatuur on liiga kõrge või kui laaditakse liiga palju. On võimalik teha turvalisemaid akusid, kui on mudelid, mis kirjeldavad neid protsesse akus, mis võivad viia tulekahjuni.
+Kui akud on ebastabiilses seisundis, ühendid akus võivad hakata reageerima, põhjustades tulekahju. Selline olukord võib näiteks tekkida, kui aku temperatuur on liiga kõrge või kui laaditakse aku liiga palju. On võimalik teha turvalisemaid akusid, kui on mudelid, mis kirjeldavad neid protsesse akus, mis võivad viia tulekahjuni.
 
 Oletame, et liitium-ioon aku pannakse keskkonda, mis on 240 kraadi juures. Kui kaua läheks enne, kui reaktsioonid aku sees põhjustavad järsku temperatuuri tõusu (ja tõenäoliselt tulekahju)? Vajalikud parameetrid antakse Hewsoni artiklis.
 
@@ -10,7 +10,6 @@ Viited
 import numpy as np
 import matplotlib.pyplot as plt
 from gekko import GEKKO
-from scipy.optimize import minimize
 
 m = GEKKO()
 
@@ -25,7 +24,7 @@ Yalg_väärtused = np.asarray([0.15, 0.45, 1.0, 0.96]) # Y on sisuliselt normali
 A_väärtused = np.asarray([1.67e15, 1.67e6, 5.1e25, 6.67e11]) # s^-1, sagedustegur
 Ea_väärtused = np.asarray([135, 77.2, 274, 122]) * 1000 # J mol^-1, aktivatsioonienergia
 Hrxn_väärtused = np.asarray([257.0, 1714, 155, 314]) * 1000 # J kg^-1, reaktsioonientalpia
-rho_väärtused = np.asarray([500, 610.0, 1221, 407]) # kg m^-3, tihedus
+rho_väärtused = np.asarray([100, 610.0, 1221, 407]) # kg m^-3, aine mass mahu ühiku kohta
 
 ncomp = 4 # reaktsioonide arv
 Yalg = m.Array(m.Param, (ncomp))
@@ -51,22 +50,17 @@ Nu = 4.8
 hc = Nu * lm / d # W m^-2 K^-1
 hbl = 7.17 # W m^-2 K^-1, soojusläbikandetegur piirkihi jaoks
 heff = m.Param(value = 1 / (1 / hc + 1 / hbl)) # soojusläbikandetegur
+Tvälis = m.Param(value=240) # K, ümbritseva keskkonna temperatuur
 
 npts = 1000
 t_lõpp = 3400
-m.time = np.linspace(0, t_lõpp, npts)
-Tvälis = m.Param(value=240)
+m.time = np.linspace(0, t_lõpp, npts) # s
 
-T = m.Var()
-T.value = 25 * np.ones(npts)
-Y0 = m.Var()
-Y0.value = Yalg[0].value * np.ones(npts)
-Y1 = m.Var()
-Y1.value = Yalg[1].value * np.ones(npts)
-Y2 = m.Var()
-Y2.value = Yalg[2].value * np.ones(npts)
-Y3 = m.Var()
-Y3.value = Yalg[3].value * np.ones(npts)
+T = m.Var(25)
+Y0 = m.Var(Yalg[0].value)
+Y1 = m.Var(Yalg[1])
+Y2 = m.Var(Yalg[2])
+Y3 = m.Var(Yalg[3])
 
 z = m.Intermediate(0.033 + (Yalg[1] - Y1) + (Yalg[0] - Y0))
 k = [None] * ncomp
@@ -92,5 +86,4 @@ plt.figure()
 plt.plot(m.time, T.value)
 plt.xlabel('Aeg (s)')
 plt.ylabel("Temperatuur (°C)")
-plt.savefig('aku-kuumenemine.png')
 plt.show()
