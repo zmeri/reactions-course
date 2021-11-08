@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.3">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.5`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mitu reaktsiooni</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Mitu reaktsiooni</h1>
+      <p>
+        Sageli on vaja läbi viia mitu reaktsiooni selleks, et saada soovitud lõpptoodet. Lisaks, toimuvad reaktoris üldiselt ka kõrvalreaktsioone, mis ei ole soovitud ja mille tõttu saagis võib väheneda.
+      </p>
+
+      <h2 id="j2rjestikud">Järjestikud reaktsioonid</h2>
+      <p>
+        Mõnikord toimuvad mitu reaktsiooni järjest. Ehk, produkt ühest reaktsioonis reageerib edasi järgmises reaktsioonis moodustades uut ühendit. Kui viimase reaktsiooni produkt on aine, mida tahetakse toota, siis vahepealsed ained on vaheproduktid. Kuid võivad olla reaktsioonid, mis hoopis muundavad soovitud produkti. Näiteks, reaktsiooni tingimustel produktid võivad laguneda või reageerida muude ainetega. Sel juhul üritatakse vältida neid lisa reaktsioone selleks, et suurendada tootmisefektiivsust.
+      </p>
+      <div>
+        \[ A + B \rightarrow C \]
+        \[ C + D \rightarrow E \]
+      </div>
+
+      <h2 id="paralleelsed">Paralleelsed reaktsioonid</h2>
+      <p>
+        Mõnikord mitmes reaktsioonis esineb sama reagent või produkt ja siis kutsutakse neid paralleelseteks reaktsioonideks. Üks näide sellest on stereoisomeeride tootmine. Stereoisomeerid on ühendid, millel on sama keemiline valem, aga ühe aatomi juures sidemete asukohad on vahetatud. Kuigi stereoisomeerid on sarnased, neil võib olla erinevad omadused, eriti bioloogilised omadused. Näiteks, aine l-sotalool on alfa blokaator, aga d-sotalool on antiarütmiline ravi.<sup><a href="#ref3">3</a></sup> Kuna stereoisomeerid on sarnased, sageli tootmisel toimuvad paralleelsed reaktsioonid ja saadakse stereoisomeeride segu. Üks uuringusuund on proovida leida viise selektiivselt toota ainult ühte stereoisomeeri.
+      </p>
+      <div>
+        \[ A + B \rightarrow C \]
+        \[ A + D \rightarrow E \]
+        \[ A + F \rightarrow G \]
+      </div>
+      <p>
+        <a href="/reactions-course/pages/tasakaal.html">Tasakaalureaktsioonid</a> on ka paralleelsed reaktsioonid. Tasakaalureaktsioonis toimuvad tegelikult kaks reaktsiooni samaaegselt: reaktsioon, mis käib edasi ja pöördreaktsioon tagasi reagentide juurde. Nendes edaspidi ja tagurpidi reaktsioonides osalevad samad ühendid, siis need on paralleelsed reaktsioonid.
+      </p>
+      <div>
+        \[ A + B \rightarrow C \]
+        \[ C \rightarrow A + B \]
+      </div>
+
+      <h2 id="iseseisvad">Iseseisvad reaktsioonid</h2>
+      <p>
+        Võivad ka samaaegselt toimuda reaktsioonid, milles esinevad täiesti erinevad ained. Sel juhul reaktsioonid on iseseisvad ja ei mõjuta teine teist. Üks näide sellest oli diglüümi lagunemine T2 reaktori õnnetuses. Diglüüm oli lahusti ja ei osalenud peamises reaktsioonis. Diglüümi lagunemine oli iseseisev reaktsioon, mis tootis palju soojust ja viis reaktori <a href="https://www.csb.gov/t2-laboratories-inc-reactive-chemical-explosion/">plahvatuseni</a>.
+      </p>
+      <p>
+        Reaktoris võivad toimuda nii järjestikud, paralleelsed kui ka iseseisvad reaktsioonid. Ehk, võivad olla päris keerulised reaktsiooni skeemid.
+      </p>
+
+      <h2 id="Lahendamine">Lahendamine</h2>
+      <p>
+        Kui on mitu reaktsiooni, siis tavaliselt mudeli valemites on vaja kasutatud <a href="/reactions-course/pages/kiirus.html#liidetud-valem">liidetud kiiruse valemeid</a>. Ehk, ühe aine üldist reaktsiooni kiirust leitakse liidates kokku kõikide reaktsioonide kiirused, milles see aine esineb. Näitena, vaatame reaktorit, milles toimub kaks reaktsiooni.
+      </p>
+      <div>
+        \[ A + B \rightarrow 2C + D \]
+        \[ C + E \rightarrow F \]
+      </div>
+      <p>
+        Selles näides aine C üldine reaktsiooni kiirus oleks selline:
+      </p>
+      <div>
+        \[ r_C = \frac{1}{2}r_1 - r_2 \]
+      </div>
+      <p>
+        Ehk, liidatakse mõlema reaktsiooni kiirust kokku. Pane tähele, et esimeses reaktsioonis C on produkt ja kiirus on positiivne, aga teises reaktsioonis C on reagent ja on vaja lisada miinusmärgi. Samuti, on vaja arvesse võtta aine stöhhiomeetriat igas reaktsioonis.
+      </p>
+      <p>
+        Lisaks, mitme reaktsiooniga on tavaliselt lihtsam kasutada kontsentratsiooni või moolide arvu, kui konversiooniastet.
+      </p>
+
+      <h2 id="saagis">Saagis ja selektiivsus</h2>
+      <p>
+        Kui toimuvad mitu reaktsiooni reaktoris, siis üldiselt on raskem saavutada kõrget saagist. Reaktsioonid võivad omavahel konkureerida ja lisaks soovitud produktile tekivad kõrvalsaadused ja jäätmed.
+      </p>
+      <p>
+        Perioodilises reaktoris saagist arvutatakse moolide järgi.
+      </p>
+      <div>
+        \[ Y = \frac{n_{produkt}}{n_{reagent,0} - n_{reagent}} \]
+      </div>
+      <p>
+        Siin on oluline märgata, et saagist defineeritakse ühe konkreetse reagendi suhtes, tavaliselt põhireagendi suhtes. Voolureaktoris (nt segureaktoris või torureaktoris) saagist arvutatakse moolkulude järgi.
+      </p>
+      <div>
+        \[ Y = \frac{\dot n_{produkt}}{\dot n_{reagent,0} - \dot n_{reagent}} \]
+      </div>
+      <p>
+        Seotud mõiste on selektiivsus. <em>Selektiivsus</em> näitab, mis osa produktidest on soovitud produkt. Nii nagu saagise puhul, selektiivsust võib arvutada moolide või moolkulude järgi vastavalt reaktori tüübile. Siin näitame valemit moolkuludega.
+      </p>
+      <div>
+        \[ S = \frac{\dot n_{produkt}}{\dot n_{produkt} + \dot n_{kõrvalsaadused}} \]
+      </div>
+      <p>
+        Tihti selektiivsust antakse protsendina, ehk siis korrutatakse sajaga. Mõnikord antakse ka selektiivsusesuhet, mis on soovitud ja mitte soovitud produktide suhe.
+      </p>
+      <div>
+        \[ S_{suhe} = \frac{\dot n_{soovitud}}{\dot n_{kõrvalsaadused}} \]
+      </div>
+      <p>
+        Üks peamisi reaktori projekteerimise ülesandeid on disainida reaktorit nii, et saagis ja selektiivsus oleksid nii kõrged kui võimalik.
+      </p>
+
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Praegu keemiatööstus kasutab suures osas naftat toorainena. Selleks, et muuta majandust jätkusuutlikumaks, otsitakse viise kemikaalide tootmiseks taastuvatest allikatest. Biomass võib olla üks nendest taastuvatest allikatest. Sorbitool on üks kemikaal, mida on võimalik tselluloosist toota. Sorbitoolist võib omakorda toota veel mitu produkti. Näiteks, on leitud, et on võimalik toota 1,4-anhüdro-d-sorbitooli, kui läbi viia reaktsiooni vees kõrgel temperatuuril. Kuid toimuvad samaaegselt veel mitu reaktsiooni, mis vähendavad 1,4-anhüdro-d-sorbitooli saagist.
+      </p>
+      <a href="/reactions-course/media/sorbitooli-reaktsioonid.svg"><img class="inline-img" src="/reactions-course/media/sorbitooli-reaktsioonid.svg" /></a>
+      <p>
+        Kui on 10 liitrine segureaktor, mis peaks olema siseneva voo mahtkulu selleks, et 1,4-anhüdro-d-sorbitooli saagis oleks 40%?
+      </p>
+      <p>
+        Reaktor töötab temperatuuril 275 °C ja sorbitooli kontsentratsioon sisenevas voos on 1,5 mol/l. Tabelis antakse reaktsioonide Arrheniuse võrrandi parameetrid. Reaktsioon 3 1,5-anhüdro-d-sorbitooli moodustamiseks toimub oluliselt aeglasemalt, kui teised reaktsioonid ja sellepärast võime selle reaktsiooni mudelist välja jätta.
+      </p>
+      <table>
+        <tr>
+          <th>
+            Reaktsioon
+          </th>
+          <th>
+            A (h<sup>-1</sup>)
+          </th>
+          <th>
+            Aktivatsioonienergia (kJ mol<sup>-1</sup>)
+          </th>
+        </tr>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            6.2358&middot;10<sup>11</sup>
+          </td>
+          <td>
+            127
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            4.8870&middot;10<sup>14</sup>
+          </td>
+          <td>
+            166
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            4.7301&middot;10<sup>17</sup>
+          </td>
+          <td>
+            195
+          </td>
+        </tr>
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            3.1527&middot;10<sup>11</sup>
+          </td>
+          <td>
+            136
+          </td>
+        </tr>
+      </table>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Tähistame ühendeid tähtedega järgnevalt:
+          </p>
+          <ul>
+            <li>
+              A = d-sorbitool
+            </li>
+            <li>
+              B = 1,4-anhüdro-d-sorbitool
+            </li>
+            <li>
+              C = 2,5-anhüdro-d-sorbitool
+            </li>
+            <li>
+              D = isosorbiid
+            </li>
+          </ul>
+          <p>
+            Kuna teame, mis aine B saagis peaks olema, võime arvutada aine B kontsentratsiooni reaktoris.
+          </p>
+          <pre>
+<code class="python">CA0 = 1.5 # mol l^-1
+saagis = 0.4
+CB = saagis * CA0</code></pre>
+          <p>
+            Nüüd peame arvutama teiste ainete kontsentratsioonid ja siseneva voo mahtkulu. Saame kasutada moolbilanse selle arvutuse jaoks. Kasutame <a href="/reactions-course/pages/pidev-segureaktor.html#p6hiv6rrand">segureaktori võrrandit</a>.
+          </p>
+          <div>
+            \[ 0 = \dot n_{A0} - \dot n_A - r_1 V - r_2 V \]
+            \[ 0 = \dot n_B + r_1 V - r_3 V \]
+            \[ 0 = \dot n_C + r_2 V \]
+            \[ 0 = \dot n_D + r_3 V - r_4 V \]
+          </div>
+          <p>
+            Kuna otsime mahtkulu võime asendada moolkulu avaldisega mahtkulu korda kontsentratsiooni. Samuti võime asendada reaktsioonide kiirused kiirusevalemiga.
+          </p>
+          <div>
+            \[ 0 = \dot v C_{A0} - \dot v C_A + (-k_1 C_A - k_2 C_A) V \]
+            \[ 0 = -\dot v C_B + (k_1 C_A - k_3 C_B) V \]
+            \[ 0 = -\dot v C_C + k_2 C_A V \]
+            \[ 0 = -\dot v C_D + (k_3 C_B - k_4 C_D) V \]
+          </div>
+          <p>
+            Nüüd mudel on olemas ja võime kasutada <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a> paketti selleks, et lahendada diferentsiaalvõrrandi süsteemi. Esiteks, paneme kirja reaktsiooni parameetrid Yamaguchi jt<sup><a href="#ref2">2</a></sup> artiklist.
+          </p>
+          <pre>
+<code class="python">Ea_numpy = np.asarray([127000., 166000., 195000, 136000]) # J mol^-1
+A_numpy = np.asarray([6.2358e+11, 4.8870e+14, 4.7301e+17, 3.1527e+11]) # h^-1</code></pre>
+          <p>
+            Siis muudame neid Numpy massiive Gekko massiivideks. Saame seda teha for-tsükliga.
+          </p>
+          <pre>
+<code class="python">nrxn = 4 # reaktsioonide arv
+m = GEKKO()
+
+Ea = m.Array(m.Param, (nrxn))
+A = m.Array(m.Param, (nrxn))
+for i in range(nrxn):
+    Ea[i].value = Ea_numpy[i]
+    A[i].value = A_numpy[i]</code></pre>
+          <p>
+            Ja seejärel, defineerime ülejäänud parameetreid.
+          </p>
+          <pre>
+<code class="python">T = m.Param(value=275) # degC reaktori temperatuur
+CA0 = m.Param(value=CA0) # mol l^-1
+CB = m.Param(value=CB) # mol l^-1
+V = m.Param(value=10) # l
+RGAS = m.Const(value=8.314) # J mol^-1 K^-1</code></pre>
+          <p>
+            Siis defineerime muutujaid, mida me tahame leida.
+          </p>
+          <pre>
+<code class="python">vdot = m.Var()
+CA = m.Var()
+CC = m.Var()
+CD = m.Var()</code></pre>
+          <p>
+            Nüüd saame kirja panna diferentsiaalvõrrandeid, mida me varem koostasime. Kirjutasime <a href="/reactions-course/pages/kiirus.html#temperatuuri-m6ju">Arrheniuse võrrandit</a> eraldi Gekko <code class="python">Intermediate</code> objektina. <code class="python">Intermediate</code>-iga on võimalik defineerida vahepealseid väärtusi või valemeid, mida hiljem kasutatakse lõplikus valemis (ehk <code class="python">Equation</code> objektis).
+          </p>
+          <pre>
+<code class="python">k = [None] * nrxn
+for i in range(nrxn):
+    k[i] = m.Intermediate(A[i] * m.exp(-Ea[i] / RGAS / (T + 273.15)))
+
+m.Equation(0 == vdot * CA0 - vdot * CA + (-k[0] * CA - k[1] * CA) * V)
+m.Equation(0 == -vdot * CB + (k[0] * CA - k[2] * CB) * V)
+m.Equation(0 == -vdot * CC + k[1] * CA * V)
+m.Equation(0 == -vdot * CD + (k[1] * CB - k[3] * CD) * V)</code></pre>
+          <p>
+            Mudel on nüüd koostatud ja võime lahendada seda. Antud ülesandes me ei pea Gekko <code class="python">IMODE</code> parameetrit muuta kuna vaikimisvalik on juba võrrandisüsteemi lahendamine, kui parameetrid ei muutu ajas (ehk variant 1).
+          </p>
+          <pre>
+<code class="python">m.solve(disp=False)
+
+print('Mahtkulu= {} l/h'.format(vdot.value[0]))
+print('CA= {} mol/l'.format(CA.value[0]))
+print('CC= {} mol/l'.format(CC.value[0]))
+print('CD= {} mol/l'.format(CD.value[0]))</code></pre>
+          <p>
+            Jooksutades koodi leiame, et mahtkulu peab olema 2,1 l/h.
+          </p>
+          <pre>
+<code class="python-repl">Mahtkulu= 2.1489431393 l/h
+CA= 0.41252764728 mol/l
+CC= 0.14227452835 mol/l
+CD= 0.17827089962 mol/l</code></pre>
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on kättesaadav <a href="https://github.com/zmeri/reactions-course/blob/master/examples/1,4-anhüdro-d-sorbitool.py">Githubist</a>.
+          </p>
+        </div>
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          Yamaguchi A, Hiyoshi N, Sato O, Shirai M. Sorbitol dehydration in high temperature liquid water. Green Chemistry. 2011;13(4):873-81.
+        </li>
+        <li id="ref3">
+          N. Chhabra, M. L. Aseri, and D. Padmanabhan, “A review of drug isomerism and its significance,” International Journal of Applied and Basic Medical Research, vol. 3, no. 1, p. 16, Jun. 2013, doi: 10.4103/2229-516X.112233.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

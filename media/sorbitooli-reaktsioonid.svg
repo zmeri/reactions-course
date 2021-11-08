@@ -1,0 +1,1529 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="205.49181mm"
+   height="118.21041mm"
+   viewBox="0 0 205.49181 118.21041"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="sorbitooli-reaktsioonid.svg"
+   inkscape:version="1.0.2 (1.0.2+r75+1)">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker2811"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2809" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2649"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2647" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2499"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2497" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2433"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2431" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2373"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2371" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2301"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2299" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2253"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2251" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker2217"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2215" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Mend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Mend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1770" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1764" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.16"
+     inkscape:cx="422.26155"
+     inkscape:cy="205.90321"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1439"
+     inkscape:window-height="1023"
+     inkscape:window-x="67"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-32.3175,-18.471558)">
+    <g
+       id="g72"
+       transform="matrix(0.26458333,0,0,0.26458333,92.124274,27.428928)">
+      <title
+         id="title2" />
+      <desc
+         content="structured text"
+         id="desc4" />
+      <text
+         x="114.33"
+         y="75.599899"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text8">O</text>
+      <text
+         x="95.503799"
+         y="67.801804"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text10">H</text>
+      <text
+         x="93.118301"
+         y="121.383"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text12">O</text>
+      <text
+         x="135.54201"
+         y="121.383"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text14">O</text>
+      <text
+         x="75.954498"
+         y="61.961899"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text16">O</text>
+      <text
+         x="46.971699"
+         y="88.057999"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text18">O</text>
+      <text
+         x="81.094498"
+         y="120.119"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text20">H</text>
+      <text
+         x="130.62399"
+         y="132.42799"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text22">H</text>
+      <text
+         x="84.939102"
+         y="53.8722"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text24">H</text>
+      <text
+         x="44.458099"
+         y="76.232201"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text26">H</text>
+      <line
+         x1="98.554298"
+         y1="83.911697"
+         x2="104.58"
+         y2="102.457"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line28" />
+      <line
+         x1="104.58"
+         y1="102.457"
+         x2="124.08"
+         y2="102.457"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line30" />
+      <line
+         x1="124.08"
+         y1="102.457"
+         x2="130.106"
+         y2="83.911697"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line32" />
+      <line
+         x1="119.845"
+         y1="76.457001"
+         x2="130.106"
+         y2="83.911697"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line34" />
+      <line
+         x1="108.815"
+         y1="76.457001"
+         x2="98.554298"
+         y2="83.911697"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line36" />
+      <line
+         x1="80.008698"
+         y1="77.885803"
+         x2="65.517303"
+         y2="90.933899"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line38" />
+      <line
+         x1="98.554298"
+         y1="83.911697"
+         x2="80.008698"
+         y2="77.885803"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line40" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="98.5543,83.9117 98.029,82.3707 98.5777,82.2838 "
+         id="polygon42" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="98.6245,79.028 98.6011,80.6559 97.5037,80.8297 96.9783,79.2887 "
+         id="polygon44" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="98.6713,75.7722 98.6479,77.4001 96.453,77.7477 95.9277,76.2068 "
+         id="polygon46" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="98.7181,72.5164 98.6947,74.1443 95.4024,74.6658 94.8771,73.1248 "
+         id="polygon48" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="98.765,69.2607 98.7415,70.8886 94.3518,71.5838 93.8265,70.0428 "
+         id="polygon50" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="104.58,102.457 100.156,112.799 96.1112,109.861 "
+         id="polygon52" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="124.08,102.457 125.021,103.28 124.572,103.606 "
+         id="polygon54" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="125.555,105.905 125.063,104.756 125.962,104.102 126.903,104.925 "
+         id="polygon56" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="126.538,108.203 126.046,107.054 127.844,105.748 128.785,106.57 "
+         id="polygon58" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="127.521,110.501 127.029,109.352 129.726,107.393 130.667,108.215 "
+         id="polygon60" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="128.504,112.799 128.012,111.65 131.608,109.038 132.549,109.861 "
+         id="polygon62" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="80.0087,77.8858 74.5719,64.3317 79.4626,63.2921 "
+         id="polygon64" />
+      <line
+         x1="65.517303"
+         y1="90.933899"
+         x2="52.487099"
+         y2="86.700104"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line66" />
+      <line
+         x1="87.602898"
+         y1="117.653"
+         x2="85.965202"
+         y2="117.481"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line68" />
+    </g>
+    <g
+       id="g147"
+       transform="matrix(0.26458333,0,0,0.26458333,93.402971,96.66442)">
+      <title
+         id="title81" />
+      <desc
+         content="structured text"
+         id="desc83" />
+      <text
+         x="102.773"
+         y="66.112602"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text87">O</text>
+      <text
+         x="49.497501"
+         y="66.112602"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text89">O</text>
+      <text
+         x="68.997498"
+         y="105.113"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text91">O</text>
+      <text
+         x="102.773"
+         y="124.613"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text93">O</text>
+      <text
+         x="136.547"
+         y="105.113"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text95">O</text>
+      <text
+         x="43.452499"
+         y="55.642399"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text97">H</text>
+      <text
+         x="58.527302"
+         y="99.067596"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text99">H</text>
+      <text
+         x="92.302299"
+         y="130.658"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text101">H</text>
+      <text
+         x="136.547"
+         y="117.203"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text103">H</text>
+      <line
+         x1="85.885002"
+         y1="72.712601"
+         x2="85.885002"
+         y2="92.212601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line105" />
+      <line
+         x1="85.885002"
+         y1="92.212601"
+         x2="102.773"
+         y2="101.963"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line107" />
+      <line
+         x1="102.773"
+         y1="101.963"
+         x2="119.66"
+         y2="92.212601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line109" />
+      <line
+         x1="119.66"
+         y1="92.212601"
+         x2="119.66"
+         y2="72.712601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line111" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="85.885,72.7126 67.7475,65.1277 70.2475,60.7976 "
+         id="polygon113" />
+      <line
+         x1="108.288"
+         y1="66.146896"
+         x2="119.66"
+         y2="72.712601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line115" />
+      <line
+         x1="97.257103"
+         y1="66.146896"
+         x2="85.885002"
+         y2="72.712601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line117" />
+      <line
+         x1="68.997498"
+         y1="62.962601"
+         x2="55.012901"
+         y2="62.962601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line119" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="85.885,92.2126 84.7048,93.2148 84.427,92.7337 "
+         id="polygon121" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="82.3443,95.2191 81.511,93.7757 82.969,93.2547 83.5245,94.2169 "
+         id="polygon123" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="79.9838,97.2234 78.595,94.8178 80.053,94.2968 81.1641,96.2213 "
+         id="polygon125" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="77.6234,99.2277 75.6789,95.8599 77.1369,95.3388 78.8036,98.2256 "
+         id="polygon127" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="75.2629,101.232 72.7629,96.9019 74.2209,96.3809 76.4431,100.23 "
+         id="polygon129" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="102.773,101.963 105.273,113.963 100.273,113.963 "
+         id="polygon131" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="119.66,92.2126 121.118,92.7337 120.84,93.2148 "
+         id="polygon133" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="124.034,93.7757 123.201,95.2191 122.02,94.2169 122.576,93.2547 "
+         id="polygon135" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="126.95,94.8178 125.561,97.2234 124.381,96.2213 125.492,94.2968 "
+         id="polygon137" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="129.866,95.8599 127.922,99.2277 126.741,98.2256 128.408,95.3388 "
+         id="polygon139" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="132.782,96.9019 130.282,101.232 129.102,100.23 131.324,96.3809 "
+         id="polygon141" />
+      <line
+         x1="63.482101"
+         y1="98.778297"
+         x2="63.3979"
+         y2="98.729698"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line143" />
+      <line
+         x1="97.257103"
+         y1="124.647"
+         x2="97.172897"
+         y2="124.696"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line145" />
+    </g>
+    <g
+       id="g222"
+       transform="matrix(0.26458333,0,0,0.26458333,92.601607,61.63586)">
+      <title
+         id="title156" />
+      <desc
+         content="structured text"
+         id="desc158" />
+      <text
+         x="95.2351"
+         y="64.736"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text162">O</text>
+      <text
+         x="146.444"
+         y="79.921898"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text164">O</text>
+      <text
+         x="116.447"
+         y="110.519"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text166">O</text>
+      <text
+         x="74.0233"
+         y="110.519"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text168">O</text>
+      <text
+         x="44.026199"
+         y="79.921898"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text170">O</text>
+      <text
+         x="146.444"
+         y="92.011902"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text172">H</text>
+      <text
+         x="111.529"
+         y="121.564"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text174">H</text>
+      <text
+         x="61.9995"
+         y="109.255"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text176">H</text>
+      <text
+         x="33.556"
+         y="73.8769"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text178">H</text>
+      <line
+         x1="79.459297"
+         y1="73.047798"
+         x2="85.4851"
+         y2="91.593399"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line180" />
+      <line
+         x1="85.4851"
+         y1="91.593399"
+         x2="104.985"
+         y2="91.593399"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line182" />
+      <line
+         x1="104.985"
+         y1="91.593399"
+         x2="111.011"
+         y2="73.047798"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line184" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="60.1411,69.3996 61.6862,64.6443 79.4593,73.0478 "
+         id="polygon186" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="112.986,72.1141 113.157,72.6424 111.011,73.0478 "
+         id="polygon188" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="115.304,72.2371 114.961,71.1804 116.935,70.2466 117.45,71.8317 "
+         id="polygon190" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="119.597,71.4264 118.91,69.3129 120.885,68.3792 121.743,71.021 "
+         id="polygon192" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="123.89,70.6157 122.86,67.4455 124.834,66.5118 126.036,70.2103 "
+         id="polygon194" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="128.183,69.805 126.809,65.578 128.784,64.6443 130.329,69.3996 "
+         id="polygon196" />
+      <line
+         x1="100.751"
+         y1="65.593201"
+         x2="111.011"
+         y2="73.047798"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line198" />
+      <line
+         x1="89.719704"
+         y1="65.593201"
+         x2="79.459297"
+         y2="73.047798"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line200" />
+      <line
+         x1="129.55701"
+         y1="67.022003"
+         x2="140.929"
+         y2="73.587601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line202" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="105.926,92.416 105.477,92.7426 104.985,91.5934 "
+         id="polygon204" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="105.968,93.8917 106.867,93.2386 107.808,94.0612 106.46,95.0408 "
+         id="polygon206" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="106.951,96.19 108.749,94.8838 109.69,95.7063 107.443,97.3391 "
+         id="polygon208" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="107.934,98.4882 110.631,96.5289 111.572,97.3515 108.426,99.6373 "
+         id="polygon210" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="108.917,100.786 112.513,98.1741 113.454,98.9967 109.409,101.936 "
+         id="polygon212" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="81.0612,101.936 77.0162,98.9967 85.4851,91.5934 "
+         id="polygon214" />
+      <line
+         x1="60.9137"
+         y1="67.022003"
+         x2="49.541599"
+         y2="73.587601"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line216" />
+      <line
+         x1="68.507896"
+         y1="106.79"
+         x2="66.870201"
+         y2="106.617"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line218" />
+      <line
+         x1="38.510799"
+         y1="73.587601"
+         x2="38.426601"
+         y2="73.539001"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line220" />
+    </g>
+    <g
+       id="g46"
+       transform="matrix(0.26458333,0,0,0.26458333,146.87573,27.103681)">
+      <title
+         id="title2-3" />
+      <desc
+         content="structured text"
+         id="desc4-6" />
+      <text
+         x="67.487"
+         y="102.423"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text8-7">O</text>
+      <text
+         x="112.513"
+         y="83.877098"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text10-5">O</text>
+      <text
+         x="102.763"
+         y="133.38499"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text12-3">O</text>
+      <text
+         x="77.237198"
+         y="52.915298"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text14-5">O</text>
+      <text
+         x="92.292702"
+         y="139.42999"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text16-6">H</text>
+      <text
+         x="87.707497"
+         y="46.870399"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text18-2">H</text>
+      <line
+         x1="77.237099"
+         y1="69.265404"
+         x2="93.012802"
+         y2="80.727203"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line20" />
+      <line
+         x1="77.237099"
+         y1="69.265404"
+         x2="61.4613"
+         y2="80.727203"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line22" />
+      <line
+         x1="86.987198"
+         y1="99.272797"
+         x2="93.012802"
+         y2="80.727203"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line24" />
+      <line
+         x1="118.539"
+         y1="99.272697"
+         x2="102.763"
+         y2="110.735"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line26" />
+      <line
+         x1="86.987198"
+         y1="99.272797"
+         x2="102.763"
+         y2="110.735"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line28-9" />
+      <line
+         x1="61.4613"
+         y1="80.727203"
+         x2="64.887703"
+         y2="91.272697"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line30-1" />
+      <line
+         x1="73.002403"
+         y1="99.272697"
+         x2="86.987198"
+         y2="99.272797"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line32-2" />
+      <line
+         x1="93.012802"
+         y1="80.727203"
+         x2="106.998"
+         y2="80.727097"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line34-7" />
+      <line
+         x1="114.3"
+         y1="86.227097"
+         x2="118.539"
+         y2="99.272697"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line36-0" />
+      <line
+         x1="102.763"
+         y1="110.735"
+         x2="102.763"
+         y2="122.235"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line38-9" />
+      <line
+         x1="77.237099"
+         y1="69.265404"
+         x2="77.237198"
+         y2="55.265301"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line40-3" />
+      <line
+         x1="97.247597"
+         y1="133.41901"
+         x2="97.163399"
+         y2="133.468"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line42" />
+      <line
+         x1="82.752602"
+         y1="46.581001"
+         x2="82.8368"
+         y2="46.532398"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line44" />
+    </g>
+    <g
+       id="g74"
+       transform="matrix(0.26458333,0,0,0.26458333,27.827832,52.0063)">
+      <title
+         id="title2-6" />
+      <desc
+         content="structured text"
+         id="desc4-0" />
+      <text
+         x="30.893801"
+         y="98.025002"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text8-6">O</text>
+      <text
+         x="149.106"
+         y="88.274902"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text10-2">O</text>
+      <text
+         x="20.4235"
+         y="91.980003"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text12-6">H</text>
+      <text
+         x="159.576"
+         y="94.319801"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text14-1">H</text>
+      <text
+         x="64.668701"
+         y="117.525"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text16-8">O</text>
+      <text
+         x="81.556198"
+         y="68.775002"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text18-7">O</text>
+      <text
+         x="98.443802"
+         y="117.525"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text20-9">O</text>
+      <text
+         x="115.331"
+         y="68.775002"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text22-2">O</text>
+      <text
+         x="54.198502"
+         y="123.57"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text24-0">H</text>
+      <text
+         x="92.026398"
+         y="62.73"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text26-2">H</text>
+      <text
+         x="87.973503"
+         y="123.57"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text28">H</text>
+      <text
+         x="125.801"
+         y="62.73"
+         fill="#000000"
+         font-family="Helvetica"
+         font-size="11.7333px"
+         text-anchor="middle"
+         font-weight="bold"
+         id="text30">H</text>
+      <line
+         x1="47.7813"
+         y1="85.125"
+         x2="64.6688"
+         y2="94.875"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line32-3" />
+      <line
+         x1="64.6688"
+         y1="94.875"
+         x2="81.556198"
+         y2="85.125"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line34-75" />
+      <line
+         x1="81.556198"
+         y1="85.125"
+         x2="98.443703"
+         y2="94.875"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line36-9" />
+      <line
+         x1="115.331"
+         y1="85.125"
+         x2="132.21899"
+         y2="94.875"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line38-2" />
+      <line
+         x1="98.443703"
+         y1="94.875"
+         x2="115.331"
+         y2="85.125"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line40-2" />
+      <line
+         x1="36.409199"
+         y1="91.690697"
+         x2="47.7813"
+         y2="85.125"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line42-8" />
+      <line
+         x1="132.21899"
+         y1="94.875"
+         x2="143.591"
+         y2="88.309196"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line44-9" />
+      <line
+         x1="25.378401"
+         y1="91.690697"
+         x2="25.2941"
+         y2="91.642097"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line46" />
+      <line
+         x1="154.62199"
+         y1="88.309196"
+         x2="154.70599"
+         y2="88.357803"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line48" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="64.9465,96.2083 64.391,96.2083 64.6688,94.875 "
+         id="polygon50-7" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="63.8354,98.875 64.1132,97.5417 65.2243,97.5417 65.5021,98.875 "
+         id="polygon52-3" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="63.2799,101.542 63.5576,100.208 65.7799,100.208 66.0576,101.542 "
+         id="polygon54-6" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="62.7243,104.208 63.0021,102.875 66.3354,102.875 66.6132,104.208 "
+         id="polygon56-1" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="62.1687,106.875 62.4465,105.542 66.891,105.542 67.1687,106.875 "
+         id="polygon58-2" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="79.0562,70.625 84.0562,70.625 81.5562,85.125 "
+         id="polygon60-9" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="100.944,106.875 95.9438,106.875 98.4437,94.875 "
+         id="polygon62-3" />
+      <polygon
+         fill="#000000"
+         stroke="none"
+         points="112.831,70.625 117.831,70.625 115.331,85.125 "
+         id="polygon64-1" />
+      <line
+         x1="59.153301"
+         y1="117.559"
+         x2="59.069099"
+         y2="117.608"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line66-9" />
+      <line
+         x1="87.071602"
+         y1="62.440701"
+         x2="87.1558"
+         y2="62.392101"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line68-4" />
+      <line
+         x1="92.928398"
+         y1="117.559"
+         x2="92.844101"
+         y2="117.608"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line70" />
+      <line
+         x1="120.847"
+         y1="62.440701"
+         x2="120.931"
+         y2="62.392101"
+         stroke="#000000"
+         stroke-width="1.2"
+         id="line72" />
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+       d="m 74.345847,80.802796 22.59435,1.246485"
+       id="path1759"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2217)"
+       d="M 74.301479,69.823184 102.14722,55.104429"
+       id="path2213" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2253)"
+       d="m 132.15924,50.047977 h 26.8869"
+       id="path2249" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2301)"
+       d="M 69.006023,89.817201 100.94316,111.9703"
+       id="path2291"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2373)"
+       d="m 51.241195,91.709448 4.33742,16.853602"
+       id="path2363" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2433)"
+       d="M 185.10405,49.635671 H 204.6343"
+       id="path2423" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2499)"
+       d="m 119.8005,36.374723 8.13605,-9.664872"
+       id="path2489"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2649)"
+       d="m 137.00398,120.22868 16.77645,-0.11372"
+       id="path2639" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker2811)"
+       d="m 135.74749,83.721555 h 17.19985"
+       id="path2801" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="83.304932"
+       y="59.715759"
+       id="text2887"><tspan
+         sodipodi:role="line"
+         id="tspan2885"
+         x="83.304932"
+         y="59.715759"
+         style="font-size:5.64444px;stroke-width:0.264583">r<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2889">1</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="83.190971"
+       y="78.943687"
+       id="text2893"><tspan
+         sodipodi:role="line"
+         id="tspan2891"
+         x="83.190971"
+         y="78.943687"
+         style="font-size:5.64444px;stroke-width:0.264583">r<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2895">2</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="84.070374"
+       y="98.786209"
+       id="text2899"><tspan
+         sodipodi:role="line"
+         id="tspan2897"
+         x="84.070374"
+         y="98.786209">r<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2913">3</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="142.19244"
+       y="47.010258"
+       id="text2903"><tspan
+         sodipodi:role="line"
+         id="tspan2901"
+         x="142.19244"
+         y="47.010258"
+         style="font-size:5.64444px;stroke-width:0.264583">r<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2911">4</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="191.85005"
+       y="47.376431"
+       id="text2907"><tspan
+         sodipodi:role="line"
+         id="tspan2905"
+         x="191.85005"
+         y="47.376431"
+         style="font-size:5.64444px;stroke-width:0.264583">r<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2909">5</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;white-space:pre;inline-size:38.6852;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="44.353924"
+       y="111.64117"
+       id="text2935"
+       transform="translate(2.1166667,1.5875)"><tspan
+         x="44.353924"
+         y="111.64117"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">lagunemine või </tspan></tspan><tspan
+         x="44.353924"
+         y="116.05088"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">polümerisatsioon </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;white-space:pre;inline-size:38.6852;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="44.353924"
+       y="111.64117"
+       id="text2935-7"
+       transform="translate(112.92801,7.2526221)"><tspan
+         x="44.353924"
+         y="111.64117"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">lagunemine või </tspan></tspan><tspan
+         x="44.353924"
+         y="116.05088"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">polümerisatsioon </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;white-space:pre;inline-size:38.6852;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="44.353924"
+       y="111.64117"
+       id="text2935-8"
+       transform="translate(112.56714,-28.804832)"><tspan
+         x="44.353924"
+         y="111.64117"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">lagunemine või </tspan></tspan><tspan
+         x="44.353924"
+         y="116.05088"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">polümerisatsioon </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;white-space:pre;inline-size:38.6852;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="44.353924"
+       y="111.64117"
+       id="text2935-4"
+       transform="translate(163.04247,-63.092423)"><tspan
+         x="44.353924"
+         y="111.64117"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">lagunemine või </tspan></tspan><tspan
+         x="44.353924"
+         y="116.05088"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">polümerisatsioon </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;white-space:pre;inline-size:38.6852;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="44.353924"
+       y="111.64117"
+       id="text2935-5"
+       transform="translate(85.820864,-90.429033)"><tspan
+         x="44.353924"
+         y="111.64117"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">lagunemine või </tspan></tspan><tspan
+         x="44.353924"
+         y="116.05088"><tspan
+           style="font-size:3.52778px;stroke-width:0.264583">polümerisatsioon </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="44.166477"
+       y="89.027534"
+       id="text3111"><tspan
+         sodipodi:role="line"
+         id="tspan3109"
+         x="44.166477"
+         y="89.027534"
+         style="font-size:3.52778px;stroke-width:0.264583">sorbitool</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="98.673248"
+       y="65.897598"
+       id="text3115"><tspan
+         sodipodi:role="line"
+         id="tspan3113"
+         x="98.673248"
+         y="65.897598"
+         style="font-size:3.52778px;stroke-width:0.264583">1,4-anhüdro-d-sorbitool</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="98.863342"
+       y="98.148048"
+       id="text3119"><tspan
+         sodipodi:role="line"
+         id="tspan3117"
+         x="98.863342"
+         y="98.148048"
+         style="font-size:3.52778px;stroke-width:0.264583">2,5-anhüdro-d-sorbitool</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="98.362091"
+       y="136.272"
+       id="text3123"><tspan
+         sodipodi:role="line"
+         id="tspan3121"
+         x="98.362091"
+         y="136.272"
+         style="font-size:3.52778px;stroke-width:0.264583">1,5-anhüdro-d-sorbitool</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:3.52778px;line-height:1.25;font-family:sans-serif;text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;fill:#000000;stroke-width:0.264583;stop-color:#000000"
+       x="161.2097"
+       y="69.013054"
+       id="text3127"><tspan
+         sodipodi:role="line"
+         id="tspan3125"
+         x="161.2097"
+         y="69.013054"
+         style="font-size:3.52778px;stroke-width:0.264583">isosorbiid</tspan></text>
+  </g>
+</svg>
