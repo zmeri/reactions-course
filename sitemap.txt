@@ -9,9 +9,11 @@ https://zmeri.github.io/reactions-course/pages/kineetika-m22ramine.html
 https://zmeri.github.io/reactions-course/pages/reaktsiooni-energia.html
 https://zmeri.github.io/reactions-course/pages/lahendamine-numbriliselt.html
 https://zmeri.github.io/reactions-course/pages/mittestatsionaarsed.html
+https://zmeri.github.io/reactions-course/pages/mitmed-reaktorid.html
 https://zmeri.github.io/reactions-course/pages/reaktorid.html
 https://zmeri.github.io/reactions-course/pages/keerulisemad-reaktorid.html
 https://zmeri.github.io/reactions-course/pages/perioodiline-reaktor.html
 https://zmeri.github.io/reactions-course/pages/torureaktor.html
 https://zmeri.github.io/reactions-course/pages/kiirus.html
+https://zmeri.github.io/reactions-course/pages/mitu-reaktsiooni.html
 https://zmeri.github.io/reactions-course/pages/pidev-segureaktor.html
