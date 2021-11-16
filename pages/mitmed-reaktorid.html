@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.3">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.6`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Mitmereaktori süsteemid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Mitmereaktori süsteemid</h1>
+      <p>
+
+      </p>
+
+      <h2 id="j2rjestikud-reaktorid">Järjestikud reaktorid</h2>
+      <p>
+        Mõnikord paigutatakse paar reaktorit üksteise järele. Üldiselt, see tähendab, et kontsentratsioon, mis väljub ühest reaktorist on järgmise reaktori algkontsentratsioon. Igal reaktoril on siis oma materjal- ja energiabilanss, aga need bilansid on seotud voo parameetritega, mis voolab nende vahel.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/j2rjestikud-reaktorid.svg" />
+      <p>
+        Kui reaktorid ei sõltu nendest reaktoritest, mis tulevad hiljem süsteemis, siis võib järjest lahendada iga reaktori mudelit eraldi. Ehk, saab esiteks vaadata ainult esimest reaktorit ja leida lahendust, siis saab kasutada väljuva voo parameetreid teise reaktori sisendiks ja lahendada teise reaktori mudelit jne. Sel juhul võib sisuliselt lahendada nii nagu üksiku reaktori puhul.
+      </p>
+      <p>
+        Kuid mõnikord hilisemad reaktorid mõjutavad varasemate reaktorite parameetreid. Sel juhul ei ole võimalik leida lahendust iga reaktori jaoks eraldi ja tuleb koostada üldist mudelit, mis hõlmab kõik reaktorid süsteemis. Kuigi see võib otseselt tulla sellest, et suunatakse osa voogust tagasi varasemale reaktorile (retsirkulatsiooni käsitleme järgmises osas), ei pruugi olla ainult sellepärast. See võib juhtuda disaini või optimeerimise ülesannetes. Kui tahame disainida protsessi või optimeerima ühte parameetrit (nt saagist), siis mitmed parameetrid võivad varieeruda. Näiteks, kui ülesanne on disainida protsessi järjestike reaktoritega, millel on kõrgeim võimalik saagis, siis tavaliselt tuleb muuta ka esimeste reaktorite parameetreid kuna need mõjutavad ka lõppsaagist. Tuleks siis lahendada mitme reaktori valemeid korraga, tavaliselt arvutis lahendajaga.
+      </p>
+
+      <h2 id="retsirkulatsioon">Retsirkulatsioon</h2>
+      <p>
+        Keemilistes protsessides mõnikord kasutatakse <strong>retsirkulatsiooni</strong>, mis tähendab, et osa voost viiakse tagasi varasemale punktile protsessis. Retsirkulatsiooni võib kasutada selleks, et tõsta saagist. Retsirkulatsiooniga võib ka suunata järgi jäänud toorainet tagasi reaktorisse ja sellega protsess võib muutuda tõhusamaks. Sarnast asja võib teha selleks, et taas kasutada muid aineid (nt lahustit). Kui retsirkuleeritakse toorainet või lahustit, siis tavaliselt toimub vahepeal separatsiooniprotsessi selleks, et eraldada toodet toorainest või lahustist.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/retsirkulatsioon.svg" />
+      <p>
+        Retsirkulatsioon muudab protsessi keerulisemaks kuna mitmed reaktorid (ja muud seadmed) on omavahel seotud ja tavaliselt tuleb lahendades korraga leida mitu muutujat. Seda tavaliselt tehakse lahendajaga kasutades numbrilisi meetodeid.
+      </p>
+
+      <h2 id="arvutuslikud-reaktorid">Arvutuslikud reaktorid</h2>
+      <p>
+        Kuigi füüsiliselt võib olla ainult üks reaktori anum süsteemis, mõnikord on kasulik mudelis jagada seda mitmeks osaks. See võib olla kasulik lähenemine, kui erinevad reaktori piirkonnad käituvad erinevalt. Näiteks, katlates tingimused ja reaktsioonid leegi lähedal on erinevad nendest, mis esinevad mujal katlas.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/arvutuslikud.svg" style="max-height:150px;" />
+      <p>
+        Tavaliselt, sellistel arvutuslikel reaktoritel ei ole omavahel füüsilisi piire. Sellepärast ühendid võivad vabamalt liikuda erinevate osade, või &bdquo;reaktorite&ldquo;, vahel ja tuleb korraga lahendada mitme muutuja jaoks kasutades numbrilisi meetodeid.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
