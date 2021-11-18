@@ -1,4 +1,5 @@
 https://zmeri.github.io/reactions-course/index.html
+https://zmeri.github.io/reactions-course/pages/lahendamine-gekkoga.html
 https://zmeri.github.io/reactions-course/pages/reaktsioonid.html
 https://zmeri.github.io/reactions-course/pages/mitteisotermilised.html
 https://zmeri.github.io/reactions-course/pages/tasakaal.html
