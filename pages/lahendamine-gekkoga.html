@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.3">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.7`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lahendamine Gekkoga</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Lahendamine Gekkoga</h1>
+      <p>
+        Sageli on vaja lahendada reaktori mudeleid numbriliselt. Selleks on palju tarkvara juba olemas. Siin näitame ühte Pythoni paketti, <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a>, mida võib kasutada diferentsiaalvõrrandite süsteemide lahendamiseks.<sup><a href="#ref1">1</a></sup> Lisaks käesolevale peatükile, on võimalik internetist leida veel näiteid Gekko paketi kasutamisest (näiteks <a href="https://apmonitor.com/wiki/index.php/Main/GekkoPythonOptimization">siit</a>).
+      </p>
+
+      <h2 id="yldine-muster">Üldine muster</h2>
+      <p>
+        Kuigi ülesanded on erinevad ja on vaja kohandada lahendust konkreetsele ülesandele, on üldine muster. Lahendamisel tavaliselt tuleb teha järgnevad sammud:
+      </p>
+      <ul>
+        <li>
+          Teha skeemi süsteemist
+        </li>
+        <li>
+          Koostada mudelit võrrandisüsteemina
+        </li>
+        <li>
+          Panna kirja lähteandmeid, mida on vaja mudeli lahendamiseks
+        </li>
+        <li>
+          Määrata muutujaid, mida on vaja arvutada
+        </li>
+        <li>
+          Panna kirja mudeli võrrandeid
+        </li>
+        <li>
+          Lahendada, tavaliselt tarkvaraga
+        </li>
+        <li>
+          Kontrollida vastust ja vajadusel parandada lahendust
+        </li>
+      </ul>
+      <p>
+        Esimest kaks sammu ei tehta Pythonis, vaid tavaliselt tehakse enne, kui hakatakse koodi kirjutama. Neid käsitletakse <a href="/reactions-course/pages/modelleerimine.html">teistes</a> peatükkides ja siin keskendume ainult Pythoni failile, milles lahendame võrrandisüsteemi.
+      </p>
+      <p>
+        Kui modelleerida reaktsiooniprotsesse Pythonis Gekkoga, on tavaliselt failis 6 osa:
+      </p>
+      <ol>
+        <li>
+          Moodulite importimine
+        </li>
+        <li>
+          Lähteandmete defineerimine
+        </li>
+        <li>
+          Muutujate määramine
+        </li>
+        <li>
+          Võrrandite defineerimine
+        </li>
+        <li>
+          Lahendaja kutsumine
+        </li>
+        <li>
+          Vastuse väljastamine
+        </li>
+      </ol>
+      <p>
+        Vaatame järjest kõik neid osi, kasutades lihtsat ülesannet näitena.
+      </p>
+
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Näitame siin, kuidas Gekkot kasutada väga lihtsa ülesandega. Kuigi reaktsioonisüsteemid on tavaliselt keerulisemad, muster Pythoni failis on sisuliselt sama. Keerulisemate ülesannete puhul võivad olla rohkem parameetreid ja võrrandeid, aga mõistes seda lihtsamat lahendust sul peaks olema võimalik orienteeruda ka keerulisemas lahenduse failis.
+      </p>
+      <p>
+        Oletame, et perioodilises reaktoris viiakse läbi järgnevat reaktsiooni:
+      </p>
+      <div>
+        \[ A + B \rightarrow C \]
+      </div>
+      <p>
+        Arvuta aine A konversiooniastme muutust ajas 10 minuti jooksul.
+      </p>
+      <p>
+        Nii aine A kui ka aine B algkontsentratsioon reaktoris on 0,5 mol/l. Reaktori tingimustel reaktsiooni kiiruskonstant on 0,008 l mol<sup>-1</sup> s<sup>-1</sup>. On esimese järgu reaktsioon mõlema reagendi suhtes.
+      </p>
+
+      <h2 id="importimine">Importimine</h2>
+      <p>
+        Failis on vaja importida Pythoni mooduleid, mida on lahendamiseks vaja. Tavaliselt seda tehakse faili alguses.
+      </p>
+      <pre>
+<code class="python">import matplotlib.pyplot as plt
+import numpy as np
+from gekko import GEKKO</code></pre>
+      <p>
+        Esimeses reas impordime moodulit jooniste tegemiseks, nii et saame faili lõpul näidata tulemust joonisena. Kuna moodulil on päris pikk nimi, kasutame <code class="python">as plt</code> selleks, et defineerida lühendit. Siis edaspidi koodis saame kasutada lühendit pikema mooduli nime asemel. Sarnaselt, teises reas impordime Numpy paketi, mida saame kasutada massiivide loomiseks.
+      </p>
+      <p>
+        Kolmandas reas impordime Gekko paketi. Gekko paketis on üks mudeli objekt, <code class="python">GEKKO</code>, mis sisaldab kõik vajalikud objektid ja funktsioonid. Sellepärast, impordime <code class="python">GEKKO</code> objekti otse kasutades <code class="python">from gekko import</code> süntaksit.
+      </p>
+
+      <h2 id="l2hteandmed">Lähteandmete defineerimine</h2>
+      <p>
+        Kui modelleerida reaktorisüsteemi, siis mõned parameetrid on juba teada. Näiteks, antud ülesandes on juba teada aine A ja aine B algkontsentratsioone ja kiiruskonstanti. Paneme need Pythoni failisse kirja. Kui on mõni parameeter, mida me hiljem kasutame võrrandites, siis on hea defineerida seda kui Gekko <code class="python">Param</code> objekt. Kuigi üldiselt Gekko saab lahendust leida isegi, kui kasutatakse ainult Pythoni arvu, kasutades <code class="python">Param</code> Gekko saab aru, et väärtus antakse kasutaja poolt ja lahendamine võib toimuda sujuvamalt. Võib sarnaselt kasutada <code class="python">Const</code> objekti, kui on parameeter, mis ei muutu. Paneme siis kirja need lähteandmed
+      </p>
+      <pre>
+<code class="python">m = GEKKO()
+CA0 = m.Param(value=0.5) # mol/l
+CB0 = m.Param(value=0.5) # mol/l
+k = m.Param(value=0.008) # l mol^-1 s^-1</code></pre>
+      <p>
+        <code class="python">m = GEKKO()</code> loob Gekko mudeli objekti. Seda tehakse esiteks ja siis lisatakse ükshaaval parameetreid, muutujaid ja valemeid mudelisse. Sellepärast, iga kord, kui defineerisime parameetrit, kirjutasime <code class="python">m.</code> enne <a href="https://gekko.readthedocs.io/en/latest/quick_start.html#parameters"><code class="python">Param</code></a>.
+      </p>
+      <p>
+        Määratakse parameetri väärtus <code class="python">value=</code> süntaksiga. Hiljem, kui parameeter on defineeritud, on võimalik ligipääseda väärtusele ja isegi muuta seda kasutades <code class="python">.value =</code> süntaksit. Näiteks, kui tahaksime hiljem muuta aine A algkontsentratsiooni võiksime kirjutada <code class="python">CA0.value = 0.9</code>.
+      </p>
+      <p>
+        Kuna antud ülesandes konversiooniaste muutub ajas (ehk on <a href="/reactions-course/pages/mittestatsionaarsed.html">mittestatsionaarne</a> protsess), siis on vaja ka määrata ajahetked, mille juures lahendust leitakse. Selleks on Gekko mudelis <a href="https://gekko.readthedocs.io/en/latest/model_methods.html?highlight=time#m.time"><code class="python">time</code></a> omadus. Saame määrata <code class="python">time</code> omadusele massiivi või Pythoni järjendit soovitud ajahetkedega.
+      </p>
+      <pre>
+<code class="python">t_lõpp = 600 # s
+npts = 200
+m.time = np.linspace(0, t_lõpp, npts)</code></pre>
+      <p>
+        Massiivi loomiseks kasutasime Numpy <a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html"><code class="python">linspace</code></a> funktsiooni. Selle massiiviga valime 200 punkti 0 ja 600 sekundi vahel (10 minutit), ehk arvutatakse konversiooniastet umbes iga kolme sekundi tagant.
+      </p>
+
+      <h2 id="muutujad">Muutujate määramine</h2>
+      <p>
+        Ülesannetes on sisuliselt alati muutujaid, mille väärtust me ei tea ja mida me tahame arvutada. Antud näides muutuja on konversiooniaste. Defineerime muutujaid kui <a href="https://gekko.readthedocs.io/en/latest/quick_start.html#variable"><code class="python">Var</code></a> objekti.
+      </p>
+      <pre>
+<code class="python">XA = m.Var(0)</code></pre>
+      <p>
+        Soovi korral saab loomise hetkel anda ka muutujale algväärtust. Siin andsime algväärtuseks 0 kuna reaktsiooni alguses konversiooniaste on 0.
+      </p>
+
+      <h2 id="v6rrandid">Võrrandite defineerimine</h2>
+      <p>
+        Tavaliselt, kui hakkame koodi kirjutama, me oleme juba eelnevalt koostanud mudeli võrrandeid. Antud ülesandes, kuna on <a href="/reactions-course/pages/perioodiline-reaktor.html">perioodiline</a> reaktor, moolbilanss aine A jaoks oleks selline:
+      </p>
+      <div>
+        \[ \frac{dn_A}{dt} = -r_A V \]
+      </div>
+      <p>
+        Lisades reaktsiooni kiiruse valemit, võrrand muutub selliseks:
+      </p>
+      <div>
+        \[ \frac{dn_A}{dt} = -k C_A C_B V \]
+      </div>
+      <p>
+        Kuna tahame arvutada konversiooniastet, teisendame võrrandit nii, et oleks konversiooniastme suhtes.
+      </p>
+      <div>
+        \[ -V C_{A0} \frac{dX_A}{dt} = -k C_{A0} (1 - X_A) (C_{B0} - C_{A0} X_A) V \]
+      </div>
+      <p>
+        Siis <em>V</em> ja <em>C<sub>A0</sub></em> taanduvad välja ja saame lõpliku valemi.
+      </p>
+      <div>
+        \[ \frac{dX_A}{dt} = k (1 - X_A) (C_{B0} - C_{A0} X_A) \]
+      </div>
+      <p>
+        Gekko mudelis defineerime seda võrrandit kasutades <a href="https://gekko.readthedocs.io/en/latest/quick_start.html#equations"><code class="python">Equation</code></a> objekti.
+      </p>
+      <pre><code class="python">m.Equation(XA.dt() == k * (1 - XA) * (CB0 - CA0 * XA))</code></pre>
+      <p>
+        Võrrandites tähistame tuletist kasutades <a href="https://gekko.readthedocs.io/en/latest/model_methods.html?highlight=time#dt"><code class="python">.dt()</code></a> meetodit. Üldiselt, pannakse kirja võrrandit kasutades tavalist Pythoni matemaatika süntaksit. Üks erinevus on, et näidatakse võrdlust kahe võrdlusmärgiga ühe asemel.
+      </p>
+      <p>
+        Mõnikord mudeli võrrandid on päris pikad. Sellisel juhul võib olla kasulik defineerida vahepealset muutujat selleks, et tükeldada pikka võrrandit. Seda tehes, kood on tavaliselt lihtsam lugeda. Seda saab teha <a href="https://gekko.readthedocs.io/en/latest/model_methods.html?highlight=time#model-building"><code class="python">Intermediate</code></a> objektiga Pythonis.
+      </p>
+
+      <h2 id="lahendaja">Lahendaja kutsumine</h2>
+      <p>
+        Nüüd mudel on koostatud ja on võimalik lahendada. Gekko teeb seda ise taustas ja peame lihtsalt kutsuma <a href="https://gekko.readthedocs.io/en/latest/model_methods.html?highlight=time#m.solve">solve</a> meetodit.
+      </p>
+      <pre>
+<code class="python">m.options.IMODE = 4
+m.solve(disp=False)</code></pre>
+      <p>
+        On võimalik ka muuta paar lahendaja parameetrit. Siin me peame lahendajale ütlema, missuguse ülesande tüüp meil on, muutes <a href="https://gekko.readthedocs.io/en/latest/global.html#imode"><code class="python">IMODE</code></a> parameetrit. 4 näitab lahendajale, et süsteem ei ole statsionaarne ja et peaks olema üks konkreetne lahendus. Optimeerimise ülesande puhul võivad olla mitu väärtust, mis matemaatiliselt lahendavad võrrandisüsteemi.
+      </p>
+      <p>
+        <code class="python">disp</code> parameetriga on võimalik paluda, et programm ei prindiks lahendaja andmeid ja lahenduskäiku.
+      </p>
+
+      <h2 id="v2ljastamine">Vastuse väljastamine</h2>
+      <p>
+        Kui lahendust on leitud, tuleb kuidagi väljastada soovitud vastust. Seda saab teha printides väärtusi, salvestades väärtused failile või tehes joonist. Muutuja väärtust saab kätte <code class="python">value</code> omaduse alt. Näiteks, konversiooniastme, iga ajahetke juures, võiks kätte saada sedasi: <code class="python">XA.value</code>.
+      </p>
+      <p>
+        Kuna siin arvutame konversiooniastet 200 ajahetkel, on mõistlikum teha joonist, et korraga kuvada muutust ajas. Seda teeme <a href="https://matplotlib.org/">Matplotlib</a> paketiga.
+      </p>
+      <pre>
+<code class="python">plt.figure()
+plt.plot(m.time, XA.value)
+plt.xlabel('Aeg (s)')
+plt.ylabel('Konversiooniaste')
+plt.show()</code></pre>
+      <p>
+        Nüüd programm on valmis ja saame jooksutada seda. Tavaliselt jooksutades ilmuvad vead, mida on vaja esiteks kõrvaldada. Mõnikord see protsess võib olla päris masendav, aga sa saad sellega hakkama. Inseneri oskusi hinnatakse kõrgelt just sellepärast, et me suudame lahendada raskeid ülesandeid, millega teised ei viitsi tegeleda.
+      </p>
+      <p>
+        Jooksutades lahenduse faili antud näideülesande jaoks saame sellise joonise, mis näitab, kuidas aine A konversiooniaste muutub 10 minuti jooksul.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/lihtne-gekko-n2ide.png" />
+      <p>
+        Pythoni fail, mida me siin kasutasime, on olemas ka <a href="https://github.com/zmeri/reactions-course/blob/master/examples/lihtne-gekko-näide.py">Githubis</a>.
+      </p>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          Beal, L.D.R., Hill, D., Martin, R.A., and Hedengren, J. D., GEKKO Optimization Suite, Processes, Volume 6, Number 8, 2018, doi: 10.3390/pr6080106.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

@@ -19,7 +19,7 @@
 
   <script>
     $(function(){
-      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.6`);
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.7`);
     });
   </script>
   <script>
@@ -43,7 +43,7 @@
     <div id='main-text'>
       <h1>Mitmereaktori süsteemid</h1>
       <p>
-
+        Mõned süsteemid koosnevad mitmest reaktorist. Vaatame, mis muudatusi oleks vaja teha selleks, et modelleerida mitmereaktori süsteeme.
       </p>
 
       <h2 id="j2rjestikud-reaktorid">Järjestikud reaktorid</h2>
@@ -76,10 +76,182 @@
         Tavaliselt, sellistel arvutuslikel reaktoritel ei ole omavahel füüsilisi piire. Sellepärast ühendid võivad vabamalt liikuda erinevate osade, või &bdquo;reaktorite&ldquo;, vahel ja tuleb korraga lahendada mitme muutuja jaoks kasutades numbrilisi meetodeid.
       </p>
 
+      <h2 id="n2ide">Näide</h2>
+      <p>
+        Praegu üks oluline probleem maailmas on kliima muutmine kasvuhoonegaaside emissioonide tõttu. Peamine kasvuhoonegaas on süsinikdioksiid. CO<sub>2</sub> ei jää ainult atmosfääri ja liigub ka ookeanisse ja organismidesse (taimedesse). Lõpuks enamus seda süsinikdioksiidi jõuab tagasi atmosfääri, aga mingi osa jääb ka maa sisse ja moodustab kivimeid või orgaanilisi aineid mullas.
+      </p>
+      <p>
+        Kui detailidesse süveneda süsinikuringe on päris keeruline, hõlmates palju reaktsioone ja massilevi protsesse. Lisaks, maailm on suur ja tingimused varieeruvad asukohaga. Allolev joonis IPCC 2001. aasta aruandest annab ülevaade süsinikuringest.<sup><a href="#ref2">2</a></sup>
+      </p>
+      <figure>
+        <img class="inline-img" src="/reactions-course/media/sysinikuringe.png" />
+        <figcaption>
+          Looduslik süsinikuringe. Allikas: IPCC, 2001.<sup><a href="#ref2">2</a></sup>
+        </figcaption>
+      </figure>
+      <p>
+        Kõike neid kohti saab käsitleda kui reaktoreid selleks, et modelleerida, kuidas CO<sub>2</sub> kontsentratsioon atmosfääris muutub ajas. Kuigi süsinikuringe on keeruline, võime lihtsustada mudelit. Võime näiteks käsitleda kõike ookeane kui üks reaktor, kuigi tegelikult ookeanis on mitu kihti, milles tingimused ja protsessid erinevad. Samuti võime mõned osad mudelist välja jätta, mis oluliselt ei mõjuta tulemust, näiteks CO<sub>2</sub> vulkaanidest.
+      </p>
+      <p>
+        Tee mudelit maailma süsinikuringest ja hinda, mis võiks olla CO<sub>2</sub> kontsentratsioon atmosfääris 100 aasta pärast siis, kui lõpetatakse kohe fossiilkütuste põletamist.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Esiteks, koostame süsteemi skeemi. See aitab meil aru saada, mis kohti keskkonnas käsitleme, kui reaktor. Alustuseks, võime välja jätta vulkaanid kuna üleval antud IPCC jooniselt saab näha, et CO<sub>2</sub> kogus vulkaanidest on suhteliselt väike võrreldes teiste voogudega. Ja kuigi atmosfääri ja ookeani saab jaotada mitmeks kihtiks, lihtsustame mudelit ja ärme arvesta neid kihte. Tingimused ja kontsentratsioonid varieeruvad ka asukohaga, aga jätame samuti neid erinevusi kõrvale praegu selleks, et mudel oleks lihtsam. Süsinikuringe lihtsustatud skeem võiks siis olla midagi sellist:
+          </p>
+          <img class="inline-img" src="/reactions-course/media/sysinikuringe-skeem.svg" />
+          <p>
+            Mudeli skeemiga saame nüüd hakata koostama mudelit. Võtame järjest iga kohta ja koostame moolbilansi. Alustame atmosfääriga. Süsinik tuleb atmosfääri fossiilkütuste põletamisest ja surnud organismide lagunemisest. Taimed ja teised fotosünteetilised organismid võtavad süsiniku atmosfääris oma eluprotsesside käigus. Samuti toimub massiläbikanne ookeani ja atmosfääri vahel.
+          </p>
+          <div>
+            \[ n_{atm} \frac{dC_{CO_2,atm}}{dt} = \dot n_{põletamine} - k_{fotosüntees} n_{C,taimed} + k_{lagunemine} n_{C,muld} - \dot n_{lahustumine} \]
+          </div>
+          <p>
+            Tegelikult tahame teada CO<sub>2</sub>-e kontsentratsiooni atmosfääris, ja sellepärast kirjutasime CO<sub>2</sub>-e moolkogus atmosfääris, kui kontsentratsioon korda kogu atmosfääri moolide arvu. Lisaks, kuna fotosüntees ja lagunemine on reaktsioonid, mis sõltuvad taimede ja surnud organismide kogustest, kirjutasime need kui reaktsiooni kiiruse valemid.
+          </p>
+          <p>
+            Nüüd vaatame taimede süsiniku moolbilansi. Süsinik tuleb juurde fotosünteesi kaudu, kui taimed kasvavad, ja kaob surmaga.
+          </p>
+          <div>
+            \[ \frac{dn_{C,taimed}}{dt} = k_{fotosüntees} n_{C,taimed} - k_{surm} n_{C,taimed} \]
+          </div>
+          <p>
+            Moolbilanss mulla jaoks on sarnane, kuid nüüd suremise kaudu tuleb süsinik juurde ja lagunemise kaudu läheb see tagasi atmosfääri.
+          </p>
+          <div>
+            \[ \frac{dn_{C,muld}}{dt} = k_{surm} n_{C,taimed} - k_{lagunemine} n_{C,muld} \]
+          </div>
+          <p>
+            Saame käsitleda inimkonna emissioone kui lihtsalt sissevool atmosfäärile. Seega, me ei pea eraldi moolbilansi koostama selle skeemi osa jaoks. Viimane osa on siis ookean. Ookeanis on päris mitu keerulist protsessi, mis toimuvad. Näiteks, CO<sub>2</sub> reageerib veega moodustades vesinikkarbonaati ja karbonaati. Samuti organismid vees samuti kasutavad CO<sub>2</sub>-e. Kui need organismid surevad, osa süsinikust nende kehadest kukkub sügavamale merre. See voog on suhteliselt suur ja seda isegi kutsutakse bioloogiliseks pumbaks kuna see nii palju mõjutab süsiniku ringlust pinna ja sügavamate vete vahel. Lõpuks väike osa süsinikust jõuab mere põhja ja toimub settimine. Kuid lihtsustame seda meie mudelis ja võtame arvesse ainult CO<sub>2</sub>-e lahustumine atmosfäärist ja lõplik settimine ookeani põhjas.
+          </p>
+          <div>
+            \[ m_{ookean} \frac{dC_{CO_2,ookean}}{dt} = \dot n_{lahustumine} - \dot n_{settimine} \]
+          </div>
+          <p>
+            Ja siin taas peame korrutama ookeani massiga kuna tahame hoopis teada CO<sub>2</sub>-e kontsentratsiooni ookeanis.
+          </p>
+          <p>
+            Lahustumine on massiläbikande protsess ja saame kirjeldada selle kiirust läbikandeteguriga. Läbikandetegur tegelikult varieerub asukohaga ja teised faktorid (nt tuule kiirus) ka mõjutavad seda.<sup><a href="#ref3">3</a></sup> Siin teeme jälle mudelit lihtsamaks ja kasutame lihtsalt keskmist läbikandetegurit. Thomase jt<sup><a href="#ref3">3</a></sup> artiklis näidatakse, et saab läbikandetegurit arvutada korrutades gaasi läbikandekiirust (<em>k</em>) CO<sub>2</sub>-e lahustuvusega merevees (<em>S<sub>CO<sub>2</sub></sub></em>).
+          </p>
+          <div>
+            \[ \dot n_{lahustumine} = k S_{CO_2} A (P_{CO_2,atm} - P_{CO_2,ookean}) \]
+          </div>
+          <p>
+            Siin valemis, nagu tavaliselt läbikande valemis, korrutame läbikandetegurit pindala (<em>A</em>) ja osarõhkude vahega. Kui eeldata, et atmosfäär käitub nagu ideaalgaas, siis CO<sub>2</sub>-e osarõhk atmosfääris võrdub CO<sub>2</sub>-e moolosaga atmosfääris. On keerulisem arvutada CO<sub>2</sub>-e osarõhku merevees. Seda saab teha näiteks <a href="https://zmeri.github.io/thermo-course/pages/olekuv6rrandid.html">olekuvõrrandi</a> või <a href="https://zmeri.github.io/thermo-course/pages/aktiivsuse-koefitsiendid.html">aktiivsuskoefitsiendi</a> mudeliga. Lisaks, CO<sub>2</sub>-e kontsentratsioon ookeani pinna juures on madalam, kui kontsentratsioon sügavamas vees. Ookeani temperatuur ka mõjutab. Kuna aga CO<sub>2</sub>-e kontsentratsioon on madal merevees, CO<sub>2</sub>-e osarõhk on sisuliselt lineaarne funktsioon CO<sub>2</sub>-e kontsentratsioonist. Siis saame ligikaudselt arvutada ookeani CO<sub>2</sub>-e osarõhku kasutades järgmist valemit.
+          </p>
+          <div>
+            \[ P_{CO_2,ookean} = 165290 C_{CO_2,ookean} \]
+          </div>
+          <p>
+            Siin valemis muutuja <em>C<sub>CO<sub>2</sub>,ookean</sub></em> ühik on mol/kg ja osarõhu ühik on μatm (sisuliselt sama kui ppm). Kuigi see valem on väga suur lihtsustus, praeguse lihtsa mudeli jaoks see sobib.
+          </p>
+          <p>
+            Nüüd mudel on koostatud ja võime kasutada <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a> paketti selleks, et lahendada mudelit. Esiteks, paneme kirja parameetreid, mis on mudelis vajalikud. Enamus parameetreid tulevad kirjandusest.<sup><a href="#ref2">2</a>,<a href="#ref4">4-7</a></sup>
+          </p>
+          <pre>
+<code class="python">m = GEKKO()
+TUNDI_AASTAS = 8760
+mm_C = 12.0107 # g/mol
+mm_õhk = 0.79 * 2 * 14.0067 + 0.21 * 2 * 15.999 # g/mol
+ndot_põletamine = m.Param(value=0 / mm_C) # Pmol C / aasta
+k_fotosüntees = m.Param(value=0.11) # mol C taimede kasvule / mol C juba olemas taimedes / aasta.
+k_surm = m.Param(value=0.11) # mol C taimede surmast / mol C olemas taimedes / aasta
+ndot_settimine = m.Param(value= 0.5 / mm_C) # Pmol C, mis aastas jäävad mere settesse.
+k_lagunemine = m.Param(value=0.04) # mol C tagasi atmosfääri / mol C hetkel mullas / aasta
+m_ookean = m.Param(value=1.4e9) # Pg, ookeanite mass.
+n_atm = m.Param(value= 5.148e6 / mm_õhk) # Pmol atmosfääris.
+pind_ookean = m.Param(value=360.663e6) # km^2, merede pindala.
+k = m.Param(value=0.0001) # km h^-1, Maa keskmine gaasi läbikandekiirus atmosfääri ja ookeani vahel.
+sol = m.Param(value=32.93e-6) # Pmol km^-3 bar^-1, CO2 lahustuvus merevees 20 kraadi juures</code></pre>
+          <p>
+            Valime ka ajahetki, mille juures sooviksime, et lahendust oleks arvutatud.
+          </p>
+          <pre>
+<code class="python">t_lõpp = 100 # aastat
+npts = 200
+m.time = np.linspace(0, t_lõpp, npts)</code></pre>
+          <p>
+            Järgi on jäänud nüüd neli muutujat. Paneme ka vastavaid esialgseid väärtusi.
+          </p>
+          <pre>
+<code class="python">CO2_2020 = 413 # ppm
+CO2_ookean_nüüd = 0.0024 # mol/kg
+CCO2_atm = m.Var(CO2_2020) # ppm
+CCO2_ookean = m.Var(CO2_ookean_nüüd) # mol/kg
+nC_taimed = m.Var(500/mm_C) # Pmol, taimede süsiniku kogus
+nC_muld = m.Var(1350/mm_C) # Pmol (10^15 mol)</code></pre>
+          <p>
+            Nüüd saame kirja panna diferentsiaalvõrrandeid, mida me varem koostasime. Siin on ka mõned lisaarvud ühikute teisendamise jaoks.
+          </p>
+          <pre>
+<code class="python">PCO2_ookean = m.Intermediate(165290 * CCO2_ookean) # CO2 osarõhk ookeani pinnas
+ndot_lahustumine = m.Intermediate(k * TUNDI_AASTAS * sol * pind_ookean * (CCO2_atm - PCO2_ookean) / 1e6)
+m.Equation(CCO2_atm.dt() == (ndot_põletamine - k_fotosüntees * nC_taimed + k_lagunemine * nC_muld - ndot_lahustumine) / n_atm * 1e6)
+m.Equation(CCO2_ookean.dt() == (ndot_lahustumine - ndot_settimine) / m_ookean * 1000)
+m.Equation(nC_taimed.dt() == k_fotosüntees * nC_taimed - k_surm * nC_taimed)
+m.Equation(nC_muld.dt() == k_surm * nC_taimed - k_lagunemine * nC_muld)</code></pre>
+          <p>
+            Mudel on nüüd koostatud ja võime lahendada seda. Teeme ka joonist selleks, et näha, kuidas CO<sub>2</sub>-e kontsentratsioon muutub.
+          </p>
+          <pre>
+<code class="python">m.options.IMODE = 4
+m.solve(disp=False)
+
+plt.figure()
+plt.plot(m.time, CCO2_atm.value)
+plt.xlabel('Aeg (aasta)')
+plt.ylabel('CO$_2$ atmosfääris (ppm)')
+plt.show()</code></pre>
+          <img class="inline-img" src="/reactions-course/media/co2_kontsentratsioon_atm.png" />
+          <p>
+            Joonisest näeme, et kui lõpetaksime fossiilkütuste põletamise täna, siis alguses CO<sub>2</sub>-e kontsentratsioon langeks suhteliselt kiiresti, aga peale umbes 20 aastat langus aeglustuks. Kui vaatame oma mudelit, võime näha põhjust. Kui CO<sub>2</sub>-e kontsentratsioon langeb atmosfääris tasakaal atmosfääri ja ookeani vahel pöörab ümber ja CO<sub>2</sub>-e hakkaks hoopis ookeanist atmosfääri tagasi minema. Ainult väike osa ookeani CO<sub>2</sub>-est setib merepõhja iga aasta ja enamus CO<sub>2</sub> on ikkagi vees ja võib hakata tagasi atmosfääri liikuma.
+          </p>
+          <p>
+            Võtame pikema ajavahemikku ja vaatame, kuidas kontsentratsioon muutub 1000 aasta jooksul.
+          </p>
+          <img class="inline-img" src="/reactions-course/media/co2_kontsentratsioon_atm_1000aastat.png" />
+          <p>
+            Isegi 1000 aasta jooksul kontsentratsioon ei muutuks väga palju, meie mudeli järgi. Ja see on loogiline ka. Mõned looduslikud protsessid süsinikuringes, nagu settimine, toimuvad aeglaselt ja mööduks tuhandeid aastaid enne, kui need looduslikud protsessid suudaksid ümber pöörata neid muudatusi, mida inimkond on suutnud teha sajandiga.
+          </p>
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on kättesaadav <a href="https://github.com/zmeri/reactions-course/blob/master/examples/süsinikuringe.py">Githubist</a>.
+          </p>
+        </div>
+      </div>
+
       <h2>Viited</h2>
       <ol>
         <li id="ref1">
           H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          I. C. Prentice et al., “The carbon cycle and atmospheric carbon dioxide,” in Climate change 2001: the scientific basis, International Panel on Climate Change, 2001. Available: <a href="https://hal.archives-ouvertes.fr/hal-03333974">https://hal.archives-ouvertes.fr/hal-03333974</a>
+        </li>
+        <li id="ref3">
+          F. Thomas, C. Perigaud, L. Merlivat, and J.-F. Minster, “World-scale monthly mapping of the C02 ocean-atmosphere gas-transfer coefficient,” Philosophical Transactions of the Royal Society of London. Series A, Mathematical and Physical Sciences, vol. 325, no. 1583, pp. 71–83, 1988.
+        </li>
+        <li id="ref4">
+          D. Avijeet, “Mass of the Oceans,” The Physics Factbook, 1998. <a href="https://hypertextbook.com/facts/1998/AvijeetDut.shtml">https://hypertextbook.com/facts/1998/AvijeetDut.shtml</a> (accessed Nov. 05, 2021).
+        </li>
+        <li id="ref5">
+          K. E. Trenberth and L. Smith, “The Mass of the Atmosphere: A Constraint on Global Analyses,” Journal of Climate, vol. 18, no. 6, pp. 864–875, Mar. 2005, doi: 10.1175/JCLI-3299.1.
+        </li>
+        <li id="ref6">
+          M. J. Costello, A. Cheung, and N. De Hauwere, “Surface Area and the Seabed Area, Volume, Depth, Slope, and Topographic Variation for the World’s Seas, Oceans, and Countries,” Environ. Sci. Technol., vol. 44, no. 23, pp. 8821–8828, Dec. 2010, doi: 10.1021/es1012752.
+        </li>
+        <li id="ref7">
+          R. Zeebe and D. Wolf-Gladrow, “Carbon dioxide, dissolved (Ocean),” in Encyclopedia of paleoclimatology and ancient environments / ed. by Vivien Gornitz, Dordrecht: Springer, 2009, pp. 123–127. Available: <a href="https://epic.awi.de/id/eprint/11770/">https://epic.awi.de/id/eprint/11770/</a>
         </li>
       </ol>
     </div>

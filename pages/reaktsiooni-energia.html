@@ -12,11 +12,11 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.1">
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.3">
 
   <script>
     $(function(){
-      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.1`);
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.7`);
     });
   </script>
   <script>
@@ -40,7 +40,7 @@
     <div id='main-text'>
       <h1>Reaktsiooni energia</h1>
       <p>
-        Reaktsioon muudab süsteemi ja sellega tavaliselt kaasnevad energia muutused.
+        Reaktsioon muudab süsteemi ja sellega tavaliselt kaasneb energia muutus.
       </p>
 
       <h2 id="gibbsi-energia">Gibbsi energia muutus</h2>
@@ -51,7 +51,7 @@
         \[ dG = -SdT + VdP + \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
       </div>
       <p>
-        Valemi viimane osa on see, mis praegu meid huvitab kuna see kirjeldab energia muutust koostise muutuse pärast. Esimesed osad annavad energia muutust, mis tuleb temperatuuri või rõhu muutusega. Kuigi need mõjud on ka olulised kui modelleerida tervet reaktorit, praegu me keskendume ainult osale, mis on seotud koostise muutusega. Seda kutsutakse <a href="https://zmeri.github.io/thermo-course/pages/keemiline-potentsiaal.html">keemiliseks potentsiaaliks</a>.
+        Valemi viimane osa on see, mis praegu meid huvitab kuna see kirjeldab energia muutust koostise muutuse pärast. Esimesed osad annavad energia muutust, mis tuleb temperatuuri või rõhu muutusega. Kuigi need mõjud on ka olulised, kui modelleerida tervet reaktorit, praegu me keskendume ainult osale, mis on seotud koostise muutusega. Seda kutsutakse <a href="https://zmeri.github.io/thermo-course/pages/keemiline-potentsiaal.html">keemiliseks potentsiaaliks</a>.
       </p>
       <div>
         \[ dG = \sum_i \left( \frac{\partial G}{\partial n_i} \right)_{T,P,n_j} dn_i \]
@@ -70,7 +70,7 @@
             <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
           </span>
         </button>
-        <div class="collapsible-text">
+        <div class="collapsible-text-long">
           <p>
             Molekulide vahelised tõmbejõudude mõju Gibbsi energiale on võimalik eraldada reaktsiooni energiast. Nende vastasmõjude osa kirjeldatakse aktiivsusega (<em>a</em>).
           </p>
@@ -98,7 +98,7 @@
         </div>
       </div>
       <p>
-        Kui saame eeldata, et liigenergia segunemisest ei ole oluline arvutuses, siis saame lihtsalt arvutada Gibbsi energia muutust reagentide ja produktide moodustamisenergiast (<em>G<sub>i</sub></em>).
+        Kui saame eeldata, et liigenergia segunemisest ei ole oluline arvutuses, siis saame lihtsalt arvutada Gibbsi energia muutust reagentide ja produktide moodustamisenergiast (&Delta;<em>G<sub>i</sub></em>).
       </p>
       <div>
         \[ dG = \sum_i \alpha_i \Delta G_{f,i} \]
@@ -164,7 +164,7 @@
         Reaktsiooni energia näitab ka reaktsiooni loomulikku suunda. Kui Gibbsi energia muutus reaktsiooni tõttu on vähem kui 0, siis reaktsioon toimub iseenesest. Kui aga &Delta;G on positiivne, oleks vaja lisada energiat selleks, et reaktsioon toimuks.
       </p>
 
-      <h2 id="n2ide">Näide</h2>
+      <h2 id="n2ide-ioonne-vedelik">Näide - ioonne vedelik</h2>
       <p>
         Ioonsed vedelikud on suhteliselt uued ained, mille vastu tuntakse praegu palju huvi nende kasulike omaduste pärast. Näiteks, 1,5-diasabitsüklo[4.3.0]non-5-enium atsetaat on ioonne vedelik, mis suudab lahustada tselluloosi. Kui saab lahustada tselluloosi, siis on võimalik teha sellest kiude ja seejärel tekstiile. Puuvilla keskkonna jalajälg on suhteliselt suur ja sellepärast puuvilla juba osaliselt asendatakse tselluloosiga tekstiilitööstuses. Kuid praegu tselluloosi lahustamiseks kasutatakse enamasti kõrgeid temperatuure ja suhteliselt ohtlikud kemikaale. Kui oleks võimalik kasutada hoopis ioonseid vedelikke, siis protsess võib olla keskkonna sõbralikum ja turvalisem kui praegused variandid.<sup><a href="#ref3">3</a></sup>
       </p>
@@ -185,12 +185,12 @@
               Faas
             </th>
             <th>
-              Moodustamisentalpia (kJ/mol)
+              Moodustamis<wbr />entalpia (kJ/mol)
             </th>
           </tr>
           <tr>
             <td>
-              1,5-diasabitsüklo[4.3.0]non-5-een
+              1,5-diasabitsüklo<wbr />[4.3.0]non-5-een
             </td>
             <td>
               gaas
@@ -212,7 +212,7 @@
           </tr>
           <tr>
             <td>
-              1,5-diasabitsüklo[4.3.0]non-5-enium atsetaat
+              1,5-diasabitsüklo<wbr />[4.3.0]non-5-enium atsetaat
             </td>
             <td>
               vedelik
