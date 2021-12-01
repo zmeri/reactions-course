@@ -5,6 +5,7 @@ https://zmeri.github.io/reactions-course/pages/mitteisotermilised.html
 https://zmeri.github.io/reactions-course/pages/tasakaal.html
 https://zmeri.github.io/reactions-course/pages/sissejuhatus.html
 https://zmeri.github.io/reactions-course/pages/modelleerimine.html
+https://zmeri.github.io/reactions-course/pages/bioreaktorid.html
 https://zmeri.github.io/reactions-course/pages/mehhanismid.html
 https://zmeri.github.io/reactions-course/pages/kineetika-m22ramine.html
 https://zmeri.github.io/reactions-course/pages/reaktsiooni-energia.html

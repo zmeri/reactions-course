@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      CommonHTML: { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS_CHTML"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/styles/default.min.css">
+  <script src="https://unpkg.com/@highlightjs/cdn-assets@10.6.0/highlight.min.js"></script>  <script>hljs.highlightAll();</script>
+
+  <link rel="stylesheet" href="/reactions-course/styles/reactions.css?v=0.0.3">
+
+  <script>
+    $(function(){
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.8`);
+    });
+  </script>
+  <script>
+    $(document).on("click", ".collapsible-button", function(){
+      if ($(this).parent().hasClass("expanded")) {
+        $(this).parent().removeClass("expanded");
+      } else {
+        $(this).parent().addClass("expanded");
+      }
+    });
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bioreaktorid</title>
+</head>
+
+<body>
+  <div id='content'>
+    <div id="navigation"></div>
+    <div id='main-text'>
+      <h1>Bioreaktorid</h1>
+      <p>
+        Elus organismide sees toimuvad paljud reaktsioonid. Reaktsiooniprotsesside põhimõtetega võime kirjeldada neid reaktsioone, mis toimuvad organismides ja võime isegi kasutada neid kemikaalide tootmiseks. Bioreaktoriga saame toota kemikaale, mida oleks raske toota ilma organismi abita.
+      </p>
+
+      <h2 id="kineetika">Ensüümide kineetika</h2>
+      <p>
+        Ensüümid on suured bioloogilised molekulid, mis kiirendavad reaktsioone. Ensüümid on üldiselt valgud. Reaktsioonis ensüüm seob reagenti moodustades aktiivset siirdeseisundit, mida kutsutakse ensüüm-lähteaine kompleksiks (ingl <em>enzyme-substrate complex</em>). Ensüümide üks eelis on see, et need võivad väga selektiivselt toota just soovitud produkti kuna liituvad ainult teatud molekulidega ja viivad läbi tavaliselt ainult ühte reaktsiooni. Selle imelise katalüütilise võime saavutamiseks, ensüümid on kokku volditud nii, et neil oleks õige kuju ensüüm-lähteaine kompleksi moodustamiseks. Tagajärg on aga see, et ensüümid on tundlikud tingimustele reaktoris. Selleks, et nad töötaksid temperatuur peab olema tavaliselt 20 ja 70 °C vahel ja pH 4 ja 9 vahel. Kui temperatuur on liiga kõrge või pH on liiga äärmuslik, siis ensüümid võivad <em>denatureerida</em>, ehk nad kaotavad oma kuju ja enam ei saa reaktsioonis osaleda.
+      </p>
+      <p>
+        Kui kasutatakse sõna bioreaktor, siis tavaliselt peetakse silmas, et reaktoris on elus rakud ja, et ensüümi reaktsioonid toimuvad rakkudes. Kuid on võimalik ka eraldada ensüüme rakkudest ja mõnikord lisatakse ainult ensüüme reaktorisse.
+      </p>
+      <p>
+        Ensüümis on teatud aktiivsed kohad, mille juures reaktsioonid toimuvad. Need <em>toimekohad</em> seovad lähteainet ja panevad seda seisundisse, mis soodustab reaktsiooni. Üldist mehhanismi võib näidata järgnevalt:
+      </p>
+      <div>
+        \[ S + E \leftrightarrow E \cdot S \rightarrow P + E \]
+      </div>
+      <p>
+        Siin <em>E</em> on ensüüm, <em>S</em> on lähteaine ja <em>P</em> on produkt. Esimeses sammus ensüüm ja lähteaine liituvad moodustades ensüüm-lähteaine kompleksi. See samm on pöörduv ja lähteaine võib lahkude ensüümist enne, kui reaktsioon võib toimuda. Ensüüm-lähteaine kompleksist võib edasi toimuda reaktsiooni produkti moodustamiseks. Reaktsioonis võivad osaleda ka mitu lähteainet ja on võimalik, et reaktsioonis tekkivad mitu produkti.
+      </p>
+      <p>
+        Tahaksime ka arvutada reaktsiooni kiirust. Kasutatakse erinevaid valemeid ensüümi reaktsioonide kiiruse arvutamiseks, aga üks levinumaid on Michaelis-Menteni võrrand.
+      </p>
+      <div>
+        \[ -r_{S} = \frac{V_{max} C_{S}}{K_m + C_{S}} \]
+      </div>
+      <p>
+        Selles valemis <em>S</em> tähendab lähteaine (ingl <em>substrate</em>). <em>V<sub>max</sub></em> näitab maksimaalset reaktsiooni kiirust, mida on võimalik saavutada. Mõnikord seda tahistatakse kui <em>k<sub>cat</sub></em>. <em>K<sub>m</sub></em> on Michaelis-Menteni konstant. <em>K<sub>m</sub></em> peaks ka ligikaudselt näitama, kui tugevasti ensüüm on seotud lähteainega. Iga reaktsioonil ja ensüümil on omad konstandi väärtused.
+      </p>
+      <p>
+        Vaatame natuke lähemalt Michaelis-Menteni võrrandi käitumist. Kui lähteaine kontsentratsioon on madal, siis nimetaja sisuliselt võrdub <em>K<sub>m</sub></em>-iga. Ehk, kiirus sõltub sisuliselt lineaarselt kontsentratsioonist ja reaktsioon käitub nagu esimest järku reaktsioon. Seda võib näha ka allolevast joonisest. Kui aga lähteaine kontsentratsioon on kõrge, nimetaja on ligikaudselt võrdne <em>C<sub>S</sub></em>-iga ja reaktsiooni kiirus eriti ei sõltu kontsentratsioonist. Ehk, näib, et reaktsiooni järk on null. See käitumine on loogiline kuna kõrge lähteaine kontsentratsiooni puhul peaaegu kõik ensüümi toimekohad on hõivatud ja lähteainet lisamine ei saa väga mõjutada reaktsiooni kiirust.
+      </p>
+      <img class="inline-img" src="/reactions-course/media/michaelis-menten.svg" />
+      <p>
+        Tuleks ka mainida, et süsteemis võivad esineda muud ained, mis võivad takistada reaktsiooni. Neid kutsutakse aeglustiteks või inhibiitoriteks (ingl <em>inhibitor</em>). Need aeglustid on tavaliselt ained, mis liituvad ensüümiga ja ei võimalda lähteainel pääseda ensüümile ligi. Sel juhul kineetika on keerulisem ja reaktsiooni kiirus väheneb.
+      </p>
+
+      <h2 id="">Rakkude kasv</h2>
+      <p>
+        Tavaliselt, bioreaktoris on elus rakud, mis oma elu tegevuse käigus toodavad mingit soovitud produkti. Rakud on küllaltki keerulised asjad, aga lihtsustades saame käsitleda rakkusid kui üks komponent ja saame koostada lihtsustatud reaktsiooni valemit.
+      </p>
+      <div>
+        \[ rakud + toitained \rightarrow rohkem rakud + produkt \]
+      </div>
+      <p>
+        Ühes süsteemis, näiteks bioreaktoris, organismid tavaliselt läbivad mitu erinevat kasvu faasi.
+      </p>
+      <ol>
+        <li>
+          Viivitusfaas - organismid kohanevad uue keskkonnaga ja kasvu eriti ei toimu;
+        </li>
+        <li>
+          Eksponentsiaalne kasvufaas - organismid kasvavad ja paljunevad kiirest;
+        </li>
+        <li>
+          Statsionaarne faas - toidu-, ruumi- või mõne muu puudus piirab kasvu ja organismide kontsentratsioon püsib samal tasamel;
+        </li>
+        <li>
+          Surmafaas - toitu jääb väheks või mürgid tekivad elutegevuse tõttu ja organismid hakkavad surema.
+        </li>
+      </ol>
+      <img class="inline-img" src="/reactions-course/media/rakkude-kasvamise-faasid.svg" />
+      <p>
+        Viivitusfaasi pikkus sõltub sellest, kui sarnane keskkond on organismide varasemale keskkonnale. Kui näiteks bakterid olid hoitud sarnastel tingimustel, siis bioreaktoris nad võibolla ei pea väga kohanema ja viivitusfaas ei pruugi juhtuda.
+      </p>
+      <p>
+        Produkt võib tekkida eksponentsiaalses kasvufaasis või statsionaarses faasis. Mõnikord organismid hakkavad soovitud ainet tootma alles siis, kui tekivad pinged. Näiteks, bioõli tootmisel mõned vetikad hakkavad tootma lipiide suuremates kogustes alles siis, kui tekib mingi pinge, mis neid häirib.<sup><a href="#ref8">8</a></sup> Kui on teada, mis kasvufaasis produkt kõige rohkem tekib, siis saab paremini disainida bioreaktorit selleks, et suurendada saagist.
+      </p>
+      <p>
+        Rakkude kasvu saab kirjeldada ka kiiruse valemiga. Kasutatakse palju erinevaid valemeid, aga kõige rohkem kasutatakse Monodi võrrandit:
+      </p>
+      <div>
+        \[ r_{rakud} = \mu C_{rakud} \]
+      </div>
+      <p>
+        <em>&mu;</em> on rakkude erikasvukiirus. Monodi võrrandis seda arvutatakse järgmise valemiga.
+      </p>
+      <div>
+        \[ \mu = \mu_{max} \frac{C_S}{K_S + C_S} \]
+      </div>
+      <p>
+        Ehk, arvutatakse erikasvukiirust, kui osa maksimaalsest kasvukiirusest. Liites need kaks valemit saame sellise võrrandi:
+      </p>
+      <div>
+        \[ r_{rakud} = \frac{\mu_{max} C_S}{K_S + C_S} C_{rakud} \]
+      </div>
+      <p>
+        Võrrandi kuju on tegelikult tuttav ja meenutab Michaelis-Menteni võrrandit, mis on loogiline kuna rakkude kasv sõltub ensüümidest.
+      </p>
+
+      <h2 id="bilansid">Bilansid</h2>
+      <p>
+        Nii nagu teiste reaktorite puhul, on võimalik koostada materjalbilansse bioreaktorite jaoks. Lisaks bilanssidele lähteainete jaoks, on võimalik ka koostada bilanssi rakkude jaoks.
+      </p>
+
+      <h2 id="massiylekanne">Massiülekanne</h2>
+      <p>
+          Bioreaktoris võib olla ka oluline võtta arvesse massiülekanne. Näiteks, organismid sageli vajavad hapnikku või süsihappegaasi. Seda tihti lisatakse gaasina reaktorisse ja gaasi mullid läbivad lahuse. Need gaasid peavad siis liikuma mullist lahusesse ja siis rakkudesse.
+      </p>
+
+      <h2 id="n2ide">Näide - maks</h2>
+      <p>
+        Kui alkoholi juuakse, siis keha reageerib ja proovib seda etanooli muundata selleks, et vähendada etanooli kontsentratsiooni kehas. Enamasti, etanooli muundamine toimub maksas. Etanool maos ja soolastikus imetakse verre, ja kui veri jõuab maksani ensüümid hakkavad seda muundama.
+      </p>
+      <p>
+        Etanooli muundatakse maksas järgnevate reaktsioonide kaudu:
+      </p>
+      <div>
+        \[ CH_3CH_2OH + NAD^+ \leftrightarrow CH_3CHO + NADH + H^+ \]
+        \[ CH_3CHO + NAD^+ \rightarrow CH_3COOH + NADH + H^+ \]
+      </div>
+      <p>
+        Ensüümid kiirendavad neid reaktsioone. Esimeses reaktsioonis alkoholdehüdrogenaas muudab etanooli atsetaldehüüdiks ja teises reaktsioonis aldehüüddehüdrogenaase abil atsetaldehüüd muutub atsetaadiks.
+      </p>
+      <p>
+        Tee mudelit sellest, kuidas etanooli kontsentratsioon muutub peale seda, kui juuakse alkohoolset jooki. Kui juuakse 400 ml veini (etanooli sisaldus 12 vol%), kas etanooli kontsentratsioon veres ületaks Eesti alkoholi piirmäära (0,2 promilli, ehk 0,2 mg/g)? Kui ületab, kui kaua läheks enne, kui etanooli kontsentratsioon veres on jälle madalam, kui piirmäär?
+      </p>
+      <p>
+        Mudeli lihtsustamiseks võib eeldata, et juuakse alkoholi kogust kõik korraga algushetkel. Võib ka teha keerulisemat mudelit, milles alkoholi juuakse mitu korda teatud aja jooksul.
+      </p>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita lahendust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida lahendust
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Esiteks, koostame süsteemi skeemi. Kui alkohoolset jooki võetakse, siis esiteks läheb see makku. Maost mingil määral seda imetakse verre, kuid enamus liigub edasi soolestikku, kus imemine toimub palju kiiremini. Kui etanooli on imetud verre, siis see ringleb kehas ja läbib maksa. Kuigi reaktsioonid alkoholiga toimuvad mitmes kohas kehas, enamus etanooli muundatakse maksas.
+          </p>
+          <img class="inline-img" src="/reactions-course/media/maks.svg" />
+          <p>
+            Võime nüüd hakata koostama mudelit. Võtame järjest iga elundi ja koostame moolbilansi. Alustame verega kuna tahame lõpuks teada etanooli kontsentratsiooni veres.
+          </p>
+          <div>
+            \[ V_{veri} \frac{dC_{et,veri}}{dt} = \dot n_{maost} + \dot n_{sool} - \dot n_{maksa} + \dot n_{maksast} \]
+          </div>
+          <p>
+            Kuna veres reaktsioonid etanooliga eriti ei toimu, siis oluline on ainult need vood, mis toovad etanooli verre või viivad etanooli maksa. Võime ka lahti kirjutada neid moolkulusid selleks, et saame neid arvutada. Etanooli liikumine maost ja soolestikust verre on massiläbikande protsess. Kirjeldame siin seda lihtsalt läbikande valemiga, milles korrutame läbikandetegurit (<em>h</em>) kontsentratsiooni vahega.
+          </p>
+          <div>
+            \[ \dot n_{maost} = h_{maost} (C_{et,magu} - C_{et_veri}) \]
+            \[ \dot n_{sool} = h_{sool} (C_{et,sool} - C_{et_veri}) \]
+          </div>
+          <p>
+            Võime arvutada moolkulu maksa ja vere vahel korrutades vere mahtkulu, mis läheb ja tuleb maksast, vastava etanooli kontsentratsiooniga.
+          </p>
+          <div>
+            \[ \dot n_{maksa} = \dot v_{maks-veri} C_{et,veri} \]
+            \[ \dot n_{maksast} = \dot v_{maks-veri} C_{et,maks} \]
+          </div>
+          <p>
+            Kui asendada need moolbilansis, siis etanooli moolbilanss veres on selline:
+          </p>
+          <div>
+            \[ V_{veri} \frac{dC_{et,veri}}{dt} = h_{maost} (C_{et,magu} - C_{et_veri}) + h_{sool} (C_{et,sool} - C_{et_veri}) - \dot v_{maks-veri} C_{et,veri} + \dot v_{maks-veri} C_{et,maks} \]
+          </div>
+          <p>
+            Moolbilansid mao ja soolestiku jaoks võime me sarnaselt koostada. Siin <em>v<sub>magu-sool</sub></em> on mahtkulu, mis voolab maost soolestikku.
+          </p>
+          <div>
+            \[ V_{magu} \frac{dC_{et,magu}}{dt} = -\dot n_{maost} - \dot v_{magu-sool} C_{et,magu} \]
+            \[ V_{sool} \frac{dC_{et,sool}}{dt} = -\dot n_{sool} + \dot v_{magu-sool} C_{et,magu} \]
+          </div>
+          <p>
+            Viimasena, saame koostada moolbilansi maksa jaoks. Erinevalt teistest elunditest, maksas peame ka arvesse võtma etanooli muundamisreaktsiooni.
+          </p>
+          <div>
+            \[ V_{maks} \frac{dC_{et,maks}}{dt} = \dot v_{maks-veri} C_{et,veri} - \dot v_{maks-veri} C_{et,maks} + r_{et} \]
+          </div>
+          <p>
+            Etanooli muundamisreaktsiooni kiirust ensüümi abil saab arvutada Michaelis-Menteni võrrandiga.<sup><a href="#ref2">2</a></sup>
+          </p>
+          <div>
+            \[ r_{et} = \frac{k_{cat} C_{et,maks}}{K_m + C_{et,maks}} \]
+          </div>
+          <p>
+            Nüüd mudel on koostatud ja võime kasutada <a href="https://gekko.readthedocs.io/en/latest/">Gekko</a> paketti selleks, et lahendada mudelit. Esiteks, saame arvutada etanooli kogust, mida juuakse sisse.
+          </p>
+          <pre>
+<code class="python">V_jook = 400 # ml, joogi maht
+mahtosa_etanool = 0.12
+etanooli_tihedus = 0.78954976 # g/ml
+m_etanool_sisse = V_jook * mahtosa_etanool * etanooli_tihedus</code></pre>
+          <p>
+            Seejärel, paneme kirja parameetreid, mis on mudelis vajalikud. Enamus parameetreid on võimalik leida kirjandusest.<sup><a href="#ref2">2-7</a></sup>
+          </p>
+          <pre>
+<code class="python">m = GEKKO()
+maksu_mass = 1.5 # kg
+mm = 46.07 # etanooli molaar mass (g/mol)
+vere_tihedus = 1.0506 # g/ml
+maksu_tihedus = 1.051 # g/ml
+Vmax = m.Param(value=10) # min^-1
+Km = m.Param(value=1.2/1000) # M
+V_maks = m.Param(value=maksu_mass / maksu_tihedus) # l
+V_veri = m.Param(value=5) # l
+V_magu = m.Param(value=0.5 + V_jook/1000) # l, mao maht
+V_sool = m.Param(value=0.06) # l, soolestiku maht
+vdot_magu_sool = m.Param(value=0.01) # l/min, mahtkulu maost soolestikku
+vdot_maks_veri = m.Param(value=maksu_mass) # l/min, vere mahtkulu maksasse on umbes 1 l / kg maksa.
+h_magu = m.Param(value=0.0005) # min^-1
+h_sool = m.Param(value=0.05) # min^-1
+Cet_magu_alg = m_etanool_sisse / mm / V_magu.value # arvutada etanooli algkontsentratsioon kõhus</code></pre>
+          <p>
+            Peame ka valima ajahetki, mille juures sooviksime, et lahendust oleks arvutatud.
+          </p>
+          <pre>
+<code class="python">t_lõpp = 120 # min
+npts = 200
+m.time = np.linspace(0, t_lõpp, npts) # min</code></pre>
+          <p>
+            Lähteandmed on nüüd kirjas ja võime defineerida muutujaid, mida on vaja arvutada. Meie muutujad on etanooli kontsentratsioon neljas erinevas elundis.
+          </p>
+          <pre>
+<code class="python">Cet_magu = m.Var(Cet_magu_alg) # mol/l, etanooli kontsentratsioon maos
+Cet_sool = m.Var(0) # mol/l, etanooli kontsentratsioon soolestikus
+Cet_veri = m.Var(0) # mol/l, etanooli kontsentratsioon veres
+Cet_maks = m.Var(0) # mol/l, etanooli kontsentratsioon maksas</code></pre>
+          <p>
+            Ja mudelit paneme kirja võrrandisüsteemina. Meil on neli moolbilansi, üks iga elundi jaoks. Kasutame ka Gekko <a href="https://gekko.readthedocs.io/en/latest/quick_start.html#intermediates"><code class="python">Intermediate</code></a> objekti selleks, et eraldi defineerida reaktsiooni kiirust ja moolkulu maost ja soolestikus verre. Seda tehes moolbilansid on natuke lihtsamad ja on võibolla kergem lugeda.
+          </p>
+          <pre>
+<code class="python">r = m.Intermediate(-Vmax * Cet_maks / (Km + Cet_maks))
+ndot_maost = m.Intermediate(h_magu * (Cet_magu - Cet_veri)) # mol/min
+ndot_sool = m.Intermediate(h_sool * (Cet_sool - Cet_veri)) # mol/min
+m.Equation(Cet_magu.dt() == (-ndot_maost - vdot_magu_sool * Cet_magu) / V_magu) # tegelikult mao maht pidevalt muutub, aga siin lihtsustame ja oletame, et maht ei muutu.
+m.Equation(Cet_sool.dt() == (vdot_magu_sool * Cet_magu - ndot_sool) / V_sool)
+m.Equation(Cet_veri.dt() == (ndot_maost + ndot_sool - vdot_maks_veri * Cet_veri + vdot_maks_veri * Cet_maks) / V_veri)
+m.Equation(Cet_maks.dt() == (vdot_maks_veri * Cet_veri - vdot_maks_veri * Cet_maks + r * V_maks) / V_maks)</code></pre>
+          <p>
+            Nüüd saame lahendada mudelit. Teeme ka joonist nägemaks, kuidas etanooli kontsentratsioon veres muutub ajas. Teisendame kontsentratsiooni ühikut, nii et ühik oleks mg/g, ehk promiil.
+          </p>
+          <pre>
+<code class="python">m.options.IMODE = 4
+m.solve(disp=False)
+
+plt.figure()
+plt.plot(m.time, np.asarray(Cet_veri.value) * mm / vere_tihedus)
+plt.xlabel('Aeg (min)')
+plt.ylabel('Kontsentratsioon (mg/g)')
+plt.show()</code></pre>
+          <img class="inline-img" src="/reactions-course/media/maks_etanool.png" />
+          <p>
+            Pythoni fail, mida kasutasime siin lahendamiseks, on võimalik kätte saada <a href="https://github.com/zmeri/reactions-course/blob/master/examples/maks.py">Githubist</a>.
+          </p>
+        </div>
+      </div>
+
+      <h2>Viited</h2>
+      <ol>
+        <li id="ref1">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
+        </li>
+        <li id="ref2">
+          F. W. Wagner, A. R. Burger, and B. L. Vallee, “Kinetic properties of human liver alcohol dehydrogenase: oxidation of alcohols by class I isoenzymes,” Biochemistry, vol. 22, no. 8, pp. 1857–1863, Apr. 1983, doi: 10.1021/bi00277a018.
+        </li>
+        <li id="ref3">
+          C. Eipel, K. Abshagen, and B. Vollmar, “Regulation of hepatic blood flow: The hepatic arterial buffer response revisited,” World Journal of Gastroenterology : WJG, vol. 16, no. 48, p. 6046, Dec. 2010, doi: 10.3748/wjg.v16.i48.6046.
+        </li>
+        <li id="ref4">
+          https://hypertextbook.com/facts/2004/MaryPennisi.shtml
+        </li>
+        <li id="ref5">
+          R. J. Trudnowski and R. C. Rico, “Specific Gravity of Blood and Plasma at 4 and 37 °C,” Clinical Chemistry, vol. 20, no. 5, pp. 615–616, May 1974, doi: 10.1093/clinchem/20.5.615.
+        </li>
+        <li id="ref6">
+          B. A. Overmoyer, C. E. McLaren, and G. M. Brittenham, “Uniformity of liver density and nonheme (storage) iron distribution,” Arch Pathol Lab Med, vol. 111, no. 6, pp. 549–554, Jun. 1987.
+        </li>
+        <li id="ref7">
+          J. Feldschuh and Y. Enson, “Prediction of the normal blood volume. Relation of blood volume to body habitus.,” Circulation, vol. 56, no. 4, pp. 605–612, Oct. 1977, doi: 10.1161/01.CIR.56.4.605.
+        </li>
+        <li id="ref8">
+          N. Pushpakumari Kudahettige, J. Pickova, and F. G. Gentili, “Stressing Algae for Biofuel Production: Biomass and Biochemical Composition of Scenedesmus dimorphus and Selenastrum minutum Grown in Municipal Untreated Wastewater,” Frontiers in Energy Research, vol. 6, p. 132, 2018, doi: 10.3389/fenrg.2018.00132.
+        </li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>

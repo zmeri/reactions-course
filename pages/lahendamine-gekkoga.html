@@ -19,7 +19,7 @@
 
   <script>
     $(function(){
-      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.7`);
+      $("#navigation").load(`/reactions-course/src/navigation.html?v=0.0.8`);
     });
   </script>
   <script>
@@ -215,7 +215,7 @@ m.time = np.linspace(0, t_lõpp, npts)</code></pre>
 <code class="python">m.options.IMODE = 4
 m.solve(disp=False)</code></pre>
       <p>
-        On võimalik ka muuta paar lahendaja parameetrit. Siin me peame lahendajale ütlema, missuguse ülesande tüüp meil on, muutes <a href="https://gekko.readthedocs.io/en/latest/global.html#imode"><code class="python">IMODE</code></a> parameetrit. 4 näitab lahendajale, et süsteem ei ole statsionaarne ja et peaks olema üks konkreetne lahendus. Optimeerimise ülesande puhul võivad olla mitu väärtust, mis matemaatiliselt lahendavad võrrandisüsteemi.
+        On võimalik ka muuta paar lahendaja parameetrit. Siin me peame lahendajale ütlema, missuguse ülesande tüüp meil on, muutes <a href="https://gekko.readthedocs.io/en/latest/global.html#imode"><code class="python">IMODE</code></a> parameetrit. 4 näitab lahendajale, et süsteemis on diferentsiaalvõrrand (ehk kasutasime <code class="python">time</code> ja <code class="python">.dt()</code>) ja et peaks olema üks konkreetne lahendus. Optimeerimise ülesande puhul võivad olla mitu väärtust, mis matemaatiliselt lahendavad võrrandisüsteemi.
       </p>
       <p>
         <code class="python">disp</code> parameetriga on võimalik paluda, et programm ei prindiks lahendaja andmeid ja lahenduskäiku.
