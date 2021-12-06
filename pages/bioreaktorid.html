@@ -66,10 +66,10 @@
         Tahaksime ka arvutada reaktsiooni kiirust. Kasutatakse erinevaid valemeid ensüümi reaktsioonide kiiruse arvutamiseks, aga üks levinumaid on Michaelis-Menteni võrrand.
       </p>
       <div>
-        \[ -r_{S} = \frac{V_{max} C_{S}}{K_m + C_{S}} \]
+        \[ -r_{S} = \frac{k_{cat} C_E C_S}{K_m + C_S} \]
       </div>
       <p>
-        Selles valemis <em>S</em> tähendab lähteaine (ingl <em>substrate</em>). <em>V<sub>max</sub></em> näitab maksimaalset reaktsiooni kiirust, mida on võimalik saavutada. Mõnikord seda tahistatakse kui <em>k<sub>cat</sub></em>. <em>K<sub>m</sub></em> on Michaelis-Menteni konstant. <em>K<sub>m</sub></em> peaks ka ligikaudselt näitama, kui tugevasti ensüüm on seotud lähteainega. Iga reaktsioonil ja ensüümil on omad konstandi väärtused.
+        Selles valemis <em>S</em> tähendab lähteaine (ingl <em>substrate</em>) ja <em>C<sub>E</sub></em> on ensüümi kontsentratsioon. <em>k<sub>cat</sub></em> näitab kui mitu lähteaine molekuli üks ensüümi molekul (ühe toimekohaga) suudab muundata teatud aja jooksul siis, kui toimekohas on alati lähteaine molekul (ehk lähteaine kontsentratsiooni ei piira reaktsiooni). Mõnikord kasutatakse hoopis <em>V<sub>max</sub></em>, mis näitab maksimaalset reaktsiooni kiirust, mida on võimalik saavutada konkreetse ensüümi kontsentratsiooni juures. Ehk, \( V_{max} = k_{cat} C_E \). <em>K<sub>m</sub></em> on Michaelis-Menteni konstant. <em>K<sub>m</sub></em> peaks ligikaudselt näitama, kui tugevasti ensüüm on seotud lähteainega. Iga reaktsioonil ja ensüümil on omad konstandi väärtused.
       </p>
       <p>
         Vaatame natuke lähemalt Michaelis-Menteni võrrandi käitumist. Kui lähteaine kontsentratsioon on madal, siis nimetaja sisuliselt võrdub <em>K<sub>m</sub></em>-iga. Ehk, kiirus sõltub sisuliselt lineaarselt kontsentratsioonist ja reaktsioon käitub nagu esimest järku reaktsioon. Seda võib näha ka allolevast joonisest. Kui aga lähteaine kontsentratsioon on kõrge, nimetaja on ligikaudselt võrdne <em>C<sub>S</sub></em>-iga ja reaktsiooni kiirus eriti ei sõltu kontsentratsioonist. Ehk, näib, et reaktsiooni järk on null. See käitumine on loogiline kuna kõrge lähteaine kontsentratsiooni puhul peaaegu kõik ensüümi toimekohad on hõivatud ja lähteainet lisamine ei saa väga mõjutada reaktsiooni kiirust.
@@ -108,7 +108,7 @@
         Viivitusfaasi pikkus sõltub sellest, kui sarnane keskkond on organismide varasemale keskkonnale. Kui näiteks bakterid olid hoitud sarnastel tingimustel, siis bioreaktoris nad võibolla ei pea väga kohanema ja viivitusfaas ei pruugi juhtuda.
       </p>
       <p>
-        Produkt võib tekkida eksponentsiaalses kasvufaasis või statsionaarses faasis. Mõnikord organismid hakkavad soovitud ainet tootma alles siis, kui tekivad pinged. Näiteks, bioõli tootmisel mõned vetikad hakkavad tootma lipiide suuremates kogustes alles siis, kui tekib mingi pinge, mis neid häirib.<sup><a href="#ref8">8</a></sup> Kui on teada, mis kasvufaasis produkt kõige rohkem tekib, siis saab paremini disainida bioreaktorit selleks, et suurendada saagist.
+        Produkt võib tekkida eksponentsiaalses kasvufaasis või statsionaarses faasis. Mõnikord organismid hakkavad soovitud ainet tootma alles siis, kui tekivad pinged. Näiteks, bioõli tootmisel mõned vetikad hakkavad tootma lipiide suuremates kogustes alles siis, kui tekib mingi pinge, mis neid häirib.<sup><a href="#ref9">9</a></sup> Kui on teada, mis kasvufaasis produkt kõige rohkem tekib, siis saab paremini disainida bioreaktorit selleks, et suurendada saagist.
       </p>
       <p>
         Rakkude kasvu saab kirjeldada ka kiiruse valemiga. Kasutatakse palju erinevaid valemeid, aga kõige rohkem kasutatakse Monodi võrrandit:
@@ -157,7 +157,7 @@
         Ensüümid kiirendavad neid reaktsioone. Esimeses reaktsioonis alkoholdehüdrogenaas muudab etanooli atsetaldehüüdiks ja teises reaktsioonis aldehüüddehüdrogenaase abil atsetaldehüüd muutub atsetaadiks.
       </p>
       <p>
-        Tee mudelit sellest, kuidas etanooli kontsentratsioon muutub peale seda, kui juuakse alkohoolset jooki. Kui juuakse 400 ml veini (etanooli sisaldus 12 vol%), kas etanooli kontsentratsioon veres ületaks Eesti alkoholi piirmäära (0,2 promilli, ehk 0,2 mg/g)? Kui ületab, kui kaua läheks enne, kui etanooli kontsentratsioon veres on jälle madalam, kui piirmäär?
+        Tee mudelit sellest, kuidas etanooli kontsentratsioon muutub peale seda, kui juuakse alkohoolset jooki. Kui juuakse 120 ml veini (etanooli sisaldus 12 vol%), kas etanooli kontsentratsioon veres ületaks Eesti alkoholi piirmäära (0,2 promilli, ehk 0,2 mg/g)? Kui ületab, kui kaua läheks enne, kui etanooli kontsentratsioon veres on jälle madalam, kui piirmäär?
       </p>
       <p>
         Mudeli lihtsustamiseks võib eeldata, et juuakse alkoholi kogust kõik korraga algushetkel. Võib ka teha keerulisemat mudelit, milles alkoholi juuakse mitu korda teatud aja jooksul.
@@ -232,7 +232,7 @@ mahtosa_etanool = 0.12
 etanooli_tihedus = 0.78954976 # g/ml
 m_etanool_sisse = V_jook * mahtosa_etanool * etanooli_tihedus</code></pre>
           <p>
-            Seejärel, paneme kirja parameetreid, mis on mudelis vajalikud. Enamus parameetreid on võimalik leida kirjandusest.<sup><a href="#ref2">2-7</a></sup>
+            Seejärel, paneme kirja parameetreid, mis on mudelis vajalikud. Enamus parameetreid on võimalik leida kirjandusest.<sup><a href="#ref2">2-8</a></sup>
           </p>
           <pre>
 <code class="python">m = GEKKO()
@@ -240,7 +240,8 @@ maksu_mass = 1.5 # kg
 mm = 46.07 # etanooli molaar mass (g/mol)
 vere_tihedus = 1.0506 # g/ml
 maksu_tihedus = 1.051 # g/ml
-Vmax = m.Param(value=10) # min^-1
+kcat = m.Param(value=10) # min^-1
+C_ensüüm = m.Param(value=2e-4) # mol/l
 Km = m.Param(value=1.2/1000) # M
 V_maks = m.Param(value=maksu_mass / maksu_tihedus) # l
 V_veri = m.Param(value=5) # l
@@ -270,7 +271,7 @@ Cet_maks = m.Var(0) # mol/l, etanooli kontsentratsioon maksas</code></pre>
             Ja mudelit paneme kirja võrrandisüsteemina. Meil on neli moolbilansi, üks iga elundi jaoks. Kasutame ka Gekko <a href="https://gekko.readthedocs.io/en/latest/quick_start.html#intermediates"><code class="python">Intermediate</code></a> objekti selleks, et eraldi defineerida reaktsiooni kiirust ja moolkulu maost ja soolestikus verre. Seda tehes moolbilansid on natuke lihtsamad ja on võibolla kergem lugeda.
           </p>
           <pre>
-<code class="python">r = m.Intermediate(-Vmax * Cet_maks / (Km + Cet_maks))
+<code class="python">r = m.Intermediate(-kcat * C_ensüüm * Cet_maks / (Km + Cet_maks))
 ndot_maost = m.Intermediate(h_magu * (Cet_magu - Cet_veri)) # mol/min
 ndot_sool = m.Intermediate(h_sool * (Cet_sool - Cet_veri)) # mol/min
 m.Equation(Cet_magu.dt() == (-ndot_maost - vdot_magu_sool * Cet_magu) / V_magu) # tegelikult mao maht pidevalt muutub, aga siin lihtsustame ja oletame, et maht ei muutu.
@@ -320,6 +321,9 @@ plt.show()</code></pre>
           J. Feldschuh and Y. Enson, “Prediction of the normal blood volume. Relation of blood volume to body habitus.,” Circulation, vol. 56, no. 4, pp. 605–612, Oct. 1977, doi: 10.1161/01.CIR.56.4.605.
         </li>
         <li id="ref8">
+          T. K. Li, W. F. Bosron, W. P. Dafeldecker, L. G. Lange, and B. L. Vallee, “Isolation of pi-alcohol dehydrogenase of human liver: is it a determinant of alcoholism?,” Proc Natl Acad Sci U S A, vol. 74, no. 10, pp. 4378–4381, Oct. 1977, doi: 10.1073/pnas.74.10.4378.
+        </li>
+        <li id="ref9">
           N. Pushpakumari Kudahettige, J. Pickova, and F. G. Gentili, “Stressing Algae for Biofuel Production: Biomass and Biochemical Composition of Scenedesmus dimorphus and Selenastrum minutum Grown in Municipal Untreated Wastewater,” Frontiers in Energy Research, vol. 6, p. 132, 2018, doi: 10.3389/fenrg.2018.00132.
         </li>
       </ol>
