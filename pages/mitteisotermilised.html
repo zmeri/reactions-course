@@ -51,13 +51,74 @@
         Energiabilansi on vaja arvesse võtta siis, kui temperatuur muutub või kui on vaja teada, kui palju energiat reaktor nõuab/toodab. Moolbilansist (ehk põhivõrrandist) me ei saa seda informatsiooni. Täpne <a href="/reactions-course/pages/modelleerimine.html#energiabilanss">energiabilanss</a> sõltub ülesandest, aga üldiselt kuju on selline:
       </p>
       <div>
-        \[ \sum_i n_i C_{p,i} \frac{dT}{dt} = \sum_i \dot n_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + \dot n_{faasimuutus} \Delta H_{faasimuutus} + Q \]
+        \[ \sum_i n_i C_{p,i} \frac{dT}{dt} = -\sum_i \dot n_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + \dot n_{faasimuutus} \Delta H_{faasimuutus} + Q \]
       </div>
       <p>
         Kui koostada energiabilansi konkreetse ülesande jaoks, siis tuleb vaadata täpsemalt, mis energiaallikad ja energialäbikande liigid on olulised. Näiteks, kui on perioodiline reaktor ja on ainult üks faas, siis oluline on ainult reaktsiooni energia ja energialäbikanne reaktori ja ümbruse vahel.
       </p>
       <p>
         Siin me tähistame energialäbikannet reaktori ja ümbruse vahel lihtsalt tähega <em>Q</em>, aga tegelikult võime kasutada soojuslevi valemeid selleks, et arvutada <em>Q</em>. Antud õppeaines me ei keskendu <em>Q</em> arvutamisele. Kuid see näitab, kuidas reaktsiooniprotsessid on seotud energia leviprotsessidega.
+      </p>
+
+      <h2 id="torureaktoris">Energiabilanss torureaktoris</h2>
+      <p>
+        Kuna torureaktoris tingimused (k.a temperatuur) muutuvad mahuga, tasuks eraldi näidata torureaktori energiabilansi kuju. Torureaktori energiabilanssi on võimalik tuletada üldisest energiabilansist, aga selleks, et ei pea iga kord uuesti tuletama seda, näitame valemi üldkuju siin:
+      </p>
+      <div>
+        \[ \frac{dT}{dV} = \frac{ r_A \Delta H_{rxn} + \tilde n_{faasimuutus} \Delta H_{faasimuutus} + \tilde Q }{ \sum_i \dot n_i C_{p,i} } \]
+      </div>
+      <div class="collapsible">
+        <button class="collapsible-button">
+          <span class="show-label">
+            Näita tuletust
+            <img class="carrot" src="/reactions-course/icons/downcarrot.svg" />
+          </span>
+          <span class="close-label">
+            Peida
+            <img class="carrot" src="/reactions-course/icons/upcarrot.svg" />
+          </span>
+        </button>
+        <div class="collapsible-text-long">
+          <p>
+            Alustame üldise energiabilansiga. Kuna tavaliselt eeldame, et torureaktor töötab statsionaarses re&#382;iimis energiabilansi vasakupool on 0.
+          </p>
+          <div>
+            \[ 0 = \sum_i \dot n_{0,i} C_{p,i} (T - T_0) + r_A V \Delta H_{rxn} + \dot n_{faasimuutus} \Delta H_{faasimuutus} + Q \]
+          </div>
+          <p>
+            Nii nagu moolbilansiga, kui modelleerime torureaktorit tavaliselt tükeldame seda väikesteks mahtudeks ja käsitleme ühte tükki korraga. Ehk, ühes väikeses tükis meil on <em>V</em> asemel väike mahu muutus, <em>dV</em>. Samuti, erinevus siseneva voo (<em>T<sub>0</sub></em>) ja reaktori tüki temperatuuri vahel muutub väikeseks: <em>dT</em>. Pea meeles, et siin sisenev voog tuleb lihtsalt eelmisest tükist. Kaotame siis 0 moolkulu tähisest esimeses osas selleks, et oleks kergem meeles pidada, et see on moolkulu, mis siseneb teatud reaktori osasse. Nende muudatustega energiabilanss muutub selliseks:
+          </p>
+          <div>
+            \[ 0 = -\sum_i \dot n_i C_{p,i} dT + r_A dV \Delta H_{rxn} + \dot n_{faasimuutus} \Delta H_{faasimuutus} + Q \]
+          </div>
+          <p>
+            Kuna siin meid huvitab, kuidas temperatuur muutub mahuga reaktoris, jagame läbivalt <em>dV</em>-ga nii, et meil oleks \(\frac{dT}{dV}\), ehk temperatuuri tuletis mahu suhtes.
+          </p>
+          <div>
+            \[ 0 = -\sum_i \dot n_i C_{p,i} \frac{dT}{dV} + r_A \Delta H_{rxn} + \frac{\dot n_{faasimuutus}}{dV} \Delta H_{faasimuutus} + \frac{Q}{dV} \]
+          </div>
+          <p>
+            Pane tähele, et nüüd kõik osad näitavad energia voogu mahu kohta. Näiteks, oluline ei ole nüüd üldine soojusläbikande hulk (<em>Q</em>), vaid soojusläbikanne ühe mahu ühiku kohta. Asendame siis <em>Q</em> ja <em>&#775;n</em> teiste tähistega aitamaks meil mäletada, et ühik on erinev.
+          </p>
+          <div>
+            \[ 0 = -\sum_i \dot n_i C_{p,i} \frac{dT}{dV} + r_A \Delta H_{rxn} + \tilde n_{faasimuutus} \Delta H_{faasimuutus} + \tilde Q \]
+          </div>
+          <p>
+            Nüüd saame teisendada valemit selleks, et liigutada temperatuuri tuletist vasakupoole.
+          </p>
+          <div>
+            \[ \sum_i \dot n_i C_{p,i} \frac{dT}{dV} = r_A \Delta H_{rxn} + \tilde n_{faasimuutus} \Delta H_{faasimuutus} + \tilde Q \]
+          </div>
+          <div>
+            \[ \frac{dT}{dV} = \frac{ r_A \Delta H_{rxn} + \tilde n_{faasimuutus} \Delta H_{faasimuutus} + \tilde Q }{ \sum_i \dot n_i C_{p,i} } \]
+          </div>
+        </div>
+      </div>
+      <p>
+        Siin valemi lugejas tähistame faasimuutuse moolkulu ja soojusläbikannet tildega kuna siin need väärtused on tegelikult mahu kohta. Kõik osad lugejas on mahu ühiku kohta kuna torureaktoris tahame teada, kuidas tingimused ja parameetrid muutuvad mahuga. Sellepärast, energiavood peavad olema mahu ühiku kohta.
+      </p>
+      <p>
+        Torureaktori energiabilansis, me lugejas sisuliselt liidame kokku kõik energiaallikad ja lahutame kõik energiakaod. Jagame seejärel süsteemi inertsiga, ehk kõikide ainete soojusmahtuvusega korda aine kogusega, selleks et arvutada temperatuuri muutumise kiirust.
       </p>
 
       <h2 id="n2ide">Näide - patarei kuumenemine</h2>
@@ -237,6 +298,9 @@ plt.show()</code></pre>
       <ol>
         <li id="ref1">
           J. C. Hewson, “Understanding the limits of thermal runaway in lithium-ion battery systems,” Sandia National Lab. (SNL-NM), Albuquerque, NM (United States), SAND2016-6054C, Jun. 2016. Accessed: Oct. 21, 2021. [Online]. Available: <a href="https://www.osti.gov/biblio/1420927">https://www.osti.gov/biblio/1420927</a>
+        </li>
+        <li id="ref2">
+          H. S. Fogler, Essentials of Chemical Reaction Engineering. Pearson Education, 2010.
         </li>
       </ol>
     </div>
