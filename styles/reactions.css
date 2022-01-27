@@ -114,6 +114,8 @@ a > code {
   width: 20em;
   background-color: #342b60;
   z-index: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #sidebar ul {
@@ -141,7 +143,6 @@ a > code {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #342b60;
   height: 4em;
   border-bottom: 1px solid #f0f0f0;
   margin: 0 20px;
